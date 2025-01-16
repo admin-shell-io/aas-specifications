@@ -9,6 +9,7 @@ This repository does not contain the website's content itself; instead, it coord
 - [Part 1: Metamodel](https://github.com/admin-shell-io/aas-specs/)
 - [Part 2: API Specifications](https://github.com/admin-shell-io/aas-specs-api)
 - [Part 3a: IEC 61360](https://github.com/admin-shell-io/aas-specs-iec61360)
+- [Part 4: Security](https://github.com/admin-shell-io/aas-specs-security/)
 - [Part 5: AASX Package Format](https://github.com/admin-shell-io/aas-specs-aasx)
 
 Detailed information about source management is available in the [Antora playbook](antora-playbook.yml).

@@ -1,4 +1,5 @@
 * xref:IDTA-01001:ROOT:index.adoc[Part 1: Metamodel]
 * xref:IDTA-01002:ROOT:index.adoc[Part 2: Application Programming Interfaces]
 * xref:IDTA-01003-a:ROOT:index.adoc[Part 3a: Data Specification - IEC 61360]
+* xref:IDTA-01004:ROOT:index.adoc[Part 4: Security]
 * xref:IDTA-01005:ROOT:index.adoc[Part 5: Package File Format (AASX)]

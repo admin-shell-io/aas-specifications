@@ -9,6 +9,7 @@ image::idta-logo.png[aas-spec-IDTA-01001]
 :part-1-mainpage: IDTA-01001:ROOT:index.adoc
 :part-2-mainpage: IDTA-01002:ROOT:index.adoc
 :part-3a-mainpage: IDTA-01003-a:ROOT:index.adoc
+:part-4-mainpage: IDTA-01004:ROOT:index.adoc
 :part-5-mainpage: IDTA-01005:ROOT:index.adoc
 
 
@@ -33,9 +34,15 @@ xref:{part-3a-mainpage}[Part 3a: Data Specification - IEC61360, window=_blank,op
 
 The data specification IEC61360 of the AAS.
 a|
+image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank,opts=nofollow,width=300,height=900]
+xref:{part-4-mainpage}[Part 4: Security, window=_blank,opts=nofollow]
+
+The security for the AAS and its submodels.
+a|
 image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank,opts=nofollow,width=300,height=900]
 xref:{part-5-mainpage}[Part 5: Package File Format (AASX), window=_blank,opts=nofollow]
 
 The AASX file format of the AAS.
+a|
 |===
 &nbsp;

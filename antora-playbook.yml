@@ -28,11 +28,10 @@ content:
       - IDTA-01003-a-3-0-2_antora_ref
       - IDTA-01003-a-3-1_working
       start-paths: documentation/IDTA-01003-a
-    - url: https://github.com/admin-shell-io/aas-specs-aasx
+    - url: https://github.com/admin-shell-io/aas-specs-security
       branches:
-      - IDTA-01005-3-0_antora_ref
-      - IDTA-01005-3-0-1_antora_ref
-      - IDTA-01005-3-1_working
+      - IDTA-01004-3-0_working
+      start-paths: documentation/IDTA-01004
     - url: https://github.com/admin-shell-io/aas-specs-aasx
       branches:
       - IDTA-01005-3-0_antora_ref
