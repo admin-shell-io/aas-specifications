@@ -4,14 +4,18 @@ title-page:
   text_align: left
   title:
     top: 55%
-    font_size: 28
-    font_color: C6C6C6
+    font_size: 35
+    font_color: FFFFFF
     line_height: 0.9
   subtitle:
-    font_size: 28
-    font_color: C6C6C6
+    font_size: 35
+    font_color: FFFFFF
     font_style: Normal
     line_height: 1
+  authors:
+    font_color: FFFFFF
+  revision:
+    font_color: FFFFFF
   background-image: image:cover.pdf[fit=cover]
  
 page:
