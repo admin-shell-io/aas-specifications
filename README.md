@@ -1,3 +1,4 @@
+
 # Antora Meta-Repository - Asset Administration Shell (AAS)
 # https://admin-shell-io.github.io/aas-specs-antora
 
