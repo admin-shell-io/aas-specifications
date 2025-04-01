@@ -13,6 +13,7 @@ content:
       branches:
       - IDTA-01001-3-0_antora_ref
       - IDTA-01001-3-0-1_antora_ref
+      - IDTA-01001-3-0-2_antora_ref
       - IDTA-01001-3-1_working
       start-paths: documentation/IDTA-01001
     - url: https://github.com/admin-shell-io/aas-specs-api
