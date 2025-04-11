@@ -34,18 +34,22 @@ base:
   font-size: 10
   line-height-length: 17
   line-height: $base-line-height-length / $base-font-size
+
 vertical-spacing: $base-line-height-length
 
 heading:
-  font-color: #0029CC
+  font-color: #3149cc       # updated to match the CSS (using blue from the second snippet)
   font-size: 14
   line-height: 1.15
   margin-bottom: $vertical-spacing
   
 link:
-  font-color: #0029CC
+  font-color: #17418a       # updated link color to match the second CSS
   line-height: 1.15
-    
+
+code:
+  background_color: e0e0e0   # added inline code styling similar to ":not(pre)... > code" rule
+
 example:
   border_radius: 0
   border_width: 0.75
@@ -56,4 +60,37 @@ example:
 table:
   head:
     font-color: #ffffff
-    background-color: #0528cc
+    background-color: #f7f8f7   # updated header background (from rgb(247,248,247))
+  tfoot:
+    background-color: #f7f8f7   # added footer background matching header styling
+  word_wrap: anywhere         # ensures long strings wrap within the table
+
+# Optional: Additional utility classes based on the CSS
+huge:
+  font-family: 'Open Sans'
+  font-size: 30        # approximates 3em relative to base font (10)
+  line-height: 1.1
+  
+large:
+  font-family: 'Open Sans'
+  font-size: 18        # approximates 1.8em
+  line-height: 1.1
+  
+normal:
+  font-family: 'Open Sans'
+  font-size: 10
+  line-height: 1.1
+
+white:
+  font-color: #ffffff
+
+redboxoneround:
+  padding: [0.3, 1, 0.3, 1]   # values in em, adjust if needed
+  margin: [0.5, 0, 0.5, 0]
+  font-family: 'Open Sans'
+  font-size: 20        # approximates 2em relative to base font (10)
+  font-color: #ffffff
+  line-height: 1.1
+  letter_spacing: 0.1
+  background_color: #fe4f0e
+  border_radius: [0, 0.35, 0, 0]
