@@ -60,9 +60,9 @@ example:
 table:
   head:
     font-color: #ffffff
-    background-color: #f7f8f7   # updated header background (from rgb(247,248,247))
+    background-color: #0528cc  # updated header background (from rgb(247,248,247))
   tfoot:
-    background-color: #f7f8f7   # added footer background matching header styling
+    background-color: #0528cc   # added footer background matching header styling
   word_wrap: anywhere         # ensures long strings wrap within the table
 
 # Optional: Additional utility classes based on the CSS
