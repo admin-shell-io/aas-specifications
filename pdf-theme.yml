@@ -20,15 +20,15 @@ title-page:
  
 page:
   layout: portrait
-  margin: [0.50in, 0.79in, 0.71in, 0.79in]
+  margin: [0.75in, 0.75in, 0.75in, 0.75in]  # Standard margins for IDTA documents
   size: A4
   
 base:
   text_align: justify
-  border_color: EEEEEE
+  border_color: e1e1e1
   border_radius: 4
   border_width: 0.5
-  font-color: #333333
+  font-color: #000121
   font-family: Helvetica
   font-style: Normal
   font-size: 10
@@ -38,59 +38,105 @@ base:
 vertical-spacing: $base-line-height-length
 
 heading:
-  font-color: #3149cc       # updated to match the CSS (using blue from the second snippet)
+  font-color: #1F39E3
   font-size: 14
   line-height: 1.15
   margin-bottom: $vertical-spacing
   
 link:
-  font-color: #17418a       # updated link color to match the second CSS
+  font-color: #1F39E3
   line-height: 1.15
 
 code:
-  background_color: e0e0e0   # added inline code styling similar to ":not(pre)... > code" rule
+  background_color: e1e1e1
+  font-family: 'Courier New'
+  font-size: 9
+  padding: [2, 4, 2, 4]
 
 example:
   border_radius: 0
   border_width: 0.75
-  border_color: #e5f0f7
-  background_color: #e5f0f7
+  border_color: #E5F0F7
+  background_color: #E5F0F7
   padding: 12
+  margin: [8, 0, 8, 0]
   
 table:
   head:
     font-color: #ffffff
-    background-color: #0528cc  # updated header background (from rgb(247,248,247))
+    background-color: #1F39E3
+    font-weight: bold
+    padding: [4, 8, 4, 8]
+    border_width: 0.5
+    border_color: #1F39E3
+  body:
+    padding: [4, 8, 4, 8]
+    border_width: 0.5
+    border_color: e1e1e1
   tfoot:
-    background-color: #0528cc   # added footer background matching header styling
-  word_wrap: anywhere         # ensures long strings wrap within the table
+    background-color: #1F39E3
+    font-color: #ffffff
+    padding: [4, 8, 4, 8]
+    border_width: 0.5
+    border_color: #1F39E3
+  word_wrap: anywhere
+  width: 100%
+  cell_padding: [4, 8, 4, 8]
+  cell_border_width: 0.5
+  cell_border_color: e1e1e1
 
 # Optional: Additional utility classes based on the CSS
 huge:
   font-family: 'Open Sans'
-  font-size: 30        # approximates 3em relative to base font (10)
+  font-size: 30
   line-height: 1.1
+  margin-bottom: $vertical-spacing
   
 large:
   font-family: 'Open Sans'
-  font-size: 18        # approximates 1.8em
+  font-size: 18
   line-height: 1.1
+  margin-bottom: $vertical-spacing
   
 normal:
   font-family: 'Open Sans'
   font-size: 10
   line-height: 1.1
+  margin-bottom: $vertical-spacing
 
 white:
   font-color: #ffffff
 
 redboxoneround:
-  padding: [0.3, 1, 0.3, 1]   # values in em, adjust if needed
+  padding: [0.3, 1, 0.3, 1]
   margin: [0.5, 0, 0.5, 0]
   font-family: 'Open Sans'
-  font-size: 20        # approximates 2em relative to base font (10)
+  font-size: 20
   font-color: #ffffff
   line-height: 1.1
   letter_spacing: 0.1
-  background_color: #fe4f0e
+  background_color: #F43F00
   border_radius: [0, 0.35, 0, 0]
+
+# Additional layout settings
+paragraph:
+  margin: [0, 0, $vertical-spacing, 0]
+  text_align: justify
+
+list:
+  margin: [0, 0, $vertical-spacing, 0]
+  item_spacing: $vertical-spacing
+
+sidebar:
+  background_color: #E5F0F7
+  border_color: #1F39E3
+  border_width: 0.5
+  padding: 12
+  margin: [8, 0, 8, 0]
+
+admonition:
+  margin: [8, 0, 8, 0]
+  padding: 8
+  border_width: 0.5
+  border_color: e1e1e1
+  background_color: #E5F0F7
