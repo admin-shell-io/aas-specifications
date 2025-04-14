@@ -20,123 +20,40 @@ title-page:
  
 page:
   layout: portrait
-  margin: [0.75in, 0.75in, 0.75in, 0.75in]  # Standard margins for IDTA documents
+  margin: [0.50in, 0.79in, 0.71in, 0.79in]
   size: A4
   
 base:
   text_align: justify
-  border_color: e1e1e1
+  border_color: EEEEEE
   border_radius: 4
   border_width: 0.5
-  font-color: #000121
+  font-color: #333333
   font-family: Helvetica
   font-style: Normal
   font-size: 10
   line-height-length: 17
   line-height: $base-line-height-length / $base-font-size
-
 vertical-spacing: $base-line-height-length
 
 heading:
-  font-color: #1F39E3
+  font-color: #0029CC
   font-size: 14
   line-height: 1.15
   margin-bottom: $vertical-spacing
   
 link:
-  font-color: #1F39E3
+  font-color: #0029CC
   line-height: 1.15
-
-code:
-  background_color: e1e1e1
-  font-family: 'Courier New'
-  font-size: 9
-  padding: [2, 4, 2, 4]
-
+    
 example:
   border_radius: 0
   border_width: 0.75
-  border_color: #E5F0F7
-  background_color: #E5F0F7
+  border_color: #e5f0f7
+  background_color: #e5f0f7
   padding: 12
-  margin: [8, 0, 8, 0]
   
 table:
   head:
     font-color: #ffffff
-    background-color: #1F39E3
-    font-weight: bold
-    padding: [4, 8, 4, 8]
-    border_width: 0.5
-    border_color: #1F39E3
-  body:
-    padding: [4, 8, 4, 8]
-    border_width: 0.5
-    border_color: e1e1e1
-  tfoot:
-    background-color: #1F39E3
-    font-color: #ffffff
-    padding: [4, 8, 4, 8]
-    border_width: 0.5
-    border_color: #1F39E3
-  word_wrap: anywhere
-  width: 100%
-  cell_padding: [4, 8, 4, 8]
-  cell_border_width: 0.5
-  cell_border_color: e1e1e1
-
-# Optional: Additional utility classes based on the CSS
-huge:
-  font-family: 'Open Sans'
-  font-size: 30
-  line-height: 1.1
-  margin-bottom: $vertical-spacing
-  
-large:
-  font-family: 'Open Sans'
-  font-size: 18
-  line-height: 1.1
-  margin-bottom: $vertical-spacing
-  
-normal:
-  font-family: 'Open Sans'
-  font-size: 10
-  line-height: 1.1
-  margin-bottom: $vertical-spacing
-
-white:
-  font-color: #ffffff
-
-redboxoneround:
-  padding: [0.3, 1, 0.3, 1]
-  margin: [0.5, 0, 0.5, 0]
-  font-family: 'Open Sans'
-  font-size: 20
-  font-color: #ffffff
-  line-height: 1.1
-  letter_spacing: 0.1
-  background_color: #F43F00
-  border_radius: [0, 0.35, 0, 0]
-
-# Additional layout settings
-paragraph:
-  margin: [0, 0, $vertical-spacing, 0]
-  text_align: justify
-
-list:
-  margin: [0, 0, $vertical-spacing, 0]
-  item_spacing: $vertical-spacing
-
-sidebar:
-  background_color: #E5F0F7
-  border_color: #1F39E3
-  border_width: 0.5
-  padding: 12
-  margin: [8, 0, 8, 0]
-
-admonition:
-  margin: [8, 0, 8, 0]
-  padding: 8
-  border_width: 0.5
-  border_color: e1e1e1
-  background_color: #E5F0F7
+    background-color: #0528cc
