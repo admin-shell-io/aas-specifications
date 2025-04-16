@@ -81,52 +81,31 @@ ui:
           max-width: 800px;
         }
 
-        .specs-container {
+        .horizontal-cards {
           display: flex;
           flex-wrap: nowrap;
           gap: 2rem;
-          justify-content: center;
+          justify-content: flex-start;
           padding: 2rem 0;
           overflow-x: auto;
-          width: 100%;
         }
 
-        .spec-card {
-          flex: 0 0 220px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+        .card {
+          flex: 0 0 auto;
+          width: 220px;
+          text-align: left;
         }
 
-        .image-box {
+        .card img {
           width: 220px;
           height: 311px;
           margin-bottom: 1rem;
-          background: #0033cc;
-        }
-
-        .image-box img {
-          width: 100%;
-          height: 100%;
           object-fit: cover;
-          display: block;
         }
 
-        .text-box {
-          text-align: left;
-          margin-bottom: 1rem;
-          min-height: 60px;
-        }
-
-        .text-box p {
-          margin: 0;
+        .card p {
           font-size: 0.875rem;
           line-height: 1.4;
-          color: #333;
-        }
-
-        .spec-number {
-          font-size: 0.875rem;
           color: #666;
           margin-bottom: 1rem;
         }
@@ -134,7 +113,8 @@ ui:
         .view-button {
           display: inline-flex;
           align-items: center;
-          padding: 0.5rem 1.25rem;
+          padding: 0.5rem 1rem;
+          background: transparent;
           color: #0033cc;
           border: 1px solid #0033cc;
           border-radius: 4px;
