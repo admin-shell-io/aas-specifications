@@ -1,68 +1,45 @@
 = AAS Specifications
-:page-layout: landing
 
-[.lead-paragraph]
-Specifications define the software structure, interface and semantics of the Asset Administration Shell and thus create the basis for the standardized Digital Twin. All specifications for the Asset Administration Shell information model can be found here.
+Specifications define the software structure, interface and semantics of the 
+Asset Administration Shell and thus create the basis for the standardized Digital Twin. 
+All specifications for the Asset Administration Shell information model can be found here.
 
-[.text-center]
+
+&nbsp;
+
+:part-1-mainpage: IDTA-01001:ROOT:index.adoc
+:part-2-mainpage: IDTA-01002:ROOT:index.adoc
+:part-3a-mainpage: IDTA-01003-a:ROOT:index.adoc
+:part-4-mainpage: IDTA-01004:ROOT:index.adoc
+:part-5-mainpage: IDTA-01005:ROOT:index.adoc
+
 Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
 
-[.horizontal-cards]
-====
-[.card]
---
-image::IDTA-01001.png[Specification of the Asset Administration Shell Part 1: Metamodel – IDTA Number: 01001-3-0-2,220]
+[cols="1,1,1,1,1", frame="none", grid="none", align="center"]
+|===
+a|
+image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
+**Part 1: Metamodel**  
+_The Metamodel of the AAS._
 
-Specification of the Asset Administration Shell Part 1: +
-Metamodel – IDTA Number: 01001-3-0-2
+a|
+image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
+**Part 2: Application Programming Interfaces**  
+_The API of the AAS._
 
-link:IDTA-01001:ROOT:index.adoc[View →,role=view-button]
---
+a|
+image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
+**Part 3a: Data Specification - IEC61360**  
+_The data specification IEC61360 of the AAS._
 
-[.card]
---
-image::IDTA-01002.png[Specification of the Asset Administration Shell Part 2: Application Programming Interfaces – IDTA Number: 01002-3-0-3,220]
+a|
+image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
+**Part 4: Security**  
+_The security for the AAS and its submodels._
 
-Specification of the Asset Administration Shell Part 2: +
-Application Programming Interfaces – IDTA Number: 01002-3-0-3
-
-link:IDTA-01002:ROOT:index.adoc[View →,role=view-button]
---
-
-[.card]
---
-image::IDTA-01003-a.png[Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 – IDTA Number: 01003-a-3-0-2,220]
-
-Specification of the Asset Administration Shell Part 3a: +
-Data Specification – IEC 61360 – IDTA Number: 01003-a-3-0-2
-
-link:IDTA-01003-a:ROOT:index.adoc[View →,role=view-button]
---
-
-[.card]
---
-image::IDTA-01004.png[Specification of the Asset Administration Shell Part 4: Security – IDTA Number: 01004-3-0,220]
-
-Specification of the Asset Administration Shell Part 4: +
-Security – IDTA Number: 01004-3-0
-
-link:IDTA-01004:ROOT:index.adoc[View →,role=view-button]
---
-
-[.card]
---
-image::IDTA-01005.png[Specification of the Asset Administration Shell Part 5: Package File Format (AASX) – IDTA Number: 01005-3-0-1,220]
-
-Specification of the Asset Administration Shell Part 5: +
-Package File Format (AASX) – IDTA Number: 01005-3-0-1
-
-link:IDTA-01005:ROOT:index.adoc[View →,role=view-button]
---
-====
-
-[.custom-style]
---
-ifdef::backend-pdf[]
-[%hardbreaks]
-endif::[]
---
+a|
+image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
+**Part 5: Package File Format (AASX)**  
+_The AASX file format of the AAS._
+|===
+&nbsp;
