@@ -81,6 +81,7 @@ ui:
           max-width: 800px;
         }
 
+        /* Horizontal cards container */
         .horizontal-cards {
           display: flex;
           flex-wrap: nowrap;
@@ -90,10 +91,16 @@ ui:
           overflow-x: auto;
         }
 
+        /* Each card style */
         .card {
           flex: 0 0 auto;
           width: 220px;
           text-align: left;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          overflow: hidden;
         }
 
         .card img {
@@ -101,6 +108,13 @@ ui:
           height: 311px;
           margin-bottom: 1rem;
           object-fit: cover;
+          display: block;
+        }
+
+        .card h2 {
+          font-size: 1rem;
+          font-weight: bold;
+          margin: 0.5rem 0;
         }
 
         .card p {
