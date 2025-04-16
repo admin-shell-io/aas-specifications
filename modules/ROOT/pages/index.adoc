@@ -12,63 +12,56 @@ Specifications define the software structure, interface and semantics of the Ass
 [.text-center.margin-bottom-2]
 Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
 
-[.grid-specs]
-[cols="1,1,1,1,1", frame="none", grid="none", stripes=none]
+[.specs-container.text-center]
+[cols="5", frame="none", grid="none", stripes=none, width="100%"]
 |===
 
 a|
 [.spec-card]
 --
-image::IDTA-01001.png[Metamodel,xref={part-1-mainpage}, window=_blank, opts=nofollow, role="spec-image"]
-[.spec-title]
-*Specification of the Asset Administration Shell Part 1: Metamodel*
+image::IDTA-01001.png[Metamodel,xref={part-1-mainpage}, window=_blank, opts=nofollow, role="spec-image", width=200]
 
 [.spec-subtitle]
-IDTA Number: 01001-3-0-2
+Specification of the Asset Administration Shell Part 1: Metamodel
 --
 
 a|
 [.spec-card]
 --
-image::IDTA-01002.png[API,xref={part-2-mainpage}, window=_blank, opts=nofollow, role="spec-image"]
-[.spec-title]
-*Specification of the Asset Administration Shell Part 2: Application Programming Interfaces*
+image::IDTA-01002.png[API,xref={part-2-mainpage}, window=_blank, opts=nofollow, role="spec-image", width=200]
+
 
 [.spec-subtitle]
-IDTA Number: 01002-3-0-3
+Specification of the Asset Administration Shell Part 2: Application Programming Interfaces
 --
 
 a|
 [.spec-card]
 --
-image::IDTA-01003-a.png[IEC61360,xref={part-3a-mainpage}, window=_blank, opts=nofollow, role="spec-image"]
-[.spec-title]
-*Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360*
+image::IDTA-01003-a.png[IEC61360,xref={part-3a-mainpage}, window=_blank, opts=nofollow, role="spec-image", width=200]
+
 
 [.spec-subtitle]
-IDTA Number: 01003-a-3-0-2
+Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360
 --
 
 a|
 [.spec-card]
 --
-image::IDTA-01004.png[Security,xref={part-4-mainpage}, window=_blank, opts=nofollow, role="spec-image"]
-[.spec-title]
-*Specification of the Asset Administration Shell Part 4: Security*
+image::IDTA-01004.png[Security,xref={part-4-mainpage}, window=_blank, opts=nofollow, role="spec-image", width=200]
+
 
 [.spec-subtitle]
-IDTA Number: 01004-3-0
+Specification of the Asset Administration Shell Part 4: Security
 --
 
 a|
 [.spec-card]
 --
-image::IDTA-01005.png[AASX,xref={part-5-mainpage}, window=_blank, opts=nofollow, role="spec-image"]
-[.spec-title]
-*Specification of the Asset Administration Shell Part 5: Package File Format (AASX)*
+image::IDTA-01005.png[AASX,xref={part-5-mainpage}, window=_blank, opts=nofollow, role="spec-image", width=200]
 
 [.spec-subtitle]
-IDTA Number: 01005-3-0-1
+Specification of the Asset Administration Shell Part 5: Package File Format (AASX)
 --
 
 |===
