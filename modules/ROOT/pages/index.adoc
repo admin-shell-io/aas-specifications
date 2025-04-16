@@ -4,7 +4,6 @@ Specifications define the software structure, interface and semantics of the
 Asset Administration Shell and thus create the basis for the standardized Digital Twin. 
 All specifications for the Asset Administration Shell information model can be found here.
 
-
 &nbsp;
 
 :part-1-mainpage: IDTA-01001:ROOT:index.adoc
@@ -20,27 +19,27 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 a|
 image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
 
-link:#part1[View,role="view-button"]
+xref:{part-1-mainpage}[View,role="view-button"]
 
 a|
 image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
 
-link:#part2[View,role="view-button"]
+xref:{part-2-mainpage}[View,role="view-button"]
 
 a|
 image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
 
-link:#part3[View,role="view-button"]
+xref:{part-3a-mainpage}[View,role="view-button"]
 
 a|
 image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
 
-link:#part4[View,role="view-button"]
+xref:{part-4-mainpage}[View,role="view-button"]
 
 a|
 image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
 
-link:#part5[View,role="view-button"]
+xref:{part-5-mainpage}[View,role="view-button"]
 |===
 
 &nbsp;
