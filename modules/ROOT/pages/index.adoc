@@ -12,16 +12,18 @@ Specifications define the software structure, interface and semantics of the Ass
 [.text-center]
 Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
 
-[.specs-container]
+[.specs-container.grid]
 --
 [.spec-card]
 --
 [.image-box]
 image::IDTA-01001.png[Metamodel,220]
 [.text-box]
-Specification of the Asset Administration Shell Part 1: Metamodel
+*Part 1: Metamodel*
+
+The metamodel defines the structure and semantics of the Asset Administration Shell.
 [.view-button]
-xref:{part-1-mainpage}[View]
+xref:{part-1-mainpage}[View specification]
 --
 
 [.spec-card]
@@ -29,9 +31,11 @@ xref:{part-1-mainpage}[View]
 [.image-box]
 image::IDTA-01002.png[API,220]
 [.text-box]
-Specification of the Asset Administration Shell Part 2: Application Programming Interfaces
+*Part 2: Application Programming Interfaces*
+
+The API specification defines the interfaces for accessing and manipulating Asset Administration Shells.
 [.view-button]
-xref:{part-2-mainpage}[View]
+xref:{part-2-mainpage}[View specification]
 --
 
 [.spec-card]
@@ -39,9 +43,11 @@ xref:{part-2-mainpage}[View]
 [.image-box]
 image::IDTA-01003-a.png[IEC61360,220]
 [.text-box]
-Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360
+*Part 3a: Data Specification IEC 61360*
+
+This specification details the IEC 61360 data model integration with the Asset Administration Shell.
 [.view-button]
-xref:{part-3a-mainpage}[View]
+xref:{part-3a-mainpage}[View specification]
 --
 
 [.spec-card]
@@ -49,9 +55,11 @@ xref:{part-3a-mainpage}[View]
 [.image-box]
 image::IDTA-01004.png[Security,220]
 [.text-box]
-Specification of the Asset Administration Shell Part 4: Security
+*Part 4: Security*
+
+The security specification defines mechanisms for securing Asset Administration Shells.
 [.view-button]
-xref:{part-4-mainpage}[View]
+xref:{part-4-mainpage}[View specification]
 --
 
 [.spec-card]
@@ -59,9 +67,11 @@ xref:{part-4-mainpage}[View]
 [.image-box]
 image::IDTA-01005.png[AASX,220]
 [.text-box]
-Specification of the Asset Administration Shell Part 5: Package File Format (AASX)
+*Part 5: Package File Format (AASX)*
+
+This specification defines the AASX package format for Asset Administration Shells.
 [.view-button]
-xref:{part-5-mainpage}[View]
+xref:{part-5-mainpage}[View specification]
 --
 --
 

@@ -53,48 +53,54 @@ ui:
       contents: |
         .breadcrumbs {
           display: flex;
+          align-items: center;
+          gap: 0.5rem;
           padding: 1rem 0;
-          margin-bottom: 1rem;
-          font-size: 0.9rem;
+          color: #666;
+          font-size: 0.875rem;
+        }
+
+        .breadcrumbs a {
+          color: #0033cc;
+          text-decoration: none;
         }
 
         .page-title {
-          color: #0033cc;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
           font-size: 2rem;
-          margin-bottom: 1.5rem;
+          font-weight: 500;
+          color: #0033cc;
+          margin: 0 0 1.5rem;
         }
 
         .lead-paragraph {
           color: #666;
           font-size: 1rem;
           line-height: 1.5;
-          margin-bottom: 2rem;
+          margin-bottom: 3rem;
           max-width: 800px;
         }
 
         .specs-container {
           display: flex;
-          justify-content: center;
           flex-wrap: wrap;
-          gap: 1rem;
-          padding: 0 1rem;
-          margin: 0 auto;
+          gap: 2rem;
+          justify-content: flex-start;
+          padding: 2rem 0;
         }
 
         .spec-card {
           width: 220px;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          text-align: center;
-          margin-bottom: 2rem;
+          align-items: flex-start;
         }
 
         .image-box {
           width: 220px;
           height: 311px;
           margin-bottom: 1rem;
-          border: 1px solid #e0e0e0;
+          background: #0033cc;
         }
 
         .image-box img {
@@ -105,36 +111,34 @@ ui:
         }
 
         .text-box {
-          width: 100%;
+          text-align: left;
+          margin-bottom: 1rem;
           min-height: 60px;
-          margin-bottom: 0.5rem;
         }
 
-        .spec-title {
-          font-size: 0.9rem;
-          color: #333;
+        .text-box p {
           margin: 0;
+          font-size: 0.875rem;
           line-height: 1.4;
-          font-weight: normal;
+          color: #333;
         }
 
         .spec-number {
-          font-size: 0.8rem;
+          font-size: 0.875rem;
           color: #666;
-          margin-top: 0.25rem;
+          margin-bottom: 1rem;
         }
 
         .view-button {
           display: inline-flex;
           align-items: center;
-          padding: 0.5rem 1rem;
-          background: transparent;
+          padding: 0.5rem 1.25rem;
           color: #0033cc;
           border: 1px solid #0033cc;
           border-radius: 4px;
           text-decoration: none;
-          font-size: 0.9rem;
-          margin-top: 0.5rem;
+          font-size: 0.875rem;
+          transition: all 0.2s ease;
         }
 
         .view-button:hover {
