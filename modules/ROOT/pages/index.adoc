@@ -19,27 +19,22 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 |===
 a|
 image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
-**Part 1: Metamodel**  
-_The Metamodel of the AAS._
+
 
 a|
 image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
-**Part 2: Application Programming Interfaces**  
-_The API of the AAS._
+
 
 a|
 image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
-**Part 3a: Data Specification - IEC61360**  
-_The data specification IEC61360 of the AAS._
+
 
 a|
 image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
-**Part 4: Security**  
-_The security for the AAS and its submodels._
+
 
 a|
 image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=300, height=450]
-**Part 5: Package File Format (AASX)**  
-_The AASX file format of the AAS._
+
 |===
 &nbsp;
