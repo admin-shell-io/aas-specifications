@@ -4,7 +4,7 @@ Specifications define the software structure, interface and semantics of the
 Asset Administration Shell and thus create the basis for the standardized Digital Twin. 
 All specifications for the Asset Administration Shell information model can be found here.
 
-Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
+&nbsp;
 
 :part-1-mainpage: IDTA-01001:ROOT:index.adoc
 :part-2-mainpage: IDTA-01002:ROOT:index.adoc
@@ -12,88 +12,33 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 :part-4-mainpage: IDTA-01004:ROOT:index.adoc
 :part-5-mainpage: IDTA-01005:ROOT:index.adoc
 
-[.cards-container]
-++++
-<div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
-  
-  <!-- Card 1 -->
-  <div style="width: 220px; border: 1px solid #eee; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: center;">
-    <img src="IDTA-01001.png" alt="Part 1: Metamodel" style="width: 100%; height: auto;">
-    <div style="padding: 1rem;">
-      <strong style="display: block; margin-bottom: 0.5rem;">Part 1: Metamodel</strong>
-      <em style="display: block; margin-bottom: 0.75rem;">The Metamodel of the AAS.</em>
-      <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-        Specification of the Asset Administration Shell  
-        Part 1: Metamodel – IDTA-01001
-      </p>
-      <a href="{part-1-mainpage}" style="text-decoration: none; font-weight: bold; color: #007acc;">
-        View &rarr;
-      </a>
-    </div>
-  </div>
+Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
 
-  <!-- Card 2 -->
-  <div style="width: 220px; border: 1px solid #eee; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: center;">
-    <img src="IDTA-01002.png" alt="Part 2: Application Programming Interfaces" style="width: 100%; height: auto;">
-    <div style="padding: 1rem;">
-      <strong style="display: block; margin-bottom: 0.5rem;">Part 2: Application Programming Interfaces</strong>
-      <em style="display: block; margin-bottom: 0.75rem;">The API of the AAS.</em>
-      <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-        Specification of the Asset Administration Shell  
-        Part 2: Application Programming Interfaces – IDTA-01002
-      </p>
-      <a href="{part-2-mainpage}" style="text-decoration: none; font-weight: bold; color: #007acc;">
-        View &rarr;
-      </a>
-    </div>
-  </div>
+[%autowidth, cols="5*^", frame="none", grid="none", align="center"]
+|===
+a|
+image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, width=300, height=450]
+**Part 1: Metamodel**  
+_The Metamodel of the AAS._
 
-  <!-- Card 3 -->
-  <div style="width: 220px; border: 1px solid #eee; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: center;">
-    <img src="IDTA-01003-a.png" alt="Part 3a: Data Specification - IEC61360" style="width: 100%; height: auto;">
-    <div style="padding: 1rem;">
-      <strong style="display: block; margin-bottom: 0.5rem;">Part 3a: Data Specification – IEC61360</strong>
-      <em style="display: block; margin-bottom: 0.75rem;">The data specification IEC61360 of the AAS.</em>
-      <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-        Specification of the Asset Administration Shell  
-        Part 3a: Data Specification – IEC61360 – IDTA-01003-a
-      </p>
-      <a href="{part-3a-mainpage}" style="text-decoration: none; font-weight: bold; color: #007acc;">
-        View &rarr;
-      </a>
-    </div>
-  </div>
+a|
+image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, width=300, height=450]
+**Part 2: Application Programming Interfaces**  
+_The API of the AAS._
 
-  <!-- Card 4 -->
-  <div style="width: 220px; border: 1px solid #eee; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: center;">
-    <img src="IDTA-01004.png" alt="Part 4: Security" style="width: 100%; height: auto;">
-    <div style="padding: 1rem;">
-      <strong style="display: block; margin-bottom: 0.5rem;">Part 4: Security</strong>
-      <em style="display: block; margin-bottom: 0.75rem;">The security for the AAS and its submodels.</em>
-      <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-        Specification of the Asset Administration Shell  
-        Part 4: Security – IDTA-01004
-      </p>
-      <a href="{part-4-mainpage}" style="text-decoration: none; font-weight: bold; color: #007acc;">
-        View &rarr;
-      </a>
-    </div>
-  </div>
+a|
+image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, width=300, height=450]
+**Part 3a: Data Specification - IEC61360**  
+_The data specification IEC61360 of the AAS._
 
-  <!-- Card 5 -->
-  <div style="width: 220px; border: 1px solid #eee; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; text-align: center;">
-    <img src="IDTA-01005.png" alt="Part 5: Package File Format (AASX)" style="width: 100%; height: auto;">
-    <div style="padding: 1rem;">
-      <strong style="display: block; margin-bottom: 0.5rem;">Part 5: Package File Format (AASX)</strong>
-      <em style="display: block; margin-bottom: 0.75rem;">The AASX file format of the AAS.</em>
-      <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-        Specification of the Asset Administration Shell  
-        Part 5: Package File Format (AASX) – IDTA-01005
-      </p>
-      <a href="{part-5-mainpage}" style="text-decoration: none; font-weight: bold; color: #007acc;">
-        View &rarr;
-      </a>
-    </div>
-  </div>
-</div>
-++++
+a|
+image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, width=300, height=450]
+**Part 4: Security**  
+_The security for the AAS and its submodels._
+
+a|
+image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, width=300, height=450]
+**Part 5: Package File Format (AASX)**  
+_The AASX file format of the AAS._
+|===
+&nbsp;
