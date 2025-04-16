@@ -1,73 +1,57 @@
-extends: default-for-print
-
 title-page:
   text_align: left
   title:
-    top: 50%
-    font_size: 40
+    top: 55%
+    font_size: 35
     font_color: FFFFFF
-    line_height: 1
+    line_height: 0.9
   subtitle:
-    font_size: 30
+    font_size: 35
     font_color: FFFFFF
     font_style: Normal
-    line_height: 1.1
+    line_height: 1
   authors:
     font_color: FFFFFF
   revision:
     font_color: FFFFFF
   background-image: image:cover.pdf[fit=cover]
-
+ 
 page:
   layout: portrait
-  margin: [0.75in, 0.75in, 0.75in, 0.75in]
+  margin: [0.50in, 0.79in, 0.71in, 0.79in]
   size: A4
-
+  
 base:
   text_align: justify
   border_color: EEEEEE
   border_radius: 4
-  border_width: 0.25
+  border_width: 0.5
   font-color: #333333
   font-family: Helvetica
   font-style: Normal
-  font-size: 11
-  line-height-length: 16
+  font-size: 10
+  line-height-length: 17
   line-height: $base-line-height-length / $base-font-size
 vertical-spacing: $base-line-height-length
 
 heading:
   font-color: #0029CC
-  font-size: 16
-  line-height: 1.2
+  font-size: 14
+  line-height: 1.15
   margin-bottom: $vertical-spacing
-
+  
 link:
   font-color: #0029CC
-  line-height: 1.2
-
+  line-height: 1.15
+    
 example:
   border_radius: 0
   border_width: 0.75
   border_color: #e5f0f7
   background_color: #e5f0f7
   padding: 12
-
+  
 table:
   head:
     font-color: #ffffff
     background-color: #0528cc
-
-code:
-  font_family: "Courier New"
-  font_size: 10
-  background_color: #e5f0f7
-  padding: 8
-  margin: 12
-
-constraint:
-  font_color: #333333
-  font_style: Bold
-  margin-top: 10
-  margin-bottom: 10
-  padding: 5
