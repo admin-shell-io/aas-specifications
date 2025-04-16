@@ -19,12 +19,9 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 [.image-box]
 image::IDTA-01001.png[Metamodel,xref={part-1-mainpage}, window=_blank, opts=nofollow]
 [.text-box]
---
-[.spec-title]
 Specification of the Asset Administration Shell Part 1: Metamodel
 [.spec-number]
 IDTA Number: 01001-3-0-2
---
 [.view-button]
 xref:{part-1-mainpage}[View]
 --
@@ -34,12 +31,9 @@ xref:{part-1-mainpage}[View]
 [.image-box]
 image::IDTA-01002.png[API,xref={part-2-mainpage}, window=_blank, opts=nofollow]
 [.text-box]
---
-[.spec-title]
 Specification of the Asset Administration Shell Part 2: Application Programming Interfaces
 [.spec-number]
 IDTA Number: 01002-3-0-3
---
 [.view-button]
 xref:{part-2-mainpage}[View]
 --
@@ -49,12 +43,9 @@ xref:{part-2-mainpage}[View]
 [.image-box]
 image::IDTA-01003-a.png[IEC61360,xref={part-3a-mainpage}, window=_blank, opts=nofollow]
 [.text-box]
---
-[.spec-title]
 Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360
 [.spec-number]
 IDTA Number: 01003-a-3-0-2
---
 [.view-button]
 xref:{part-3a-mainpage}[View]
 --
@@ -64,12 +55,9 @@ xref:{part-3a-mainpage}[View]
 [.image-box]
 image::IDTA-01004.png[Security,xref={part-4-mainpage}, window=_blank, opts=nofollow]
 [.text-box]
---
-[.spec-title]
 Specification of the Asset Administration Shell Part 4: Security
 [.spec-number]
 IDTA Number: 01004-3-0
---
 [.view-button]
 xref:{part-4-mainpage}[View]
 --
@@ -79,12 +67,9 @@ xref:{part-4-mainpage}[View]
 [.image-box]
 image::IDTA-01005.png[AASX,xref={part-5-mainpage}, window=_blank, opts=nofollow]
 [.text-box]
---
-[.spec-title]
 Specification of the Asset Administration Shell Part 5: Package File Format (AASX)
 [.spec-number]
 IDTA Number: 01005-3-0-1
---
 [.view-button]
 xref:{part-5-mainpage}[View]
 --
