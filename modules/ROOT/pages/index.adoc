@@ -17,7 +17,7 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 
   <div class="card">
     <a href="{part-1-mainpage}">
-      <img src="IDTA-01001.png" alt="Part 1: Metamodel">
+      <img src="IDTA-01001.png" alt="Part 1: Metamodel" />
     </a>
     <h2>Part 1: Metamodel</h2>
     <p>The Metamodel of the AAS.</p>
@@ -26,7 +26,7 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 
   <div class="card">
     <a href="{part-2-mainpage}">
-      <img src="IDTA-01002.png" alt="Part 2: Application Programming Interfaces">
+      <img src="IDTA-01002.png" alt="Part 2: Application Programming Interfaces" />
     </a>
     <h2>Part 2: Application Programming Interfaces</h2>
     <p>The API of the AAS.</p>
@@ -35,7 +35,7 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 
   <div class="card">
     <a href="{part-3a-mainpage}">
-      <img src="IDTA-01003-a.png" alt="Part 3a: Data Specification - IEC61360">
+      <img src="IDTA-01003-a.png" alt="Part 3a: Data Specification - IEC61360" />
     </a>
     <h2>Part 3a: Data Specification - IEC61360</h2>
     <p>The data specification IEC61360 of the AAS.</p>
@@ -44,7 +44,7 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 
   <div class="card">
     <a href="{part-4-mainpage}">
-      <img src="IDTA-01004.png" alt="Part 4: Security">
+      <img src="IDTA-01004.png" alt="Part 4: Security" />
     </a>
     <h2>Part 4: Security</h2>
     <p>The security for the AAS and its submodels.</p>
@@ -53,7 +53,7 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 
   <div class="card">
     <a href="{part-5-mainpage}">
-      <img src="IDTA-01005.png" alt="Part 5: Package File Format (AASX)">
+      <img src="IDTA-01005.png" alt="Part 5: Package File Format (AASX)" />
     </a>
     <h2>Part 5: Package File Format (AASX)</h2>
     <p>The AASX file format of the AAS.</p>
