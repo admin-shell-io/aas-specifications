@@ -8,120 +8,50 @@ title-page:
   subtitle:
     font_size: 35
     font_color: FFFFFF
-    font_style: normal
+    font_style: Normal
     line_height: 1
   authors:
     font_color: FFFFFF
   revision:
     font_color: FFFFFF
   background-image: image:cover.pdf[fit=cover]
-
+ 
 page:
   layout: portrait
   margin: [0.50in, 0.79in, 0.71in, 0.79in]
   size: A4
-
-font:
-  catalog:
-    Helvetica:
-      normal: Helvetica
-      bold: Helvetica-Bold
-      italic: Helvetica-Oblique
-      bold_italic: Helvetica-BoldOblique
-    Courier:
-      normal: Courier
-      bold: Courier-Bold
-      italic: Courier-Oblique
-      bold_italic: Courier-BoldOblique
-  base:
-    family: Helvetica
-    size: 10
-    line_height: 1.7
-  heading:
-    family: Helvetica
-    size: 14
-    style: bold
-    line_height: 1.15
-  monospace:
-    family: Courier
-    size: 9
-  fallbacks:
-    - Helvetica
-
+  
 base:
   text_align: justify
   border_color: EEEEEE
   border_radius: 4
   border_width: 0.5
   font-color: #333333
-
-vertical-spacing: 17
+  font-family: Helvetica
+  font-style: Normal
+  font-size: 10
+  line-height-length: 17
+  line-height: $base-line-height-length / $base-font-size
+vertical-spacing: $base-line-height-length
 
 heading:
   font-color: #0029CC
   font-size: 14
   line-height: 1.15
   margin-bottom: $vertical-spacing
-
+  
 link:
   font-color: #0029CC
-  line_height: 1.15
-
+  line-height: 1.15
+    
 example:
   border_radius: 0
   border_width: 0.75
   border_color: #e5f0f7
   background_color: #e5f0f7
   padding: 12
-
+  
 table:
-  body:
-    font-color: #333333
-    font-style: normal
-    background-color: #FFFFFF
   head:
-    font-color: #FFFFFF
-    font-style: bold
+    font-color: #ffffff
     background-color: #0528cc
-  even_row_background_color: #f5f5f5
-  odd_row_background_color: #ffffff
-  border_color: #CCCCCC
-  border_width: 0.5
-  cell_padding: [4, 6, 4, 6]
-
-code:
-  font-family: Courier
-  font-size: 9
-  background-color: #f4f4f4
-  border_color: #CCCCCC
-  border_radius: 3
-  padding: 6
-  line-height: 1.4
-
-admonition:
-  border_width: 0.75
-  border_radius: 3
-  padding: [8, 12, 8, 12]
-  icon:
-    size: 18
-    stroke_color: #0029CC
-    stroke_width: 1
-  label:
-    font-family: Helvetica
-    font-style: bold
-    font-color: #0029CC
-
-sidebar:
-  background-color: #f0f0f5
-  border_color: #dcdcdc
-  border_width: 0.75
-  padding: [10, 12, 10, 12]
-  font-color: #333333
-
-quote:
-  font-color: #444444
-  font-style: italic
-  border_color: #cccccc
-  border_width: 1
-  border_left_width: 4
-  padding: [6, 12, 6, 12]
