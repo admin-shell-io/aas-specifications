@@ -32,7 +32,7 @@ base:
   font-size: 10
   line-height-length: 17
   line-height: $base-line-height-length / $base-font-size
-  vertical-spacing: $base-line-height-length
+vertical-spacing: $base-line-height-length
 
 heading:
   font-color: #0029CC
