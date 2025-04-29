@@ -1,10 +1,10 @@
 !$THEME = "idta"
 
 !$BLACK  = "#000121"
-!$BLUE   = "#1F39E3"
+!$BLUE   = "#0028CD"
 !$LIGHTBLUE   = "#E5F0F7"
 
-!$ORANGE = "#F43F00"
+!$ORANGE = "#FF500F"
 !$RED    = "#DB252B"
 !$WHITE  = "#FFFFFF"
 !$GREY  = "#e1e1e1"
