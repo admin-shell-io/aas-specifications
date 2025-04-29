@@ -1,5 +1,5 @@
 site:
-  url: https://admin-shell-io.github.io/aas-specs-antora
+  url: https://admin-shell-io.github.io/aas-specs
   start_page: index::index.adoc
 
 content:
