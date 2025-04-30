@@ -174,6 +174,7 @@ UpdateElementStyle("external_person", $bgColor=$WHITE, $fontColor=$DARK_GREY, $b
 UpdateElementStyle("external_system", $bgColor=$GREY, $fontColor=$BLACK, $borderColor=$BLACK, $legendText="external system")
 UpdateElementStyle("container", $bgColor=$BLUE, $fontColor=$WHITE, $borderColor=$WHITE, $legendText="container")
 UpdateElementStyle("boundary", $bgColor=$WHITE, $fontColor=$BLACK, $borderColor=$BLACK, $legendText="boundary")
+UpdateElementStyle("system", $bgColor=$WHITE, $fontColor=$BLACK, $borderColor=$BLACK, $legendText="system")
 UpdateRelStyle($lineColor=$BLUE, $textColor=$BLUE)
 
 hide empty members
