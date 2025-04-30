@@ -7,7 +7,7 @@
 !$ORANGE = "#FF500F"
 !$RED    = "#DB252B"
 !$WHITE  = "#FFFFFF"
-!$GREY  = "#e1e1e1"
+!$GREY  = "#d1d1d1"
 
 !$BGCOLOR = $GREY
 !$FGCOLOR = $BLUE
