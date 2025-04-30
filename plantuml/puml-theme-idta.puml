@@ -1,3 +1,10 @@
+!include <c4/C4_Context.puml>
+!include <c4/C4_Container.puml>  
+!include <c4/C4_Context.puml>  
+!include <c4/C4_Component.puml>  
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
+
 !$THEME = "idta"
 
 !$BLACK  = "#000121"
@@ -8,6 +15,7 @@
 !$RED    = "#DB252B"
 !$WHITE  = "#FFFFFF"
 !$GREY  = "#d1d1d1"
+!$DARK_GREY = "#535353"
 
 !$BGCOLOR = $GREY
 !$FGCOLOR = $BLUE
@@ -159,5 +167,13 @@ skinparam State {
 skinparam SequenceBox {
   BackgroundColor $GREY
 }
+
+' Styling for C4_Context PlantUML diagrams
+UpdateElementStyle("person", $bgColor=$WHITE, $fontColor=$BLUE, $borderColor=$BLUE, $shadowing="false", $legendText="person")
+UpdateElementStyle("external_person", $bgColor=$WHITE, $fontColor=$DARK_GREY, $borderColor=$DARK_GREY, $legendText="external person")
+UpdateElementStyle("external_system", $bgColor=$GREY, $fontColor=$BLACK, $borderColor=$BLACK, $legendText="external system")
+UpdateElementStyle("container", $bgColor=$BLUE, $fontColor=$WHITE, $borderColor=$WHITE, $legendText="container")
+UpdateElementStyle("boundary", $bgColor=$WHITE, $fontColor=$BLACK, $borderColor=$BLACK, $legendText="boundary")
+UpdateRelStyle($lineColor=$BLUE, $textColor=$BLUE)
 
 hide empty members
