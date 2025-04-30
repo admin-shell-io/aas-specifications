@@ -15,7 +15,7 @@
 
 
 !ifndef $FONT_NAME
-  !$FONT_NAME = "SansSerif"
+  !$FONT_NAME = "Arial"
 !endif
 
 !ifndef $FONT_NAME_MONOSPACED
