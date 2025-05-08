@@ -17,27 +17,27 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 [cols="1,1,1,1,1", frame="none", grid="none", align="center"]
 |===
 a|
-image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, opts=nofollow, width=400, height=500]
+image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 
 xref:{part-1-mainpage}[View,role="view-button"]
 
 a|
-image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, width=400, height=500]
+image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 
 xref:{part-2-mainpage}[View,role="view-button"]
 
 a|
-image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=400, height=500]
+image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 
 xref:{part-3a-mainpage}[View,role="view-button"]
 
 a|
-image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=400, height=500]
+image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 
 xref:{part-4-mainpage}[View,role="view-button"]
 
 a|
-image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=400, height=500]
+image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 
 xref:{part-5-mainpage}[View,role="view-button"]
 |===
