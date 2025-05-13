@@ -8,7 +8,7 @@ content:
     - url: .
       branches: HEAD
       start-paths: .
-    - url: https://github.com/admin-shell-io/aas-specs
+    - url: https://github.com/admin-shell-io/aas-specs-metamodel
       branches:
       - IDTA-01001-3-0_antora_ref
       - IDTA-01001-3-0-1_antora_ref
