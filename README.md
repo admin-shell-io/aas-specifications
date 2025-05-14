@@ -1,5 +1,5 @@
 # Antora Meta-Repository - Asset Administration Shell (AAS)
-# https://admin-shell-io.github.io/aas-specs-antora
+# https://industrialdigitaltwin.io/aas-specifications/index/home/index.html
 
 This repository manages and contains the configurations for building the documentation website for the AAS by the [Industrial Digital Twin Association](https://industrialdigitaltwin.org).
 It includes tools to generate the documentation on demand by compiling and assembling content from various remote repositories and sources written in AsciiDoc using [Antora](https://antora.org/).
