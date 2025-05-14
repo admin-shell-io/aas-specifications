@@ -1,5 +1,5 @@
 site:
-  url: https://industrialdigitaltwin.io/aas-specs-antora
+  url: https://industrialdigitaltwin.io/aas-specifications
   start_page: index::index.adoc
 
 content:
