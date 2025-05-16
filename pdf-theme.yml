@@ -23,7 +23,7 @@ page:
 
 base:
   text-align: justify
-  font-family: Arial
+  font-family: Helvetica
   font-size: 9.5
   font-color: 333333
   font-style: normal
@@ -100,7 +100,7 @@ list:
 
 olist:
   marker:
-    font-family: Arial
+    font-family: Helvetica
     font-size: 10
     font-color: 0029CC
     font-style: normal
