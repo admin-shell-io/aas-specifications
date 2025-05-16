@@ -39,6 +39,7 @@ image:
   align: center
 
 heading:
+  margin-top: $vertical-spacing
   font-size: 14
   font-color: 0029CC
   line-height: 1.15
@@ -62,11 +63,11 @@ prose:
 caption:
   text-align: center
   margin-top: 6
-  margin-bottom: 6
+  margin-bottom: 12
 
 table:
-  margin-top: 18
-  margin-bottom: 18
+  margin-top: $vertical-spacing
+  margin-bottom: $vertical-spacing
   background-color: FFFFFF
   border-color: DDDDDD
   border-width: $base-border-width
