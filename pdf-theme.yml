@@ -23,8 +23,8 @@ page:
 
 base:
   text-align: justify
-  font-family: Helvetica
-  font-size: 10
+  font-family: Arial
+  font-size: 9.5
   font-color: 333333
   font-style: normal
   border-color: EEEEEE
@@ -39,11 +39,18 @@ image:
   align: center
 
 heading:
-  margin-top: 24
+  margin-top: 12
+  margin-bottom: 12
   font-size: 14
   font-color: 0029CC
   line-height: 1.15
-  margin-bottom: 24
+  min-height-after: auto
+  h2:
+    margin-top: 10
+    margin-bottom: 8
+  h3:
+    margin-top: 8
+    margin-bottom: 6
 
 link:
   font-color: 0029CC
@@ -93,7 +100,7 @@ list:
 
 olist:
   marker:
-    font-family: Helvetica
+    font-family: Arial
     font-size: 10
     font-color: 0029CC
     font-style: normal
