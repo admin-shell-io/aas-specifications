@@ -39,11 +39,11 @@ image:
   align: center
 
 heading:
-  margin-top: $vertical-spacing
+  margin-top: 24
   font-size: 14
   font-color: 0029CC
   line-height: 1.15
-  margin-bottom: $vertical-spacing
+  margin-bottom: 24
 
 link:
   font-color: 0029CC
@@ -57,17 +57,17 @@ example:
   background-color: E5F0F7
 
 prose:
-  margin-bottom: 18
-  margin-inner: 12
+  margin-bottom: 24
+  margin-inner: 18
 
 caption:
   text-align: center
-  margin-top: 6
+  margin-top: 8
   margin-bottom: 12
 
 table:
-  margin-top: $vertical-spacing
-  margin-bottom: $vertical-spacing
+  margin-top: 24
+  margin-bottom: 24
   background-color: FFFFFF
   border-color: DDDDDD
   border-width: $base-border-width
@@ -87,3 +87,7 @@ table:
 
   foot:
     background-color: F0F0F0
+
+role:
+  underline:
+    decoration: underline
