@@ -44,7 +44,6 @@ heading:
   font-color: 0029CC
   line-height: 1.15
   margin-bottom: 24
-  min-height-after: auto
 
 link:
   font-color: 0029CC
