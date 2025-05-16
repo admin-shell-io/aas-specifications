@@ -55,7 +55,18 @@ example:
   border-radius: 0
   background-color: E5F0F7
 
+prose:
+  margin-bottom: 18
+  margin-inner: 12
+
+caption:
+  text-align: center
+  margin-top: 6
+  margin-bottom: 6
+
 table:
+  margin-top: 18
+  margin-bottom: 18
   background-color: FFFFFF
   border-color: DDDDDD
   border-width: $base-border-width
