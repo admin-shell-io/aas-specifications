@@ -44,6 +44,7 @@ heading:
   font-color: 0029CC
   line-height: 1.15
   margin-bottom: 24
+  min-height-after: auto
 
 link:
   font-color: 0029CC
@@ -74,19 +75,29 @@ table:
   grid-color: DDDDDD
   grid-width: $base-border-width
   cell-padding: 5
-
   head:
     background-color: 0528CC
     font-color: FFFFFF
     font-style: bold
     border-bottom-width: $base-border-width
-
   body:
     background-color: FFFFFF
     stripe-background-color: F9F9F9
-
   foot:
     background-color: F0F0F0
+
+list:
+  margin-top: $vertical-spacing
+  margin-bottom: $vertical-spacing
+  indent: 24
+  item-spacing: 12
+
+olist:
+  marker:
+    font-family: Helvetica
+    font-size: 10
+    font-color: 0029CC
+    font-style: normal
 
 role:
   underline:
