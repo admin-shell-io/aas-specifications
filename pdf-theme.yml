@@ -24,7 +24,7 @@ page:
 base:
   text-align: justify
   font-family: Helvetica
-  font-size: 9.5
+  font-size: 9.8
   font-color: 333333
   font-style: normal
   border-color: EEEEEE
@@ -71,6 +71,10 @@ caption:
   text-align: center
   margin-top: 8
   margin-bottom: 12
+
+admonition:
+  margin-top: 24
+  margin-bottom: 24
 
 table:
   margin-top: 24
