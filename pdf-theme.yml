@@ -19,7 +19,7 @@ title-page:
 page:
   layout: portrait
   size: A4
-  margin: [0.50in, 0.79in, 0.71in, 0.79in]
+  margin: [0.50in, 1.1in, 0.71in, 1.1in]
 
 base:
   text-align: justify
