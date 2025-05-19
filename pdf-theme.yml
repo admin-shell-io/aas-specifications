@@ -68,7 +68,7 @@ prose:
   margin-inner: 18
 
 caption:
-  text-align: center
+  text-align: left
   margin-top: 8
   margin-bottom: 12
 
@@ -77,14 +77,15 @@ admonition:
   margin-bottom: 36
 
 table:
-  margin-top: 36    
+  margin-top: 24
   margin-bottom: 24
   background-color: FFFFFF
   border-color: DDDDDD
   border-width: $base-border-width
   grid-color: DDDDDD
   grid-width: $base-border-width
-  cell-padding: 5
+  cell-padding: 3
+  font-size: 9
   head:
     background-color: 0528CC
     font-color: FFFFFF
