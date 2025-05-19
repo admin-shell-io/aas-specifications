@@ -80,22 +80,26 @@ table:
   margin-top: 24
   margin-bottom: 24
   background-color: FFFFFF
-  border-color: DDDDDD
-  border-width: $base-border-width
-  grid-color: DDDDDD
-  grid-width: $base-border-width
-  cell-padding: 3
+  border-color: FFFFFF
+  border-width: 1
+  grid-color: FFFFFF
+  grid-width: 1
+  cell-padding: 6
   font-size: 9
+  text-align: left
   head:
     background-color: 0528CC
     font-color: FFFFFF
     font-style: bold
-    border-bottom-width: $base-border-width
+    border-bottom-width: 1
+    text-align: left
   body:
     background-color: FFFFFF
     stripe-background-color: F9F9F9
+    text-align: left
   foot:
     background-color: F0F0F0
+    text-align: left
 
 list:
   margin-top: $vertical-spacing
