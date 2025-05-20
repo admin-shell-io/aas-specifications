@@ -58,6 +58,10 @@ jobs:
       with:
         ruby-version: '3.3'
         bundler-cache: true
+    - name: Install Asciidoctor PDF
+      run: gem install asciidoctor-pdf
+    - name: Install Asciidoctor Diagram
+      run: gem install asciidoctor-diagram
     - name: Install Graphviz
       run: sudo apt update && sudo apt install -y graphviz
     - name: Generate Site
