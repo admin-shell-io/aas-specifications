@@ -62,6 +62,8 @@ jobs:
       run: gem install asciidoctor-pdf
     - name: Install Asciidoctor Diagram
       run: gem install asciidoctor-diagram
+    - name: Install Rouge
+      run: gem install rouge
     - name: Install Graphviz
       run: sudo apt update && sudo apt install -y graphviz
     - name: Generate Site
