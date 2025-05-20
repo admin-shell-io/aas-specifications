@@ -1,14 +1,3 @@
-font:
-  catalog:
-    merge: false
-    Arial:
-      normal: arial-normal.ttf
-      italic: arial-italic.ttf
-      bold: arial-bold.ttf
-      bold_italic: arial-bold_italic.ttf
-  fallbacks:
-  - GEM_FONTS_DIR
-
 title-page:
   text-align: left
   title:
@@ -16,29 +5,25 @@ title-page:
     font-size: 35
     font-color: FFFFFF
     line-height: 0.9
-    font-family: Arial
   subtitle:
     font-size: 35
     font-color: FFFFFF
     font-style: normal
     line-height: 1
-    font-family: Arial
   authors:
     font-color: FFFFFF
-    font-family: Arial
   revision:
     font-color: FFFFFF
-    font-family: Arial
   background-image: image:cover.pdf[fit=cover]
 
 page:
   layout: portrait
   size: A4
-  margin: [0.50in, 1.1in, 0.71in, 1.1in]
+  margin: [0.50in, 0.79in, 0.71in, 0.79in]
 
 base:
   text-align: justify
-  font-family: Arial
+  font-family: Helvetica
   font-size: 10
   font-color: 333333
   font-style: normal
@@ -60,7 +45,6 @@ heading:
   font-color: 0029CC
   line-height: 1.15
   min-height-after: auto
-  font-family: Arial
   h2:
     margin-top: 10
     margin-bottom: 8
@@ -71,7 +55,6 @@ heading:
 link:
   font-color: 0029CC
   line-height: 1.15
-  font-family: Arial
 
 example:
   padding: 12
@@ -79,23 +62,19 @@ example:
   border-color: E5F0F7
   border-radius: 0
   background-color: E5F0F7
-  font-family: Arial
 
 prose:
   margin-bottom: 24
   margin-inner: 18
-  font-family: Arial
 
 caption:
-  text-align: center
+  text-align: left
   margin-top: 8
   margin-bottom: 12
-  font-family: Arial
 
 admonition:
   margin-top: 24
   margin-bottom: 36
-  font-family: Arial
 
 table:
   margin-top: 24
@@ -106,9 +85,8 @@ table:
   grid-color: DDDDDD
   grid-width: 1
   cell-padding: 6
-  font-size: 10
+  font-size: 9
   text-align: left
-  font-family: Arial
   head:
     background-color: 0528CC
     font-color: FFFFFF
@@ -128,11 +106,10 @@ list:
   margin-bottom: $vertical-spacing
   indent: 24
   item-spacing: 12
-  font-family: Arial
 
 olist:
   marker:
-    font-family: Arial
+    font-family: Helvetica
     font-size: 10
     font-color: 0029CC
     font-style: normal
