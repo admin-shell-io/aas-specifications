@@ -68,7 +68,7 @@ prose:
   margin-inner: 18
 
 caption:
-  text-align: left
+  text-align: center
   margin-top: 8
   margin-bottom: 12
 
