@@ -130,3 +130,6 @@ olist:
 role:
   underline:
     decoration: underline
+  figure-caption:
+    font-style: italic
+    text-align: center
