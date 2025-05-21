@@ -37,8 +37,7 @@ vertical-spacing: $base-line-height-length
 
 image:
   align: center
-  width: 70%
-  height: 70%
+  
 
 heading:
   margin-top: 8
