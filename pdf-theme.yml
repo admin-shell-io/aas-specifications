@@ -19,7 +19,7 @@ title-page:
 page:
   layout: portrait
   size: A4
-  margin: [0.50in, 0.79in, 0.71in, 0.79in]
+  margin: [1in, 1in, 1in, 1in]
 
 base:
   text-align: justify
@@ -30,27 +30,31 @@ base:
   border-color: EEEEEE
   border-width: 0.5
   border-radius: 4
-  line-height-length: 17
-  line-height: $base-line-height-length / $base-font-size
+  line-height-length: 13
+  line-height: 1.15
 
 vertical-spacing: $base-line-height-length
 
 image:
   align: center
+  width: 100%
+  height: 100%
 
 heading:
-  margin-top: 12
-  margin-bottom: 12
-  font-size: 14
+  margin-top: 8
+  margin-bottom: 8
+  font-size: 16
   font-color: 0029CC
   line-height: 1.15
   min-height-after: auto
   h2:
-    margin-top: 10
-    margin-bottom: 8
-  h3:
-    margin-top: 8
+    margin-top: 6
     margin-bottom: 6
+    font-size: 14
+  h3:
+    margin-top: 4
+    margin-bottom: 4
+    font-size: 12
 
 link:
   font-color: 0029CC
@@ -64,8 +68,8 @@ example:
   background-color: E5F0F7
 
 prose:
-  margin-bottom: 24
-  margin-inner: 18
+  margin-bottom: 12
+  margin-inner: 12
 
 caption:
   text-align: left
@@ -85,7 +89,7 @@ table:
   grid-color: DDDDDD
   grid-width: 1
   cell-padding: 6
-  font-size: 9
+  font-size: 10
   text-align: left
   head:
     background-color: 0528CC
@@ -102,15 +106,15 @@ table:
     text-align: left
 
 list:
-  margin-top: $vertical-spacing
-  margin-bottom: $vertical-spacing
-  indent: 24
-  item-spacing: 12
+  margin-top: 6
+  margin-bottom: 6
+  indent: 18
+  item-spacing: 6
 
 olist:
   marker:
     font-family: Helvetica
-    font-size: 10
+    font-size: 11
     font-color: 0029CC
     font-style: normal
 
