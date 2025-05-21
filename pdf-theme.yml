@@ -42,18 +42,18 @@ image:
 heading:
   margin-top: 8
   margin-bottom: 8
-  font-size: 16
+  font-size: 14
   font-color: 0029CC
   line-height: 1.15
   min-height-after: auto
   h2:
     margin-top: 6
     margin-bottom: 6
-    font-size: 14
+    font-size: 12
   h3:
     margin-top: 4
     margin-bottom: 4
-    font-size: 12
+    font-size: 11
 
 link:
   font-color: 0029CC
@@ -71,7 +71,7 @@ prose:
   margin-inner: 12
 
 caption:
-  text-align: left
+  text-align: center
   margin-top: 8
   margin-bottom: 12
 
