@@ -37,7 +37,8 @@ vertical-spacing: $base-line-height-length
 
 image:
   align: center
-  
+  caption:
+    text-align: center
 
 heading:
   margin-top: 8
@@ -102,6 +103,8 @@ table:
     text-align: left
   foot:
     background-color: F0F0F0
+    text-align: left
+  caption:
     text-align: left
 
 list:
