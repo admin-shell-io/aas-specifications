@@ -163,4 +163,4 @@ asciidoc:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
     kroki-fetch-diagram: true
-    kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications-antora/refs/heads/main/plantuml/puml-theme-idta.puml
+    kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/refs/heads/main/plantuml/puml-theme-idta.puml
