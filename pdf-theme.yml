@@ -37,7 +37,6 @@ vertical-spacing: $base-line-height-length
 
 image:
   align: center
-  
 
 heading:
   margin-top: 8
@@ -129,7 +128,9 @@ olist:
 
 role:
   underline:
-    decoration: underline
+    text-decoration: underline 
+  line-through:
+    text-decoration: line-through  #
   figure-caption:
     font-style: italic
     text-align: center
