@@ -128,9 +128,9 @@ olist:
 
 role:
   underline:
-    text-decoration: underline 
+    text_decoration: underline
   line-through:
-    text-decoration: line-through
+    text_decoration: line-through
   figure-caption:
     font-style: italic
     text-align: center
