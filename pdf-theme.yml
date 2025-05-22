@@ -130,7 +130,7 @@ role:
   underline:
     text-decoration: underline 
   line-through:
-    text-decoration: line-through  #
+    text-decoration: line-through
   figure-caption:
     font-style: italic
     text-align: center
