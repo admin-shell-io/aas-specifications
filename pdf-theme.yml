@@ -2,7 +2,7 @@ extends: default
 
 plantuml:
   theme: idta
-  theme-url: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/main/plantuml/
+  theme-url: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/refs/heads/main/plantuml/puml-theme-idta.puml
 
 title-page:
   text-align: left
