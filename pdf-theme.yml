@@ -1,3 +1,5 @@
+extends: default
+
 title-page:
   text-align: left
   title:
@@ -128,9 +130,11 @@ olist:
 
 role:
   underline:
-    text_decoration: underline
+    text-decoration: underline
+    text-decoration-color: $base-font-color
+    text-decoration-width: $base-text-decoration-width
   line-through:
-    text_decoration: line-through
+    text-decoration: line-through
   figure-caption:
     font-style: italic
     text-align: center
