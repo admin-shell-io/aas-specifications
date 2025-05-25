@@ -142,3 +142,11 @@ role:
     font-color: 000000
   identifier:
     font-color: 000000
+
+codespan:
+  font-color: 000000
+  font-family: Helvetica
+
+literal:
+  font-color: 000000
+  font-family: Helvetica
