@@ -57,7 +57,7 @@ heading:
     font-size: 11
 
 link:
-  font-color: 0029CC
+  font-color: 000000
   line-height: 1.15
 
 example:
@@ -138,3 +138,7 @@ role:
   figure-caption:
     font-style: italic
     text-align: center
+  id:
+    font-color: 000000
+  identifier:
+    font-color: 000000
