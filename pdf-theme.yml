@@ -1,3 +1,4 @@
+extends: default
 
 title-page:
   text-align: left
