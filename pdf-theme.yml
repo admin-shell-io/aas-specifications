@@ -131,8 +131,8 @@ olist:
 role:
   underline:
     text-decoration: underline
-    text-decoration-color: $base-font-color
-    text-decoration-width: $base-text-decoration-width
+    text-decoration-color: 333333
+    text-decoration-width: 1
   line-through:
     text-decoration: line-through
   figure-caption:
