@@ -1,76 +1,77 @@
+#
+# Publish to GitHub Pages
+# Initially based on the instructions in Antora Docs 
+# https://docs.antora.org/antora/latest/publish-to-github-pages/
+#
+
 name: Publish Website
 
 on:
+  # Cronjob for publishing
+  schedule:
+  - cron: '0 */8 * * *'
+  # When pushes are made to the main branch
   push:
     branches: [ main ]
+  # Also manually from actions
   workflow_dispatch:
-
+  
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+  
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      kroki:
+        image: yuzutech/kroki
+        ports:
+          - 8000:8000
+        options: --health-cmd="curl http://localhost:8000/health || exit 1" --health-interval=10s --health-timeout=5s --health-retries=3
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # 1) checkout
-      - uses: actions/checkout@v4
-
-      # 2) configure GitHub Pages
-      - name: Configure Pages
-        uses: actions/configure-pages@v3
-
-      # 3) install prerequisites
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Setup Java (for Kroki)
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: Install Graphviz (Kroki backend)
-        run: sudo apt update && sudo apt install -y graphviz
-
-      # 4) preprocess .adoc for PDF-only transformations
-      - name: Preprocess AsciiDoc for PDF
-        run: |
-          find . -type f -name '*.adoc' -print0 \
-            | xargs -0 sed -i \
-                -e 's|<span class="underline">\([^<]*\)</span>|[.constraint]#\1#|g' \
-                -e 's|<u>\([^<]*\)</u>|[.constraint]#\1#|g'
-
-      # 5) generate HTML site + deploy to Pages
-      - name: Generate & Deploy HTML site
-        run: |
-          npx antora antora-playbook.yml
-      - name: Upload HTML to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build/site
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      # 6) generate PDF (with Lunr and PDF extensions)
-      - name: Generate AAS-Specs PDF
-        run: |
-          npx \
-            -p @antora/cli \
-            -p @antora/pdf-extension \
-            -p @antora/lunr-extension \
-            antora \
-              --generator @antora/pdf-extension \
-              --to-dir build/pdf \
-              antora-playbook.yml
-
-      # 7) upload PDF as workflow artifact
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: aas-specs-pdf
-          path: build/pdf/*.pdf
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Configure Pages
+      uses: actions/configure-pages@v3
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Setup java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - name: Install Antora
+      run: npm i antora
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+    - name: Install Graphviz
+      run: sudo apt update && sudo apt install -y graphviz
+        - name: Convert HTML underline spans and <u> tags to [.underline] in AsciiDoc files
+      run: |
+        find modules -name '*.adoc' -print0 \
+          | xargs -0 sed -i \
+              -e 's|<span class="underline">\([^<]*\)</span>|[.underline]#\1#|g' \
+              -e 's|<u>\([^<]*\)</u>|[.underline]#\1#|g'
+    - name: Generate Site
+      run: npx antora antora-playbook.yml
+    - name: Upload Artifacts
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: build/site
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
