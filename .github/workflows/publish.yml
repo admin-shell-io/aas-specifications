@@ -60,6 +60,9 @@ jobs:
         bundler-cache: true
     - name: Install Graphviz
       run: sudo apt update && sudo apt install -y graphviz
+    - name: Convert <u> to [.underline] in AsciiDoc files
+      run: |
+        find modules -name '*.adoc' -exec sed -i 's|<u>\(.*\)</u>|[.underline]#\1#|g' {} +
     - name: Generate Site
       run: npx antora antora-playbook.yml
     - name: Upload Artifacts
