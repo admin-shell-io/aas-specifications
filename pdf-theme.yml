@@ -142,15 +142,11 @@ role:
     font-color: 000000
   identifier:
     font-color: 000000
+      text-decoration-width: 1
   constraint:
-    text-decoration: underline
-    text-decoration-color: 0029CC
-    text-decoration-width: 1
     font-color: 0029CC
     font-weight: bold
-    border-bottom-width: 0.5
-    border-bottom-color: 0029CC
-    margin-bottom: 6
+    text-decoration: none
 
 codespan:
   font-color: 000000
@@ -160,15 +156,3 @@ literal:
   font-color: 000000
   font-family: Helvetica
 
-admonition:
-  constraint: 
-    border-color: 0029CC
-    background-color: F5F8FF
-    vertical-margin: 8pt
-    horizontal-margin: 0
-    padding: 10pt
-
-base:
-  role-constraint-prefix: "Constraint " 
-  role-constraint-prefix-font-color: 0029CC
-  role-constraint-prefix-font-style: bold

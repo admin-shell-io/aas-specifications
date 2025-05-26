@@ -160,6 +160,7 @@ asciidoc:
   sourcemap: true
   extensions:
     - asciidoctor-kroki
+    - ./lib/convert_underlines.rb
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
