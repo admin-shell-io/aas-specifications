@@ -11,30 +11,44 @@ permissions:
   id-token: write
 
 jobs:
-
-  ## ──────────────────────────────────────────────────────────────────────
-  ## Job #1: Build & publish HTML
-  ## ──────────────────────────────────────────────────────────────────────
-  html:
+  build:
     runs-on: ubuntu-latest
     steps:
+      # 1) checkout
       - uses: actions/checkout@v4
+
+      # 2) configure GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v3
+
+      # 3) install prerequisites
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+
       - name: Setup Java (for Kroki)
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - name: Install Kroki
+
+      - name: Install Graphviz (Kroki backend)
         run: sudo apt update && sudo apt install -y graphviz
-      - name: Generate HTML site
-        run: npx antora antora-playbook.yml
-      - name: Upload HTML artifact
+
+      # 4) preprocess .adoc for PDF-only transformations
+      - name: Preprocess AsciiDoc for PDF
+        run: |
+          find . -type f -name '*.adoc' -print0 \
+            | xargs -0 sed -i \
+                -e 's|<span class="underline">\([^<]*\)</span>|[.constraint]#\1#|g' \
+                -e 's|<u>\([^<]*\)</u>|[.constraint]#\1#|g'
+
+      # 5) generate HTML site + deploy to Pages
+      - name: Generate & Deploy HTML site
+        run: |
+          npx antora antora-playbook.yml
+      - name: Upload HTML to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: build/site
@@ -42,25 +56,9 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  ## ──────────────────────────────────────────────────────────────────────
-  ## Job #2: Build PDF (runs after html)
-  ## ──────────────────────────────────────────────────────────────────────
-  pdf:
-    runs-on: ubuntu-latest
-    needs: html
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Preprocess AsciiDoc for PDF only
+      # 6) generate PDF (with Lunr and PDF extensions)
+      - name: Generate AAS-Specs PDF
         run: |
-          find . -type f -name '*.adoc' -print0 \
-            | xargs -0 sed -i \
-                -e 's|<span class="underline">\([^<]*\)</span>|[.constraint]#\1#|g' \
-                -e 's|<u>\([^<]*\)</u>|[.constraint]#\1#|g'
-
-      - name: Build AAS-Specs PDF
-        run: |
-          # Use npx -p to pull in CLI + both extensions at runtime
           npx \
             -p @antora/cli \
             -p @antora/pdf-extension \
@@ -70,6 +68,7 @@ jobs:
               --to-dir build/pdf \
               antora-playbook.yml
 
+      # 7) upload PDF as workflow artifact
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v3
         with:
