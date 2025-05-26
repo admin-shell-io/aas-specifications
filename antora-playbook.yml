@@ -155,7 +155,7 @@ antora:
   extensions:
     - '@antora/lunr-extension'
     - '@antora/pdf-extension'
-    - require: ./lib/convert_underlines.rb
+    - ./modules/ROOT/_extensions/convert_underlines.js
 
 asciidoc:
   sourcemap: true
