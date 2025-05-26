@@ -44,26 +44,24 @@ jobs:
   ## ──────────────────────────────────────────────────────────────────────
   ## Job #2: Build PDF (runs always, after checkout)
   ## ──────────────────────────────────────────────────────────────────────
-  pdf:
+   pdf:
     runs-on: ubuntu-latest
     needs: html
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Node.js & Antora PDF extension
+      - name: Install Node.js & Antora CLI + extensions
         uses: actions/setup-node@v4
-        with: { node-version: '18' }
-      - run: npm install --no-save @antora/cli @antora/pdf-extension
+        with:
+          node-version: '18'
+      - run: |
+          npm install --no-save \
+            @antora/cli \
+            @antora/pdf-extension \
+            @antora/lunr-extension
 
       - name: Preprocess AsciiDoc for PDF only
         run: |
-          # Find every .adoc and turn
-          #   <span class="underline">Foo</span>
-          # into
-          #   [.constraint]#Foo#
-          #
-          # (this leaves your HTML build sources untouched,
-          #  because HTML job already ran previously)
           find . -type f -name '*.adoc' -print0 \
             | xargs -0 sed -i \
                 -e 's|<span class="underline">\([^<]*\)</span>|[.constraint]#\1#|g' \
