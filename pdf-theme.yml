@@ -150,3 +150,11 @@ codespan:
 literal:
   font-color: 000000
   font-family: Helvetica
+
+role:
+  constraint:
+    text-decoration: underline
+    text-decoration-color: 0029CC
+    text-decoration-width: 1
+    font-weight: bold
+    font-color: 0029CC
