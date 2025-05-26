@@ -51,16 +51,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Node.js & Antora CLI + extensions
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - run: |
-          npm install --no-save \
-            @antora/cli \
-            @antora/pdf-extension \
-            @antora/lunr-extension
-
       - name: Preprocess AsciiDoc for PDF only
         run: |
           find . -type f -name '*.adoc' -print0 \
@@ -70,10 +60,15 @@ jobs:
 
       - name: Build AAS-Specs PDF
         run: |
-          npx antora \
-            --generator @antora/pdf-extension \
-            --to-dir build/pdf \
-            antora-playbook.yml
+          # Use npx -p to pull in CLI + both extensions at runtime
+          npx \
+            -p @antora/cli \
+            -p @antora/pdf-extension \
+            -p @antora/lunr-extension \
+            antora \
+              --generator @antora/pdf-extension \
+              --to-dir build/pdf \
+              antora-playbook.yml
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v3
