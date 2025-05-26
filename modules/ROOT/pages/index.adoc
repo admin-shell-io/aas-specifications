@@ -4,6 +4,8 @@ Specifications define the software structure, interface and semantics of the
 Asset Administration Shell and thus create the basis for the standardized Digital Twin. 
 All specifications for the Asset Administration Shell information model can be found here.
 
+== Release 2025
+
 &nbsp;
 
 :part-1-mainpage: IDTA-01001:ROOT:index.adoc
@@ -18,28 +20,27 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 |===
 a|
 image::IDTA-01001.png[xref={part-1-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
-
-xref:{part-1-mainpage}[View,role="view-button"]
-
 a|
 image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
-
-xref:{part-2-mainpage}[View,role="view-button"]
-
 a|
 image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
-
-xref:{part-3a-mainpage}[View,role="view-button"]
-
 a|
 image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
-
-xref:{part-4-mainpage}[View,role="view-button"]
-
 a|
 image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 
-xref:{part-5-mainpage}[View,role="view-button"]
+5*^.^| +++<div style="height: 2rem;"></div>+++
+
+|
+Specification of the Asset Administration Shell Part 1: Metamodel – IDTA Number: 01001 Version: v3.1
+|
+Specification of the Asset Administration Shell Part 2: Application Programming Interfaces – IDTA Number: 01002 Version: v3.1
+|
+Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 – IDTA Number: 01003-a Version: v3.1
+|
+Specification of the Asset Administration Shell Part 4: Security – IDTA Number: 01004 Version: v3.0
+|
+Specification of the Asset Administration Shell Part 5: Package File Format (AASX) – IDTA Number: 01005 Version: v3.1
 |===
 
 &nbsp;
