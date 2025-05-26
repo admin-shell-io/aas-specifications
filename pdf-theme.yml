@@ -159,3 +159,16 @@ codespan:
 literal:
   font-color: 000000
   font-family: Helvetica
+
+admonition:
+  constraint: 
+    border-color: 0029CC
+    background-color: F5F8FF
+    vertical-margin: 8pt
+    horizontal-margin: 0
+    padding: 10pt
+
+base:
+  role-constraint-prefix: "Constraint " 
+  role-constraint-prefix-font-color: 0029CC
+  role-constraint-prefix-font-style: bold
