@@ -60,7 +60,7 @@ jobs:
         bundler-cache: true
     - name: Install Graphviz
       run: sudo apt update && sudo apt install -y graphviz
-        - name: Convert HTML underline spans and <u> tags to [.underline] in AsciiDoc files
+    - name: Replace underline spans and u tags with [.underline] role
       run: |
         find modules -name '*.adoc' -print0 \
           | xargs -0 sed -i \
