@@ -58,7 +58,7 @@ heading:
 
 link:
   font-color: 000000
-  line-height: 1.15
+  text-decoration: none
 
 example:
   padding: 12
@@ -131,8 +131,10 @@ olist:
 role:
   underline:
     text-decoration: underline
-    text-decoration-color: 333333
+    text-decoration-color: 0029CC
     text-decoration-width: 1
+    font-color: 0029CC
+    font-weight: bold
   line-through:
     text-decoration: line-through
   figure-caption:
@@ -145,7 +147,9 @@ role:
   constraint:
     font-color: 0029CC
     font-weight: bold
-    text-decoration: none
+    text-decoration: underline
+    text-decoration-color: 0029CC
+    text-decoration-width: 1
 
 codespan:
   font-color: 000000
