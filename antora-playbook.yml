@@ -155,12 +155,12 @@ antora:
   extensions:
     - '@antora/lunr-extension'
     - '@antora/pdf-extension'
-    - ./modules/ROOT/extensions/convert_underlines.js
 
 asciidoc:
   sourcemap: true
   extensions:
     - asciidoctor-kroki
+    - ./modules/ROOT/extensions/convert_underlines.js
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
