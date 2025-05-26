@@ -1,6 +1,6 @@
 #
 # Publish to GitHub Pages
-# Initially based on the instructions in Antora Docs 
+# Initially based on the instructions in Antora Docs
 # https://docs.antora.org/antora/latest/publish-to-github-pages/
 #
 
@@ -72,22 +72,13 @@ jobs:
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
 
-      - name: Preprocess constraints for PDF
+      - name: Preprocess constraints and underlines
         run: |
-          find modules -type f -name '*.adoc' -print0 \
-            | xargs -0 perl -i -pe '
-              # If a line starts with a span-underlined Constraint, inject an anchor
-              if (/^<span class="underline">Constraint (AASd-\d+):<\/span>/) {
-                # lowercase the ID and replace non-alphanumerics with hyphens
-                my $id = lc($1);
-                $id =~ s/[^a-z0-9]+/-/g;
-                print "[[$id]]\n";
-              }
-              # Replace the HTML spans and <u> tags with the .constraint role
-              s|<span class="underline">(.*?)</span>|[.constraint]#$1#|g;
-              s|<u>(.*?)</u>|[.constraint]#$1#|g;
-            '
-      
+          find . -type f -name '*.adoc' -print0 \
+            | xargs -0 sed -i \
+                -e 's|<span class="underline">\([^<]*\)</span>|[.constraint]#\1#|g' \
+                -e 's|<u>\([^<]*\)</u>|[.constraint]#\1#|g'
+
       - name: Generate Site
         run: npx antora antora-playbook.yml
 
