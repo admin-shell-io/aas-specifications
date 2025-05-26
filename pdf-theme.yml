@@ -57,8 +57,10 @@ heading:
     font-size: 11
 
 link:
-  font-color: 000000
-  text-decoration: none
+  font-color: 0029CC            
+  text-decoration: underline    
+  text-decoration-color: 0029CC 
+  text-decoration-width: 1
 
 example:
   padding: 12
@@ -146,7 +148,7 @@ role:
     font-color: 000000
   constraint:
     font-color: 0029CC
-    font-weight: bold
+    font-style: bold
     text-decoration: underline
     text-decoration-color: 0029CC
     text-decoration-width: 1
