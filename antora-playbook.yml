@@ -160,7 +160,6 @@ asciidoc:
   sourcemap: true
   extensions:
     - asciidoctor-kroki
-    - ./modules/ROOT/extensions/convert_underlines.js
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
