@@ -152,6 +152,8 @@ ui:
           content: "→";
           margin-left: 0.5rem;
         }
+  styles:
+    - css/site-extra.css
 
 runtime:
   fetch: true

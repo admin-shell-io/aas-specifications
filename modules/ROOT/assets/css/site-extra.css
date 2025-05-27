@@ -53,4 +53,112 @@ table[align="center"] td {
 .spec-cell .view-button {
   margin-top: auto;
 }
+
+.horizontal-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.5rem;
+  justify-content: flex-start;
+  padding: 2.5rem 0 2rem 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  background: #f7f9fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 260px;
+  min-height: 420px;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #e0e6ed;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 1.2rem 1rem;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(0,51,204,0.13);
+  border-color: #0033cc;
+}
+
+.card img {
+  width: 220px;
+  height: 260px;
+  margin-bottom: 1.2rem;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.card > div:first-of-type {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #0033cc;
+  text-align: center;
+}
+
+.card > div:nth-of-type(2) {
+  font-size: 0.98rem;
+  color: #444;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+
+.view-button {
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.6rem 1.3rem;
+  background-color: #0033cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,51,204,0.08);
+  transition: background 0.18s, box-shadow 0.18s;
+}
+
+.view-button:hover {
+  background-color: #002bb0;
+  box-shadow: 0 4px 16px rgba(0,51,204,0.16);
+}
+
+@media (max-width: 900px) {
+  .horizontal-cards {
+    gap: 1.2rem;
+    padding: 1.2rem 0 1rem 0;
+  }
+  .card {
+    width: 180px;
+    min-height: 320px;
+    padding: 1rem 0.5rem 0.8rem 0.5rem;
+  }
+  .card img {
+    width: 140px;
+    height: 160px;
+  }
+  .card > div:first-of-type, .card > div:nth-of-type(2) {
+    font-size: 0.92rem;
+  }
+  .view-button {
+    font-size: 0.92rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+body {
+  background: #f7f9fb;
+}
   
