@@ -23,15 +23,20 @@ a|image::IDTA-01002.png[xref={part-2-mainpage}, window=_blank, opts=nofollow, wi
 a|image::IDTA-01003-a.png[xref={part-3a-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 a|image::IDTA-01004.png[xref={part-4-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
 a|image::IDTA-01005.png[xref={part-5-mainpage}, window=_blank, opts=nofollow, width=500, height=550]
-| Specification of the Asset Administration Shell Part 1: Metamodel – IDTA Number: 01001 Version: v3.1 +\
+| Specification of the Asset Administration Shell Part 1: Metamodel – IDTA Number: 01001 Version: v3.1
+
 xref:{part-1-mainpage}[View,role="view-button"]
-| Specification of the Asset Administration Shell Part 2: Application Programming Interfaces – IDTA Number: 01002 Version: v3.1 +\
+| Specification of the Asset Administration Shell Part 2: Application Programming Interfaces – IDTA Number: 01002 Version: v3.1
+
 xref:{part-2-mainpage}[View,role="view-button"]
-| Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 – IDTA Number: 01003-a Version: v3.1 +\
+| Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 – IDTA Number: 01003-a Version: v3.1
+
 xref:{part-3a-mainpage}[View,role="view-button"]
-| Specification of the Asset Administration Shell Part 4: Security – IDTA Number: 01004 Version: v3.0 +\
+| Specification of the Asset Administration Shell Part 4: Security – IDTA Number: 01004 Version: v3.0
+
 xref:{part-4-mainpage}[View,role="view-button"]
-| Specification of the Asset Administration Shell Part 5: Package File Format (AASX) – IDTA Number: 01005 Version: v3.1 +\
+| Specification of the Asset Administration Shell Part 5: Package File Format (AASX) – IDTA Number: 01005 Version: v3.1
+
 xref:{part-5-mainpage}[View,role="view-button"]
 |===
 
