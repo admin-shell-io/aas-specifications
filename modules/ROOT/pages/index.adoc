@@ -17,41 +17,31 @@ All specifications for the Asset Administration Shell information model can be f
 Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
 
 ++++
-<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 2rem 0;">
-  <div style="background: #fff; border: 1px solid #ddd; border-radius: 8px; flex: 1 1 250px; max-width: 320px; min-width: 220px; display: flex; flex-direction: column; align-items: center; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 1rem;">
-    <a href="IDTA-01001/index.html" target="_blank" rel="nofollow" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; width: 100%; align-items: center;">
-      <img src="IDTA-01001.png" alt="IDTA 01001" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 1rem;" />
-      <div style="font-size: 1rem; margin-bottom: 0.5rem; text-align: center;">Specification of the Asset Administration Shell Part 1: Metamodel – IDTA Number: 01001 Version: v3.1</div>
-      <div style="background: #0078d4; color: #fff; padding: 0.5em 1.2em; border-radius: 4px; text-align: center; margin-top: auto; font-weight: bold; text-decoration: none; display: inline-block;">View</div>
-    </a>
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 2rem 0;">
+  <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex: 1 1 260px; max-width: 320px; min-width: 240px; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 1.5rem 1rem; margin-bottom: 1rem;">
+    <img src="IDTA-01001.png" alt="IDTA 01001" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px; background: #f8f8f8;" />
+    <div style="font-size: 1.08rem; font-weight: 500; margin-bottom: 1.2rem; text-align: center; line-height: 1.3;">Specification of the Asset Administration Shell Part 1: Metamodel – IDTA Number: 01001 Version: v3.1</div>
+    <a href="IDTA-01001/index.html" target="_blank" rel="nofollow" style="background: #0078d4; color: #fff; padding: 0.6em 2em; border-radius: 5px; text-align: center; font-weight: bold; text-decoration: none; font-size: 1.05rem; margin-top: auto; transition: background 0.2s; display: inline-block;">View</a>
   </div>
-  <div style="background: #fff; border: 1px solid #ddd; border-radius: 8px; flex: 1 1 250px; max-width: 320px; min-width: 220px; display: flex; flex-direction: column; align-items: center; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 1rem;">
-    <a href="IDTA-01002/index.html" target="_blank" rel="nofollow" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; width: 100%; align-items: center;">
-      <img src="IDTA-01002.png" alt="IDTA 01002" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 1rem;" />
-      <div style="font-size: 1rem; margin-bottom: 0.5rem; text-align: center;">Specification of the Asset Administration Shell Part 2: Application Programming Interfaces – IDTA Number: 01002 Version: v3.1</div>
-      <div style="background: #0078d4; color: #fff; padding: 0.5em 1.2em; border-radius: 4px; text-align: center; margin-top: auto; font-weight: bold; text-decoration: none; display: inline-block;">View</div>
-    </a>
+  <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex: 1 1 260px; max-width: 320px; min-width: 240px; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 1.5rem 1rem; margin-bottom: 1rem;">
+    <img src="IDTA-01002.png" alt="IDTA 01002" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px; background: #f8f8f8;" />
+    <div style="font-size: 1.08rem; font-weight: 500; margin-bottom: 1.2rem; text-align: center; line-height: 1.3;">Specification of the Asset Administration Shell Part 2: Application Programming Interfaces – IDTA Number: 01002 Version: v3.1</div>
+    <a href="IDTA-01002/index.html" target="_blank" rel="nofollow" style="background: #0078d4; color: #fff; padding: 0.6em 2em; border-radius: 5px; text-align: center; font-weight: bold; text-decoration: none; font-size: 1.05rem; margin-top: auto; transition: background 0.2s; display: inline-block;">View</a>
   </div>
-  <div style="background: #fff; border: 1px solid #ddd; border-radius: 8px; flex: 1 1 250px; max-width: 320px; min-width: 220px; display: flex; flex-direction: column; align-items: center; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 1rem;">
-    <a href="IDTA-01003-a/index.html" target="_blank" rel="nofollow" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; width: 100%; align-items: center;">
-      <img src="IDTA-01003-a.png" alt="IDTA 01003-a" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 1rem;" />
-      <div style="font-size: 1rem; margin-bottom: 0.5rem; text-align: center;">Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 – IDTA Number: 01003-a Version: v3.1</div>
-      <div style="background: #0078d4; color: #fff; padding: 0.5em 1.2em; border-radius: 4px; text-align: center; margin-top: auto; font-weight: bold; text-decoration: none; display: inline-block;">View</div>
-    </a>
+  <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex: 1 1 260px; max-width: 320px; min-width: 240px; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 1.5rem 1rem; margin-bottom: 1rem;">
+    <img src="IDTA-01003-a.png" alt="IDTA 01003-a" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px; background: #f8f8f8;" />
+    <div style="font-size: 1.08rem; font-weight: 500; margin-bottom: 1.2rem; text-align: center; line-height: 1.3;">Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 – IDTA Number: 01003-a Version: v3.1</div>
+    <a href="IDTA-01003-a/index.html" target="_blank" rel="nofollow" style="background: #0078d4; color: #fff; padding: 0.6em 2em; border-radius: 5px; text-align: center; font-weight: bold; text-decoration: none; font-size: 1.05rem; margin-top: auto; transition: background 0.2s; display: inline-block;">View</a>
   </div>
-  <div style="background: #fff; border: 1px solid #ddd; border-radius: 8px; flex: 1 1 250px; max-width: 320px; min-width: 220px; display: flex; flex-direction: column; align-items: center; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 1rem;">
-    <a href="IDTA-01004/index.html" target="_blank" rel="nofollow" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; width: 100%; align-items: center;">
-      <img src="IDTA-01004.png" alt="IDTA 01004" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 1rem;" />
-      <div style="font-size: 1rem; margin-bottom: 0.5rem; text-align: center;">Specification of the Asset Administration Shell Part 4: Security – IDTA Number: 01004 Version: v3.0</div>
-      <div style="background: #0078d4; color: #fff; padding: 0.5em 1.2em; border-radius: 4px; text-align: center; margin-top: auto; font-weight: bold; text-decoration: none; display: inline-block;">View</div>
-    </a>
+  <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex: 1 1 260px; max-width: 320px; min-width: 240px; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 1.5rem 1rem; margin-bottom: 1rem;">
+    <img src="IDTA-01004.png" alt="IDTA 01004" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px; background: #f8f8f8;" />
+    <div style="font-size: 1.08rem; font-weight: 500; margin-bottom: 1.2rem; text-align: center; line-height: 1.3;">Specification of the Asset Administration Shell Part 4: Security – IDTA Number: 01004 Version: v3.0</div>
+    <a href="IDTA-01004/index.html" target="_blank" rel="nofollow" style="background: #0078d4; color: #fff; padding: 0.6em 2em; border-radius: 5px; text-align: center; font-weight: bold; text-decoration: none; font-size: 1.05rem; margin-top: auto; transition: background 0.2s; display: inline-block;">View</a>
   </div>
-  <div style="background: #fff; border: 1px solid #ddd; border-radius: 8px; flex: 1 1 250px; max-width: 320px; min-width: 220px; display: flex; flex-direction: column; align-items: center; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 1rem;">
-    <a href="IDTA-01005/index.html" target="_blank" rel="nofollow" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; width: 100%; align-items: center;">
-      <img src="IDTA-01005.png" alt="IDTA 01005" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; margin-bottom: 1rem;" />
-      <div style="font-size: 1rem; margin-bottom: 0.5rem; text-align: center;">Specification of the Asset Administration Shell Part 5: Package File Format (AASX) – IDTA Number: 01005 Version: v3.1</div>
-      <div style="background: #0078d4; color: #fff; padding: 0.5em 1.2em; border-radius: 4px; text-align: center; margin-top: auto; font-weight: bold; text-decoration: none; display: inline-block;">View</div>
-    </a>
+  <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex: 1 1 260px; max-width: 320px; min-width: 240px; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 1.5rem 1rem; margin-bottom: 1rem;">
+    <img src="IDTA-01005.png" alt="IDTA 01005" style="width: 100%; height: auto; max-height: 120px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px; background: #f8f8f8;" />
+    <div style="font-size: 1.08rem; font-weight: 500; margin-bottom: 1.2rem; text-align: center; line-height: 1.3;">Specification of the Asset Administration Shell Part 5: Package File Format (AASX) – IDTA Number: 01005 Version: v3.1</div>
+    <a href="IDTA-01005/index.html" target="_blank" rel="nofollow" style="background: #0078d4; color: #fff; padding: 0.6em 2em; border-radius: 5px; text-align: center; font-weight: bold; text-decoration: none; font-size: 1.05rem; margin-top: auto; transition: background 0.2s; display: inline-block;">View</a>
   </div>
 </div>
 ++++
