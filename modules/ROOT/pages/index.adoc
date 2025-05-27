@@ -20,69 +20,56 @@ Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more info
 |===
 a|
 [.text-center]
-image::IDTA-01001.png[IDTA 01001, width=180, height=260, align=center]
+image::IDTA-01001.png[IDTA 01001, width=220, height=260, align=center]
 
 [.text-center]
 *Specification of the Asset Administration Shell Part 1: Metamodel –*  
 *IDTA Number: 01001*  
 *Version: v3.1*
 
-{nbsp}
-{nbsp}
-
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.1/index.html[View, role="button", window=_blank]
 a|
 [.text-center]
-image::IDTA-01002.png[IDTA 01002, width=180, height=260, align=center]
+image::IDTA-01002.png[IDTA 01002, width=220, height=260, align=center]
 
 [.text-center]
 *Specification of the Asset Administration Shell Part 2: Application Programming Interfaces –*  
 *IDTA Number: 01002*  
 *Version: v3.1*
 
-{nbsp}
-
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01002/v3.1/index.html[View, role="button", window=_blank]
 a|
 [.text-center]
-image::IDTA-01003-a.png[IDTA 01003-a, width=180, height=260, align=center]
+image::IDTA-01003-a.png[IDTA 01003-a, width=220, height=260, align=center]
 
 [.text-center]
 *Specification of the Asset Administration Shell Part 3a: Data Specification – IEC 61360 –*  
 *IDTA Number: 01003-a*  
 *Version: v3.1*
 
-{nbsp}
-
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.1/index.html[View, role="button", window=_blank]
 a|
 [.text-center]
-image::IDTA-01004.png[IDTA 01004, width=180, height=260, align=center]
+image::IDTA-01004.png[IDTA 01004, width=220, height=260, align=center]
 
 [.text-center]
 *Specification of the Asset Administration Shell Part 4: Security –*  
 *IDTA Number: 01004*  
 *Version: v3.0*
 
-{nbsp}
-{nbsp}
-
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01004/v3.0/index.html[View, role="button", window=_blank]
 a|
 [.text-center]
-image::IDTA-01005.png[IDTA 01005, width=180, height=260, align=center]
+image::IDTA-01005.png[IDTA 01005, width=220, height=260, align=center]
 
 [.text-center]
 *Specification of the Asset Administration Shell Part 5: Package File Format (AASX) –*  
 *IDTA Number: 01005*  
 *Version: v3.1*
-
-{nbsp}
-{nbsp}
 
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01005/v3.1/index.html[View, role="button", window=_blank]
