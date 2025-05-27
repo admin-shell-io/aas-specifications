@@ -42,4 +42,15 @@ table[align="center"] td {
 .spec-img:last-child {
   margin-right: 0;
 }
+
+.spec-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px; /* Adjust as needed for your layout */
+}
+
+.spec-cell .view-button {
+  margin-top: auto;
+}
   
