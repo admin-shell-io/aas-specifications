@@ -2,13 +2,8 @@
 
 module.exports = function registerConvertConstraints(registry) {
   // Register a preprocessor named 'convert-constraints'
-  registry.preprocessor('convert-constraints', {
-    /**
-     * @param {Document} doc    The Asciidoctor document
-     * @param {PreprocessorReader} reader
-     * @returns {PreprocessorReader}
-     */
-    process(doc, reader) {
+  registry.preprocessor('convert-constraints', function () {
+    this.process((doc, reader) => {
       // Grab all the lines from the reader
       const lines = reader.getLines();
       if (!lines || !lines.length) return reader;
@@ -27,9 +22,9 @@ module.exports = function registerConvertConstraints(registry) {
         return line;
       });
 
-      // Replace the reader’s lines in one go
+      // Replace the reader's lines in one go
       // (this replaces the entire content of the reader)
       return reader.replace(out);
-    },
+    });
   });
 };
