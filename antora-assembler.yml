@@ -13,11 +13,6 @@ asciidoc:
     diagram-plantuml-config: plantuml/include-theme-idta.puml
 
 build:
-  command: |
-    bundle exec asciidoctor-pdf \
-      -r asciidoctor-kroki \
-      -r asciidoctor-diagram \
-      -a pdf-theme=pdf-theme.yml \
-      -a allow-uri-read \
-      -a diagram-plantuml-config=plantuml/include-theme-idta.puml
+  command: >
+    bundle exec asciidoctor-pdf -r asciidoctor-kroki -r asciidoctor-diagram -a pdf-theme=pdf-theme.yml -a allow-uri-read -a diagram-plantuml-config=plantuml/include-theme-idta.puml
   keep_aggregate_source: true
