@@ -7,16 +7,20 @@
 name: Publish Website
 
 on:
+  # Cronjob for publishing
   schedule:
     - cron: '0 */8 * * *'
+  # When pushes are made to the main branch
   push:
     branches: [ main ]
+  # Also manually from actions
   workflow_dispatch:
 
 concurrency:
   group: github-pages
   cancel-in-progress: false
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -87,33 +91,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  pdf:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-          bundler-cache: true
-
-      - name: Install Asciidoctor PDF
-        run: gem install asciidoctor-pdf rouge
-
-      - name: Build PDF
-        run: |
-          asciidoctor-pdf \
-            -r ./extensions/pass_q_fix.rb \
-            -a pdf-theme=pdf-theme.yml \
-            -D build/pdf \
-            index.adoc
-
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: aas-specifications-pdf
-          path: build/pdf/*.pdf
