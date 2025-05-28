@@ -167,7 +167,7 @@ asciidoc:
   sourcemap: true
   extensions:
     - asciidoctor-kroki
-    - ./modules/extensions/signature_line.js
+   
     - ./modules/extensions/convert_constraints.js
     
   attributes:

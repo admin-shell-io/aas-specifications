@@ -84,7 +84,8 @@ jobs:
                 -e 's|^!include https?://.*$||g'
 
       - name: Generate Site
-        run: npx antora antora-playbook.yml
+        run: npx antora antora-playbook.yml --stacktrace
+
 
       - name: Postprocess generated HTML
         run: |
