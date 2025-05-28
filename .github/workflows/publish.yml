@@ -113,7 +113,7 @@ jobs:
             index.adoc
 
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: aas-specifications-pdf
           path: build/pdf/*.pdf
