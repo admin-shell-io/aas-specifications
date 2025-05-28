@@ -27,7 +27,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-site:
+  build:
     runs-on: ubuntu-latest
     services:
       kroki:
@@ -72,6 +72,14 @@ jobs:
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
 
+      - name: List all AsciiDoc files
+        run: find . -type f -name '*.adoc'
+
+      - name: Preprocess underline constraints for PDF
+        run: |
+          find . -type f -name '*.adoc' -print0 \
+            | xargs -0 sed -i -E 's|<span class="underline">([^<]*)</span>|[underline]#\1#|g'
+
       - name: Generate Site
         run: npx antora antora-playbook.yml
 
@@ -83,52 +91,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  build-pdf:
-    runs-on: ubuntu-latest
-    needs: build-site
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Setup java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Install Antora
-        run: npm i antora
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-          bundler-cache: true
-
-      - name: Install Graphviz
-        run: sudo apt update && sudo apt install -y graphviz
-
-      - name: List all AsciiDoc files
-        run: find . -type f -name '*.adoc'
-
-      - name: Preprocess underline constraints for PDF
-        run: |
-          find . -type f -name '*.adoc' -print0 \
-            | xargs -0 sed -i -E 's|<span class="underline">([^<]*)</span>|[underline]#\1#|g'
-
-      - name: Generate PDF
-        run: |
-          # Replace this with your actual PDF generation command
-          npx antora antora-playbook.yml --to pdf
-
-      - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: aas-specs-pdf
-          path: build/pdf
