@@ -1,4 +1,8 @@
-# .github/workflows/publish.yml
+#
+# Publish to GitHub Pages
+# Initially based on the instructions in Antora Docs
+# https://docs.antora.org/antora/latest/publish-to-github-pages/
+#
 
 name: Publish Website
 
@@ -46,14 +50,14 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Setup Java
+      - name: Setup java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: Install Antora
-        run: npm ci antora
+        run: npm i antora
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -62,38 +66,54 @@ jobs:
           bundler-cache: true
 
       - name: Install Graphviz
-        run: sudo apt-get update && sudo apt-get install -y graphviz
+        run: sudo apt update && sudo apt install -y graphviz
 
-      # ────────────────────────────────────────────────────
-      # 1) Generate the HTML site
-      - name: Generate HTML Site
+      - name: List all AsciiDoc files
+        run: find . -type f -name '*.adoc'
+
+      - name: Preprocess underline constraints for PDF
+        run: |
+          find . -type f -name '*.adoc' -print0 \
+            | xargs -0 sed -i -E 's|<span class="underline">([^<]*)</span>|[underline]#\1#|g'
+
+      - name: Generate Site
         run: npx antora antora-playbook.yml
 
-      # 2) Build PDF via Ruby asciidoctor-pdf (loads your pass_q_fix.rb)
-      - name: Build PDF with Asciidoctor-PDF
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  pdf:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Install Asciidoctor PDF
+        run: gem install asciidoctor-pdf rouge
+
+      - name: Build PDF
         run: |
-          gem install asciidoctor-pdf rouge
           asciidoctor-pdf \
             -r ./extensions/pass_q_fix.rb \
             -a pdf-theme=pdf-theme.yml \
             -D build/pdf \
             index.adoc
 
-      # 3) Upload the PDF as an artifact
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v2
         with:
-          name: aas-specifications.pdf
+          name: aas-specifications-pdf
           path: build/pdf/*.pdf
-      # ────────────────────────────────────────────────────
-
-      # 4) Upload the generated HTML for Pages
-      - name: Upload Site to Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build/site
-
-      # 5) Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
