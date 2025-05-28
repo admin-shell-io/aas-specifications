@@ -160,7 +160,7 @@ asciidoc:
   extensions:
     - asciidoctor-kroki
     - ./modules/extensions/signature_line.js
-    - ./modules/extensions/underline_passthrough.js
+    - ./modules/extensions/convert_constraints.js
     - '@antora/lunr-extension'
     - '@antora/pdf-extension'
   attributes:

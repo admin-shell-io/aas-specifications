@@ -17,17 +17,22 @@ module.exports = function registerConvertConstraints(registry) {
           /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\](.*)/
         );
         if (m) {
+          // Reconstruct the attribute without the pass:q wrapper
           return `:${m[1]}: ${m[2]}${m[3]}`;
         }
         return line;
       });
 
       // Replace the reader's content using pushInclude
+      // pushInclude(data, file, path, lineNumber, attributes)
       reader.pushInclude(
-        out.join('\n'),
-        'virtual.adoc',
-        1
+        out.join('\n'),      // data (String)
+        'virtual.adoc',      // file name (String)
+        'virtual.adoc',      // path       (String)
+        1,                   // line number (Number)
+        {}                   // attributes  (Object)
       );
+
       return reader;
     });
   });
