@@ -75,7 +75,7 @@ jobs:
       - name: List all AsciiDoc files
         run: find . -type f -name '*.adoc'
 
-       name: Preprocess underline constraints for PDF
+      - name: Preprocess underline constraints for PDF
         run: |
           find . -type f -name '*.adoc' -print0 \
             | xargs -0 sed -i -E \
