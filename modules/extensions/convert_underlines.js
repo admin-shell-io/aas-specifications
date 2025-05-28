@@ -1,15 +1,26 @@
-// modules/extensions/convert_underlines.js
-'use strict'
+const asciidoctor = require('@asciidoctor/core')()
 
-module.exports.register = function (registry) {
-  registry.preprocessor(function (doc, reader) {
-    const lines = reader.getLines().map((line) =>
-      line
-        // convert any raw HTML underline spans
-        .replace(/<span class="underline">([^<]*)<\/span>/g, '[underline]#$1#')
-        // convert any pass:q[[underline]#…#]] wrappers
-        .replace(/pass:q\[\[underline\]#([^#]+)#\]\]/g, '[role="underline"]#$1#')
-    )
-    reader.setLines(lines)
+// Register a Preprocessor that runs before parsing each AsciiDoc file
+asciidoctor.Extensions.register(function () {
+  this.preprocessor(() => {
+    return {
+      process: function (doc, reader) {
+        // Retrieve all source lines
+        const lines = reader.getLines()
+        // Transform any constraint line of the form:
+        // :aasd002: pass:q[[underline]#Constraint AASd-002:# …]
+        // into a plain constraint definition:
+        // :aasd002: Constraint AASd-002: …
+        const newLines = lines.map(line =>
+          line.replace(
+            /^:(aasd\d{3}):\s*pass:q\[\[underline\]#(.*?)#\]\]/,
+            (_match, id, text) => `:${id}: ${text}`
+          )
+        )
+        // Overwrite the reader’s lines & hand it back to Asciidoctor
+        reader.setLines(newLines)
+        return reader
+      }
+    }
   })
-}
+})
