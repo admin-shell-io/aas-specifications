@@ -171,5 +171,5 @@ asciidoc:
     kroki-fetch-diagram: true
     plantuml-format: svg
     kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/main/plantuml/puml-theme-idta.puml
-    plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/main/plantuml/puml-theme-idta.puml
+    plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/main/plantuml/include-theme-idta.puml
     pdf-theme: ./pdf-theme.yml
