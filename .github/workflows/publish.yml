@@ -7,20 +7,16 @@
 name: Publish Website
 
 on:
-  # Cronjob for publishing
   schedule:
     - cron: '0 */8 * * *'
-  # When pushes are made to the main branch
   push:
     branches: [ main ]
-  # Also manually from actions
   workflow_dispatch:
 
 concurrency:
   group: github-pages
   cancel-in-progress: false
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -61,7 +57,7 @@ jobs:
           java-version: '17'
 
       - name: Install Antora
-        run: npm i antora
+        run: npm install antora
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -72,9 +68,26 @@ jobs:
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
 
-
-      - name: Generate Site
+      - name: Generate HTML Site
         run: npx antora antora-playbook.yml
+
+      # ─────────────────────────────────────────────────────────────────────
+      # Now build the PDF with Ruby asciidoctor-pdf so we can load your
+      # pass_q_fix.rb and custom pdf-theme.yml
+      - name: Build PDF with Asciidoctor-PDF
+        run: |
+          gem install asciidoctor-pdf rouge
+          asciidoctor-pdf \
+            -r ./extensions/pass_q_fix.rb \
+            -a pdf-theme=pdf-theme.yml \
+            -D build/pdf \
+            index.adoc
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: aas-specifications-pdf
+          path: build/pdf/*.pdf
+      # ─────────────────────────────────────────────────────────────────────
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
