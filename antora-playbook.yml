@@ -1,6 +1,6 @@
 site:
   url: https://industrialdigitaltwin.io/aas-specifications
-  start_page: ROOT:index.html
+  start_page: index::index.adoc
 
 content:
   edit_url: '{web_url}/blob/{refname}/{path}'
