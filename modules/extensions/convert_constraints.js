@@ -25,8 +25,8 @@ module.exports = function registerConvertConstraints(registry) {
       // Replace the reader's content using pushInclude
       reader.pushInclude(
         out.join('\n'),
-        doc.getAttribute('docfile') || doc.getAttribute('docname') || 'virtual',
-        '1'
+        'virtual.adoc',
+        1
       );
       return reader;
     });
