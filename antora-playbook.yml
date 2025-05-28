@@ -165,11 +165,8 @@ asciidoc:
   sourcemap: true
   extensions:
     - asciidoctor-kroki
-    - require: ./modules/extensions/convert_underlines.js
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
     kroki-fetch-diagram: true
-    plantuml-format: svg
     kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications-antora/refs/heads/main/plantuml/puml-theme-idta.puml
-    pdf-theme: ./pdf-theme.yml
