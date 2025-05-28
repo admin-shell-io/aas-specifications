@@ -162,6 +162,7 @@ antora:
   extensions:
     - '@antora/lunr-extension'
     - '@antora/pdf-extension'
+    - require: ./modules/extensions/patch-aggregator.js
 
 asciidoc:
   sourcemap: true
@@ -169,6 +170,7 @@ asciidoc:
     - asciidoctor-kroki
    
     - ./modules/extensions/convert_constraints.js
+   
     
   attributes:
     xrefstyle: short
