@@ -32,11 +32,6 @@ content:
       - IDTA-01003-a-3-2_Working
       - main
       start-paths: documentation/IDTA-01003-a
-    - url: https://github.com/admin-shell-io/aas-specs-security
-      branches:
-      - IDTA-01004-3-1_Working
-      - main
-      start-paths: documentation/IDTA-01004
     - url: https://github.com/admin-shell-io/aas-specs-aasx
       branches:
       - IDTA-01005-3-0_antora_ref
@@ -156,18 +151,13 @@ ui:
 runtime:
   fetch: true
 
-antora:
-  extensions:
-    - '@antora/lunr-extension'
-    - '@antora/pdf-extension'
-
 asciidoc:
-  sourcemap: true
   extensions:
     - asciidoctor-kroki
     - ./modules/extensions/convert_constraints.js
     - ./modules/extensions/signature_line.js
-    
+    - '@antora/lunr-extension'
+    - '@antora/pdf-extension'
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000

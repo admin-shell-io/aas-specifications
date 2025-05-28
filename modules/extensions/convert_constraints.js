@@ -1,27 +1,35 @@
 // modules/extensions/convert_constraints.js
 
 module.exports = function registerConvertConstraints(registry) {
-  registry.preprocessor(() => {
-    const self = this
-    self.process((doc, reader) => {
-      // reader.lines is an array of all source lines (Asciidoctor.js PreprocessorReader API) :contentReference[oaicite:0]{index=0}
-      const lines = reader.lines || []
-      const processed = lines.map((line) => {
-        // match lines like:
+  // Register a preprocessor named 'convert-constraints'
+  registry.preprocessor('convert-constraints', {
+    /**
+     * @param {Document} doc    The Asciidoctor document
+     * @param {PreprocessorReader} reader
+     * @returns {PreprocessorReader}
+     */
+    process(doc, reader) {
+      // Grab all the lines from the reader
+      const lines = reader.getLines();
+      if (!lines || !lines.length) return reader;
+
+      // Transform lines matching the constraint attribute syntax
+      const out = lines.map((line) => {
         // :aasd002: pass:q[[underline]#Constraint AASd-002:# …]
         const m = line.match(
-          /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\](?:\s*(.*))?$/
-        )
+          /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\](.*)/
+        );
         if (m) {
-          // rebuild as a real AsciiDoc role span, preserving any trailing text
-          // e.g. [role="underline"]#Constraint AASd-002:# remaining text…
-          return `[role="underline"]#${m[2]}#${m[3] ? ' ' + m[3] : ''}`
+          // Rebuild as a plain attribute with the inner text
+          // Note: m[1] = aasd002, m[2] = 'Constraint AASd-002:', m[3] = ' rest of text…'
+          return `:${m[1]}: ${m[2]}${m[3]}`;
         }
-        return line
-      })
-      // push the new lines back into the reader
-      reader.lines = processed
-      return reader
-    })
-  })
-}
+        return line;
+      });
+
+      // Replace the reader’s lines in one go
+      // (this replaces the entire content of the reader)
+      return reader.replace(out);
+    },
+  });
+};
