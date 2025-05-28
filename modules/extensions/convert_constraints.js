@@ -1,27 +1,27 @@
 // modules/extensions/convert_constraints.js
 
 module.exports = function registerConvertConstraints (registry) {
-  // Register a preprocessor that runs before each document is parsed
-  registry.preprocessor(function () {
+  // Register a tree processor that runs after the document is parsed
+  registry.treeProcessor(function () {
     const self = this
-    self.process(function (doc, reader) {
-      // Get the lines from the reader
-      const lines = reader.getLines()
-      if (!lines || !lines.length) return reader
-
-      // Process each line
-      const processedLines = lines.map(line => {
-        // Match the constraint pattern
-        const match = line.match(/^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\]/)
-        if (match) {
-          // Convert to role="underline" format
-          return `[role="underline"]#${match[2]}#`
-        }
-        return line
+    self.process(function (doc) {
+      // Find all blocks (paragraphs, open, listing, etc.)
+      const blocks = doc.findBy({ context: 'paragraph' })
+      blocks.forEach(block => {
+        // Rewrite each line in the block
+        const lines = block.getLines()
+        const rewritten = lines.map(line => {
+          // Match your constraint pattern
+          const m = line.match(/^\s*:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\]\s*$/)
+          if (m) {
+            // Convert to [role="underline"]#Constraint AASd-002:# …
+            return `[role="underline"]#${m[2]}#`
+          }
+          return line
+        })
+        block.setLines(rewritten)
       })
-
-      // Create a new reader with the processed lines
-      return self.createReader(processedLines.join('\n'), reader)
+      return doc
     })
   })
 }
