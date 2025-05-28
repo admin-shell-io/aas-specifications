@@ -162,7 +162,7 @@ antora:
     - '@antora/pdf-extension'
 
 asciidoc:
-  safe: unsafe                   # allow URL includes
+  safe-mode: unsafe   # allow URL includes
   sourcemap: true
   extensions:
     - asciidoctor-kroki
