@@ -79,7 +79,7 @@ jobs:
         run: |
           find . -type f -name '*.adoc' -print0 \
             | xargs -0 sed -i -E \
-                -e 's|<span class="underline">([^<]*)</span>|[underline]#\1#|g' \
+                -e 's|<span class="underline">([^<]*)</span>|[role="underline"]#\1#|g' \
                 -e 's|pass:q\[\[underline\]#([^#]+)#\]\]|[role="underline"]#\1#|g' \
                 -e 's|^!include https?://.*$||g'
 
@@ -90,8 +90,7 @@ jobs:
         run: |
           find build/site -type f -name '*.html' -print0 \
             | xargs -0 sed -i -E \
-                -e 's|<span class="underline">([^<]*)</span>|<u>\1</u>|g' \
-                -e 's|pass:q\[\[underline\]#([^#]+)#\]\]|<u>\1</u>|g' \
+                -e 's|\[role="underline"\]#([^#]+)#|<u>\1</u>|g' \
                 -e 's|^!include https?://.*$||g'
 
       - name: Upload Artifacts
