@@ -162,11 +162,10 @@ antora:
     - '@antora/pdf-extension'
 
 asciidoc:
-  safe-mode: unsafe   # allow URL includes
   sourcemap: true
   extensions:
     - asciidoctor-kroki
-    - ./modules/extensions/convert_underlines.js
+    - ./modules/extensions/convert_underlines.js  
     
   attributes:
     xrefstyle: short
