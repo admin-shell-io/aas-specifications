@@ -170,7 +170,7 @@ asciidoc:
     - asciidoctor-kroki
    
     - ./modules/extensions/convert_constraints.js
-   
+    
     
   attributes:
     xrefstyle: short

@@ -3,19 +3,18 @@
 module.exports.register = function () {
     this.once('contextStarted', () => {
       // Grab the low-level aggregateAsciiDoc step
-      const { aggregateAsciiDoc: originalAggregate } = this.getFunctions();
-  
-      // Replace it with a version that coalesces undefined IDs
-      this.replaceFunctions({
-        async aggregateAsciiDoc(pages, navigation, siteAsciiDocConfig) {
-          pages.forEach((entry) => {
-            // Ensure entry.id is always a string
-            entry.id = entry.id ?? '';
-          });
-          // Delegate back to the original implementation
-          return originalAggregate.call(this, pages, navigation, siteAsciiDocConfig);
-        },
+      const { produceAggregateDocument: originalProduce } = this.getFunctions();
+this.replaceFunctions({
+  async produceAggregateDocument(playbook, contentAggregate, siteAsciiDocConfig) {
+    // coalesce undefined src.id here on the aggregated pages list:
+    contentAggregate.pagesByComponent.forEach((pages, component) => {
+      pages.forEach(page => {
+        page.src.id = page.src.id ?? '';
       });
+    });
+    return originalProduce.call(this, playbook, contentAggregate, siteAsciiDocConfig);
+  }
+});
     });
   };
   

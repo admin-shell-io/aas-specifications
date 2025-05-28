@@ -72,27 +72,9 @@ jobs:
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
 
-      - name: List all AsciiDoc files
-        run: find . -type f -name '*.adoc'
-
-      - name: Preprocess underline constraints for PDF
-        run: |
-          find . -type f -name '*.adoc' -print0 \
-            | xargs -0 sed -i -E \
-                -e 's|<span class="underline">([^<]*)</span>|[role="underline"]#\1#|g' \
-                -e 's|pass:q\[\[underline\]#([^#]+)#\]\]|[role="underline"]#\1#|g' \
-                -e 's|^!include https?://.*$||g'
-
+      
       - name: Generate Site
         run: npx antora antora-playbook.yml --stacktrace
-
-
-      - name: Postprocess generated HTML
-        run: |
-          find build/site -type f -name '*.html' -print0 \
-            | xargs -0 sed -i -E \
-                -e 's|\[role="underline"\]#([^#]+)#|<u>\1</u>|g' \
-                -e 's|^!include https?://.*$||g'
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
