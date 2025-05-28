@@ -16,6 +16,7 @@ title-page:
     font-color: FFFFFF
   revision:
     font-color: FFFFFF
+    font-size: 20
   background-image: image:cover.pdf[fit=cover]
 
 page:
@@ -152,6 +153,18 @@ role:
     text-decoration: underline
     text-decoration-color: 0029CC
     text-decoration-width: 1
+  idta-number:
+    font-size: 20
+    font-color: FFFFFF
+    font-style: bold
+    align: left
+    margin-bottom: 8
+  spec-version:
+    font-size: 20
+    font-color: FFFFFF
+    font-style: bold
+    align: left
+    margin-top: 0
 
 codespan:
   font-color: 000000

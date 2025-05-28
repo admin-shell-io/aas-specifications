@@ -1,6 +1,6 @@
 site:
   url: https://industrialdigitaltwin.io/aas-specifications
-  start_page: index::index.adoc
+  start_page: ROOT:index.html
 
 content:
   edit_url: '{web_url}/blob/{refname}/{path}'
@@ -170,6 +170,5 @@ asciidoc:
     kroki-server-url: http://localhost:8000
     kroki-fetch-diagram: true
     plantuml-format: svg
-    kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/main/plantuml/puml-theme-idta.puml
-    plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/main/plantuml/include-theme-idta.puml
+    kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications-antora/refs/heads/main/plantuml/puml-theme-idta.puml
     pdf-theme: ./pdf-theme.yml
