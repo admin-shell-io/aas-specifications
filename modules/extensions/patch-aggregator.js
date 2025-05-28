@@ -1,28 +1,19 @@
 // modules/extensions/patch-aggregator.js
 
-/**
- * Antora extension to guard against undefined page IDs
- * during aggregation by slugifying only string IDs.
- */
-module.exports.register = function registerPatchAggregator() {
-    // Listen once the generator context is ready
+module.exports.register = function () {
     this.once('contextStarted', () => {
-      // Capture the original aggregation function
-      const { produceAggregateDocument: originalProduce } = this.getFunctions();
+      // Grab the low-level aggregateAsciiDoc step
+      const { aggregateAsciiDoc: originalAggregate } = this.getFunctions();
   
-      // Replace it with a version that defaults missing IDs to ''
+      // Replace it with a version that coalesces undefined IDs
       this.replaceFunctions({
-        /**
-         * Guarded produceAggregateDocument:
-         * Ensures page.src.id is always a string before calling replace().
-         */
-        async produceAggregateDocument(playbook, siteCatalog) {
-          siteCatalog.findPages().forEach((page) => {
-            // Default undefined or null IDs to an empty string
-            page.src.id = page.src.id ?? '';
+        async aggregateAsciiDoc(pages, navigation, siteAsciiDocConfig) {
+          pages.forEach((entry) => {
+            // Ensure entry.id is always a string
+            entry.id = entry.id ?? '';
           });
           // Delegate back to the original implementation
-          return originalProduce.call(this, playbook, siteCatalog);
+          return originalAggregate.call(this, pages, navigation, siteAsciiDocConfig);
         },
       });
     });
