@@ -1,27 +1,27 @@
 // modules/extensions/convert_constraints.js
 
-module.exports = function registerConvertConstraints (registry) {
-  // Register a tree processor that runs after the document is parsed
-  registry.treeProcessor(function () {
+module.exports = function registerConvertConstraints(registry) {
+  registry.preprocessor(() => {
     const self = this
-    self.process(function (doc) {
-      // Find all blocks (paragraphs, open, listing, etc.)
-      const blocks = doc.findBy({ context: 'paragraph' })
-      blocks.forEach(block => {
-        // Rewrite each line in the block
-        const lines = block.getLines()
-        const rewritten = lines.map(line => {
-          // Match your constraint pattern
-          const m = line.match(/^\s*:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\]\s*$/)
-          if (m) {
-            // Convert to [role="underline"]#Constraint AASd-002:# …
-            return `[role="underline"]#${m[2]}#`
-          }
-          return line
-        })
-        block.setLines(rewritten)
+    self.process((doc, reader) => {
+      // reader.lines is an array of all source lines (Asciidoctor.js PreprocessorReader API) :contentReference[oaicite:0]{index=0}
+      const lines = reader.lines || []
+      const processed = lines.map((line) => {
+        // match lines like:
+        // :aasd002: pass:q[[underline]#Constraint AASd-002:# …]
+        const m = line.match(
+          /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\](?:\s*(.*))?$/
+        )
+        if (m) {
+          // rebuild as a real AsciiDoc role span, preserving any trailing text
+          // e.g. [role="underline"]#Constraint AASd-002:# remaining text…
+          return `[role="underline"]#${m[2]}#${m[3] ? ' ' + m[3] : ''}`
+        }
+        return line
       })
-      return doc
+      // push the new lines back into the reader
+      reader.lines = processed
+      return reader
     })
   })
 }
