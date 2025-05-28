@@ -1,18 +1,10 @@
 root_level: 0
 component_versions: '**'
-
 asciidoc:
-  extensions:
-    - asciidoctor-kroki       
-    - asciidoctor-diagram     
   attributes:
     source-highlighter: rouge
     pdf-theme: pdf-theme.yml
-    allow-uri-read: ''
-    
-    diagram-plantuml-config: plantuml/include-theme-idta.puml
-
 build:
-  command: >
-    bundle exec asciidoctor-pdf -r asciidoctor-kroki -r asciidoctor-diagram -a pdf-theme=pdf-theme.yml -a allow-uri-read -a diagram-plantuml-config=plantuml/include-theme-idta.puml
+  build:
+  command: bundle exec asciidoctor-pdf -r asciidoctor-diagram
   keep_aggregate_source: true
