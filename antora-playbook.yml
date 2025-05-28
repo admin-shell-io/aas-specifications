@@ -153,16 +153,23 @@ ui:
           margin-left: 0.5rem;
         }
 
+
+
 runtime:
   fetch: true
 
+antora:
+  extensions:
+    - '@antora/lunr-extension'
+    - '@antora/pdf-extension'
+
 asciidoc:
+  sourcemap: true
   extensions:
     - asciidoctor-kroki
     - ./modules/extensions/signature_line.js
     - ./modules/extensions/convert_constraints.js
-    - '@antora/lunr-extension'
-    - '@antora/pdf-extension'
+    
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
