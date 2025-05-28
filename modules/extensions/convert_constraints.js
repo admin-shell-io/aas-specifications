@@ -5,17 +5,23 @@ module.exports = function registerConvertConstraints (registry) {
   registry.preprocessor(function () {
     const self = this
     self.process(function (doc, reader) {
-      // Get the source lines
-      const source = reader.source
-      // Rewrite any :aasd###: pass:q[[underline]#…#] entries
-      const newSource = source.replace(
-        /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\]/gm,
-        // Convert to role="underline" format
-        (_, id, text) => `[role="underline"]#${text}#`
-      )
-      // Update the reader with rewritten source
-      reader.source = newSource
-      return reader
+      // Get the lines from the reader
+      const lines = reader.getLines()
+      if (!lines || !lines.length) return reader
+
+      // Process each line
+      const processedLines = lines.map(line => {
+        // Match the constraint pattern
+        const match = line.match(/^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\]/)
+        if (match) {
+          // Convert to role="underline" format
+          return `[role="underline"]#${match[2]}#`
+        }
+        return line
+      })
+
+      // Create a new reader with the processed lines
+      return self.createReader(processedLines.join('\n'), reader)
     })
   })
 }
