@@ -5,58 +5,53 @@ module.exports = function registerConvertConstraints(registry) {
       this.process((doc, reader) => {
         const srcPath = doc.getAttribute('docfile');
         const filename = srcPath && srcPath.split(/[\\/]/).pop();
-        
-        // Check for constraints.adoc in either location
-        if (filename !== 'constraints.adoc' || 
-            (!srcPath.includes('spec-metamodel/constraints.adoc') && 
-             !srcPath.includes('includes/constraints.adoc'))) {
+  
+        // Only transform constraints.adoc under spec-metamodel or includes
+        if (
+          filename !== 'constraints.adoc' ||
+          (!srcPath.includes('spec-metamodel/constraints.adoc') &&
+           !srcPath.includes('includes/constraints.adoc'))
+        ) {
           return reader;
         }
-
-        // Set doctype to book if not already set
-        if (!doc.getAttribute('doctype')) {
-          doc.setAttribute('doctype', 'book');
-        }
   
-        // Read original lines
+        // Read all lines
         const lines = [];
         let line;
         while ((line = reader.readLine()) !== undefined) {
           lines.push(line);
         }
-
-        // Transform constraint lines
-        let transformedCount = 0;
-        lines.forEach((l, index) => {
-          // Match constraint pattern - keep original format
-          const match = l.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
-          if (match) {
-            const [, attr, label, content] = match;
-            
-            // Only transform if content exists
-            if (content) {
-              // Fix xref format by adding # before section reference
-              const fixedContent = content.replace(
-                /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]+)\[([^\]]+)\]/g,
-                'xref:ROOT:spec-metamodel/$1.adoc#$2[$3]'
-              );
-              
-              // Keep original format with fixed xrefs
-              const newLine = `:${attr}: ${label}: ${fixedContent.trim()}`;
-              
-              // Define the attribute for this constraint
-              doc.setAttribute(attr, newLine);
-              
-              // Add constraint to content
-              lines[index] = newLine;
-              
-              transformedCount++;
+  
+        const transformedLines = lines.map((l) => {
+          let s = l;
+  
+          // 1) Strip AsciiDoc passthrough underline: pass:q[[underline]#…#]
+          s = s.replace(
+            /pass:q\[\[underline\]#(.*?)#\]\]/g,
+            '$1'
+          );
+  
+          // 2) Strip HTML underline spans
+          s = s.replace(
+            /<span\s+class="underline">(.*?)<\/span>/g,
+            '$1'
+          );
+  
+          // 3) Normalize xref syntax: ensure module.adoc#anchor[label]
+          s = s.replace(
+            /xref:([\w\-\/]+)\.adoc([^[]*)\[(.*?)\]/g,
+            (match, mod, anchor, label) => {
+              // if anchor already starts with '#', leave it
+              const anc = anchor.startsWith('#') ? anchor : `#${anchor.trim()}`;
+              return `xref:${mod}.adoc${anc}[${label}]`;
             }
-          }
+          );
+  
+          return s;
         });
   
-        // Overwrite lines buffer in-place with transformed content
-        reader.lines = lines;
+        // Overwrite in-place so Asciidoctor and Antora see the clean source
+        reader.lines = transformedLines;
         return reader;
       });
     });
