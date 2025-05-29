@@ -28,7 +28,7 @@ function formatAsciiDoc(content) {
     let transformedLine = line;
     let wasTransformed = false;
 
-    // 1. Fix malformed HTML-like underlines
+    // 1. Fix malformed HTML-like underlines and spans
     if (transformedLine.includes('<span class="underline">') || transformedLine.includes('</span>')) {
       transformedLine = transformedLine.replace(
         /<span class="underline">(.*?)<\/span>/g,
@@ -91,6 +91,16 @@ function formatAsciiDoc(content) {
     if (xrefFixed !== transformedLine) {
       transformedLine = xrefFixed;
       wasTransformed = true;
+    }
+
+    // 6. Fix HTML-like formatting in constraint text
+    if (transformedLine.includes('Constraint AASc-')) {
+      transformedLine = transformedLine
+        .replace(/<span class="underline">(.*?)<\/span>/g, '+++<u>$1</u>+++')
+        .replace(/<em>(.*?)<\/em>/g, '_$1_')
+        .replace(/<code>(.*?)<\/code>/g, '`$1`');
+      wasTransformed = true;
+      console.log('Fixed constraint formatting in:', line.substring(0, 50) + '...');
     }
 
     if (wasTransformed) {
