@@ -51,8 +51,12 @@ module.exports = function registerConvertConstraints(registry) {
         let transformedCount = 0;
         const constraints = new Map();
         
-        const transformedLines = lines.map((l) => {
-          if (!l || typeof l !== 'string') return l;
+        const transformedLines = [];
+        lines.forEach((l) => {
+          if (!l || typeof l !== 'string') {
+            transformedLines.push(l);
+            return;
+          }
 
           // Extract constraint ID and content
           const constraintMatch = l.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
@@ -60,23 +64,22 @@ module.exports = function registerConvertConstraints(registry) {
             const [, constraintId, label, content] = constraintMatch;
             // Store constraint for later registration
             constraints.set(constraintId, `[underline]#${label}:# ${content.trim()}`);
+            // Do NOT push the original line!
+            return;
           }
 
           // Fix xref format by ensuring # before section reference
           const transformed = l.replace(
             /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]+)\[([^\]]+)\]/g,
             (match, mod, anchor, label) => {
-              // Skip if any part is undefined
               if (!mod || !anchor || !label) return match;
-              
-              // if anchor already starts with '#', leave it
               const anc = anchor.startsWith('#') ? anchor : `#${anchor.trim()}`;
               transformedCount++;
               return `xref:ROOT:spec-metamodel/${mod}.adoc${anc}[${label}]`;
             }
           );
 
-          return transformed;
+          transformedLines.push(transformed);
         });
 
         // Inject attribute lines into the AsciiDoc source after the doctype
