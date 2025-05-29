@@ -79,8 +79,7 @@ jobs:
             echo "Running standalone formatter on problematic files..."
             find . -name "constraints.adoc" -type f | while read file; do
               echo "Pre-processing: $file"
-              node scripts/standalone-formatter.js "$file" "$file.tmp"
-              mv "$file.tmp" "$file"
+              node scripts/standalone-formatter.js "$file"
             done
           else
             echo "No standalone formatter found, relying on Antora extension"

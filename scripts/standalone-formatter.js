@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// scripts/standalone-formatter.js
+// standalone-formatter.js
 // Preprocesses AsciiDoc files to fix formatting issues before AsciiDoctor parsing
 
 const fs = require('fs');
@@ -137,12 +137,24 @@ function processFile(inputPath, outputPath) {
     const content = fs.readFileSync(inputPath, 'utf8');
     const formatted = formatAsciiDoc(content);
     
-    // Always write back to the input file
-    fs.writeFileSync(inputPath, formatted);
-    console.log(`Updated: ${inputPath}`);
+    if (outputPath) {
+      fs.writeFileSync(outputPath, formatted, 'utf8');
+      console.log(`Written to: ${outputPath}`);
+      
+      // Verify the file was actually created
+      if (fs.existsSync(outputPath)) {
+        console.log(`Confirmed: ${outputPath} exists`);
+      } else {
+        console.error(`Error: ${outputPath} was not created`);
+        process.exit(1);
+      }
+    } else {
+      console.log('Formatted content:');
+      console.log(formatted);
+    }
   } catch (error) {
     console.error(`Error processing ${inputPath}:`, error.message);
-    throw error;
+    process.exit(1);
   }
 }
 
@@ -155,33 +167,34 @@ function processDirectory(inputDir, outputDir) {
   files.forEach(file => {
     if (path.extname(file) === '.adoc') {
       const inputPath = path.join(inputDir, file);
-      processFile(inputPath); // No output path needed
+      const outputPath = path.join(outputDir, file);
+      processFile(inputPath, outputPath);
     }
   });
 }
 
 // CLI usage
 if (require.main === module) {
-  try {
-    const args = process.argv.slice(2);
-    
-    if (args.length === 0) {
-      console.log('Usage:');
-      console.log('  node standalone-formatter.js <input.adoc>');
-      console.log('  node standalone-formatter.js <input-dir>');
+  const args = process.argv.slice(2);
+  
+  if (args.length === 0) {
+    console.log('Usage:');
+    console.log('  node standalone-formatter.js <input.adoc> [output.adoc]');
+    console.log('  node standalone-formatter.js <input-dir> <output-dir>');
+    process.exit(1);
+  }
+
+  const inputPath = args[0];
+  const outputPath = args[1];
+
+  if (fs.statSync(inputPath).isDirectory()) {
+    if (!outputPath) {
+      console.error('Output directory required when input is a directory');
       process.exit(1);
     }
-
-    const inputPath = args[0];
-
-    if (fs.statSync(inputPath).isDirectory()) {
-      processDirectory(inputPath);
-    } else {
-      processFile(inputPath);
-    }
-  } catch (error) {
-    console.error('Error:', error.message);
-    process.exit(1);
+    processDirectory(inputPath, outputPath);
+  } else {
+    processFile(inputPath, outputPath);
   }
 }
 
