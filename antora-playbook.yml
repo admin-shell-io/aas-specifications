@@ -167,8 +167,8 @@ antora:
 asciidoc:
   sourcemap: true
   extensions:
-    - asciidoctor-kroki
     - ./modules/extensions/constraint_formatter.js
+    - asciidoctor-kroki
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000
