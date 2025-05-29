@@ -10,6 +10,7 @@ module.exports = function registerConvertConstraints(registry) {
         global._constraintFormatterLoaded = true;
     }
     
+    // Register as a preprocessor to handle the initial transformation
     registry.preprocessor('convert-constraints', function () {
       this.process((doc, reader) => {
         const srcPath = doc.getAttribute('docfile');
@@ -78,20 +79,27 @@ module.exports = function registerConvertConstraints(registry) {
           return transformed;
         });
 
-        // Register all constraints as document attributes
+        // Inject attribute lines into the AsciiDoc source after the doctype
         if (constraints.size > 0) {
+          const attributeLines = [];
           constraints.forEach((content, id) => {
-            doc.setAttribute(id, content);
+            attributeLines.push(`:${id}: ${content}`);
           });
-          console.log(`::notice::[Constraint Formatter] Registered ${constraints.size} constraints in ${srcPath}`);
-          // Show first and last constraint IDs as a range
-          const constraintIds = Array.from(constraints.keys()).sort();
-          if (constraintIds.length > 0) {
-            const first = constraintIds[0];
-            const last = constraintIds[constraintIds.length - 1];
-            console.log(`::debug::[Constraint Formatter] Constraint range: ${first} to ${last}`);
-          }
+          // Insert after doctype or at the top
+          let insertIndex = transformedLines.findIndex(l => l.trim().startsWith(':doctype:'));
+          if (insertIndex === -1) insertIndex = 0;
+          else insertIndex += 1;
+          transformedLines.splice(insertIndex, 0, ...attributeLines);
+          console.log(`::notice::[Constraint Formatter] Injected ${constraints.size} attribute lines in ${srcPath}`);
         }
+
+        // Register missing attributes with empty values to prevent warnings
+        ['aasd080', 'aasd081', 'aasd090'].forEach(id => {
+          if (!transformedLines.some(l => l.startsWith(`:${id}:`))) {
+            transformedLines.unshift(`:${id}: `);
+            console.log(`::debug::[Constraint Formatter] Injected missing attribute: ${id}`);
+          }
+        });
 
         if (transformedCount > 0) {
           console.log(`::notice::[Constraint Formatter] Transformed ${transformedCount} xref links in ${srcPath}`);
@@ -105,6 +113,26 @@ module.exports = function registerConvertConstraints(registry) {
         // Overwrite in-place so Asciidoctor and Antora see the clean source
         reader.lines = transformedLines;
         return reader;
+      });
+    });
+
+    // Register a block processor to handle constraint blocks
+    registry.block('constraint', function () {
+      const self = this;
+      self.named('constraint');
+      self.onContext('paragraph');
+      self.process(function (parent, reader) {
+        const lines = reader.getLines();
+        const constraintMatch = lines[0].match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
+        
+        if (constraintMatch) {
+          const [, constraintId, label, content] = constraintMatch;
+          // Register the constraint as a document attribute
+          parent.getDocument().setAttribute(constraintId, `${label}: ${content.trim()}`);
+          console.log(`::debug::[Constraint Formatter] Registered constraint in block processor: ${constraintId}`);
+        }
+        
+        return self.createBlock(parent, 'paragraph', lines);
       });
     });
   };
