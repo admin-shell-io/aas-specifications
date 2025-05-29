@@ -1,39 +1,53 @@
 // modules/extensions/convert_constraints.js
 
 module.exports = function registerConvertConstraints(registry) {
-  // Register a preprocessor named 'convert-constraints'
   registry.preprocessor('convert-constraints', function () {
     this.process((doc, reader) => {
-      // Read all lines from the reader
-      const lines = [];
-      let line;
-      while ((line = reader.readLine()) !== undefined) {
-        lines.push(line);
+      if (!reader || !reader.file) {
+        return reader;
       }
 
-      // Transform lines matching the constraint attribute syntax
-      const out = lines.map((line) => {
-        const m = line.match(
-          /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\](.*)/
-        );
-        if (m) {
-          // Reconstruct the attribute without the pass:q wrapper
-          return `:${m[1]}: ${m[2]}${m[3]}`;
+      try {
+        // 1. Read the entire source into an array
+        const lines = [];
+        let line;
+        while ((line = reader.readLine()) !== undefined) {
+          lines.push(line || '');
         }
-        return line;
-      });
 
-      // Replace the reader's content using pushInclude
-      // pushInclude(data, file, path, lineNumber, attributes)
-      reader.pushInclude(
-        out.join('\n'),      // data (String)
-        'virtual.adoc',      // file name (String)
-        'virtual.adoc',      // path       (String)
-        1,                   // line number (Number)
-        {}                   // attributes  (Object)
-      );
+        // 2. Rewrite only the constraint attributes
+        const out = lines.map((l) => {
+          if (!l) return '';
+          const m = l.match(
+            /^:(aasd\d+):\s*pass:q\[\[underline\]#(.+?)#\]\](.*)/
+          );
+          if (m) {
+            // Unwrap the pass:q and rebuild the attribute
+            return `:${m[1]}: ${m[2]}${m[3]}`;
+          }
+          return l;
+        }).filter(Boolean); // Remove any empty lines
 
-      return reader;
+        // 3. Push the rewritten content back
+        if (out.length > 0) {
+          const content = out.join('\n');
+          if (content) {
+            reader.pushInclude(
+              content,
+              reader.file,
+              reader.file,
+              1,
+              { 'convert-constraints': true }
+            );
+          }
+        }
+
+        return reader;
+      } catch (error) {
+        console.error('Error in constraint converter:', error);
+        // Return the original reader without modifications
+        return reader;
+      }
     });
   });
 };
