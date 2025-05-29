@@ -14,16 +14,7 @@ module.exports = function registerConvertConstraints(registry) {
     registry.preprocessor('convert-constraints', function () {
       this.process((doc, reader) => {
         const srcPath = doc.getAttribute('docfile');
-        const filename = srcPath && srcPath.split(/[\\/]/).pop();
-        
-        // Only transform constraints.adoc under spec-metamodel or includes
-        if (
-          filename !== 'constraints.adoc' ||
-          (!srcPath.includes('spec-metamodel/constraints.adoc') &&
-           !srcPath.includes('includes/constraints.adoc'))
-        ) {
-          return reader;
-        }
+        // Remove filename/path check to process all .adoc files
 
         // Skip if already processed - no need to log this
         if (processedFiles.has(srcPath)) {
@@ -58,22 +49,25 @@ module.exports = function registerConvertConstraints(registry) {
             return;
           }
 
-          // Extract constraint ID and content
+          // Extract constraint ID and content (remove underline, just plain text)
           const constraintMatch = l.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
           if (constraintMatch) {
             const [, constraintId, label, content] = constraintMatch;
-            // Store constraint for later registration
-            constraints.set(constraintId, `[underline]#${label}:# ${content.trim()}`);
+            // Store constraint for later registration (no underline, just plain text)
+            constraints.set(constraintId, `${label}: ${content.trim()}`);
             // Do NOT push the original line!
             return;
           }
 
           // Fix xref format by ensuring # before section reference
           const transformed = l.replace(
-            /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]+)\[([^\]]+)\]/g,
+            /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]*)\[([^\]]+)\]/g,
             (match, mod, anchor, label) => {
-              if (!mod || !anchor || !label) return match;
-              const anc = anchor.startsWith('#') ? anchor : `#${anchor.trim()}`;
+              if (!mod || !label) return match;
+              // Clean up anchor: ensure it starts with # if not empty
+              let anc = anchor.trim();
+              if (anc && !anc.startsWith('#')) anc = `#${anc}`;
+              else if (!anc) anc = '';
               transformedCount++;
               return `xref:ROOT:spec-metamodel/${mod}.adoc${anc}[${label}]`;
             }
