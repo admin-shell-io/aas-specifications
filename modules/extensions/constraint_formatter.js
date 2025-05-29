@@ -49,9 +49,15 @@ module.exports = function registerConvertConstraints(registry) {
               const [, attr, label, rest] = match;
               // Remove any leading/trailing whitespace from the label
               const cleanLabel = label.trim();
-              // Create the new line using pure AsciiDoc formatting
-              // Use * for emphasis instead of HTML spans
-              const newLine = `:${attr}: *${cleanLabel}*:${rest}`;
+              
+              // Process xref references in the content
+              const processedContent = rest.replace(
+                /xref:([^:]+):([^[]+)\[([^\]]+)\]/g,
+                'xref:$1:$2[$3]'
+              );
+              
+              // Create the new line with just the constraint number and content
+              const newLine = `:${attr}: ${cleanLabel}:${processedContent}`;
               transformedCount++;
               console.log(`::debug::Found match in ${srcPath}: ${l.trim()} -> ${newLine.trim()}`);
               return newLine;
