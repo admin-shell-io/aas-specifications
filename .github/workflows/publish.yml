@@ -74,7 +74,7 @@ jobs:
 
       
       - name: Generate Site
-        run: npx antora antora-playbook.yml --stacktrace
+        run: npx antora antora-playbook.yml --log-level=debug
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

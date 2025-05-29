@@ -17,6 +17,9 @@ module.exports = function registerConvertConstraints(registry) {
           console.log(`::debug::Skipping non-constraints file: ${filename}`);
           return reader;
         }
+
+        // Set doctype to book
+        doc.setAttribute('doctype', 'book');
   
         // Read original lines
         const lines = [];
@@ -47,6 +50,10 @@ module.exports = function registerConvertConstraints(registry) {
             
             // Keep original format with fixed xrefs
             const newLine = `:${attr}: ${label}: ${fixedContent.trim()}`;
+            
+            // Define the attribute for this constraint
+            doc.setAttribute(attr, newLine);
+            
             transformedCount++;
             console.log(`::debug::Transformed constraint: ${attr}`);
             console.log(`::debug::From: ${l.trim()}`);
