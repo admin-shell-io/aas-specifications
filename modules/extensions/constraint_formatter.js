@@ -59,7 +59,7 @@ module.exports = function registerConvertConstraints(registry) {
           if (constraintMatch) {
             const [, constraintId, label, content] = constraintMatch;
             // Store constraint for later registration
-            constraints.set(constraintId, `${label}: ${content.trim()}`);
+            constraints.set(constraintId, `[underline]#${label}:# ${content.trim()}`);
           }
 
           // Fix xref format by ensuring # before section reference
