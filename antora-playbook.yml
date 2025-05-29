@@ -174,3 +174,8 @@ asciidoc:
     kroki-server-url: http://localhost:8000
     kroki-fetch-diagram: true
     kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/refs/heads/main/plantuml/puml-theme-idta.puml
+    # Enable debugging for GitHub Actions
+    env-github: true
+    page-debug: true
+    # Ensure strict parsing is disabled to allow our preprocessing
+    failure-level: WARN

@@ -72,9 +72,27 @@ jobs:
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
 
-      
+      # Optional: Pre-process problematic files with standalone formatter
+      - name: Pre-process AsciiDoc files
+        run: |
+          if [ -f scripts/standalone-formatter.js ]; then
+            echo "Running standalone formatter on problematic files..."
+            find . -name "constraints.adoc" -type f | while read file; do
+              echo "Pre-processing: $file"
+              node scripts/standalone-formatter.js "$file" "$file.tmp"
+              mv "$file.tmp" "$file"
+            done
+          else
+            echo "No standalone formatter found, relying on Antora extension"
+          fi
+
       - name: Generate Site
-        run: npx antora antora-playbook.yml --log-level=debug
+        run: |
+          echo "Starting Antora build with debug logging..."
+          npx antora antora-playbook.yml --log-level=debug
+        env:
+          # Enable additional debug output
+          DEBUG: antora:*
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

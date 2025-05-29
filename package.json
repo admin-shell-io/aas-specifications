@@ -1,11 +1,26 @@
 {
+  "name": "aas-specifications",
+  "version": "1.0.0",
+  "description": "Asset Administration Shell Specifications",
+  "scripts": {
+    "preprocess": "node scripts/standalone-formatter.js",
+    "build": "npx antora antora-playbook.yml",
+    "build:debug": "npx antora antora-playbook.yml --log-level=debug",
+    "dev": "npx antora antora-playbook.yml --log-level=debug --watch",
+    "format:constraints": "find . -name 'constraints.adoc' -type f -exec node scripts/standalone-formatter.js {} {}.formatted \\; && find . -name '*.formatted' -type f -exec sh -c 'mv \"$1\" \"${1%.formatted}\"' _ {} \\;",
+    "format:all": "find . -name '*.adoc' -type f -exec node scripts/standalone-formatter.js {} {}.formatted \\; && find . -name '*.formatted' -type f -exec sh -c 'mv \"$1\" \"${1%.formatted}\"' _ {} \\;",
+    "test:format": "node -e \"const {formatAsciiDoc} = require('./scripts/standalone-formatter.js'); const fs = require('fs'); const content = fs.readFileSync('test.adoc', 'utf8'); console.log(formatAsciiDoc(content));\"",
+    "format:windows": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.adoc' | ForEach-Object { node scripts/standalone-formatter.js $_.FullName ($_.FullName + '.formatted'); Move-Item ($_.FullName + '.formatted') $_.FullName }\""
+  },
+  "dependencies": {
+    "antora": "^3.1.7",
+    "@antora/lunr-extension": "^1.0.0-alpha.8",
+    "@antora/pdf-extension": "^1.0.0-alpha.7",
+    "asciidoctor-kroki": "^0.18.1"
+  },
   "devDependencies": {
     "@antora/site-generator": "3.1.5"
   },
-  "dependencies": {
-    "@antora/lunr-extension": "^1.0.0-alpha.8",
-    "@antora/pdf-extension": "^1.0.0-alpha.7",
-    "antora": "^3.1.7",
-    "asciidoctor-kroki": "^0.18.1"
-  }
+  "keywords": ["aas", "asset-administration-shell", "antora", "asciidoc"],
+  "license": "MIT"
 }

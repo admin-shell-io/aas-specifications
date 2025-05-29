@@ -1,4 +1,4 @@
-// modules/extensions/convert_constraints.js
+// modules/extensions/constraint_formatter.js
 
 // Track processed files to avoid duplicate transformations
 const processedFiles = new Set();
@@ -14,9 +14,8 @@ module.exports = function registerConvertConstraints(registry) {
     registry.preprocessor('convert-constraints', function () {
       this.process((doc, reader) => {
         const srcPath = doc.getAttribute('docfile');
-        // Remove filename/path check to process all .adoc files
-
-        // Skip if already processed - no need to log this
+        
+        // Skip if already processed
         if (processedFiles.has(srcPath)) {
           return reader;
         }
@@ -24,7 +23,7 @@ module.exports = function registerConvertConstraints(registry) {
         console.log(`::debug::[Constraint Formatter] Processing: ${srcPath}`);
         processedFiles.add(srcPath);
 
-        // Read all lines
+        // Read all lines from the reader
         const lines = [];
         let line;
         while ((line = reader.readLine()) !== undefined) {
@@ -43,24 +42,70 @@ module.exports = function registerConvertConstraints(registry) {
         const constraints = new Map();
         
         const transformedLines = [];
-        lines.forEach((l) => {
+        
+        for (let i = 0; i < lines.length; i++) {
+          const l = lines[i];
+          
           if (!l || typeof l !== 'string') {
             transformedLines.push(l);
-            return;
+            continue;
           }
 
-          // Extract constraint ID and content (remove underline, just plain text)
-          const constraintMatch = l.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
+          let transformedLine = l;
+          let wasTransformed = false;
+
+          // 1. Fix malformed HTML-like underlines
+          // Convert <span class="underline">text</span> to +++<u>text</u>+++
+          if (transformedLine.includes('<span class="underline">') || transformedLine.includes('</span>')) {
+            transformedLine = transformedLine.replace(
+              /<span class="underline">(.*?)<\/span>/g,
+              '+++<u>$1</u>+++'
+            );
+            wasTransformed = true;
+            console.log('::debug::[Constraint Formatter] Fixed underline span');
+          }
+
+          // 2. Fix malformed HTML emphasis tags
+          if (transformedLine.includes('<em>') || transformedLine.includes('</em>')) {
+            transformedLine = transformedLine.replace(/<em>(.*?)<\/em>/g, '_$1_');
+            wasTransformed = true;
+            console.log('::debug::[Constraint Formatter] Fixed emphasis tags');
+          }
+
+          // 3. Fix malformed cross-references with <<>>
+          // Convert <<module:::section:::Class,DisplayText>> to proper xref format
+          const xrefMatches = transformedLine.match(/<<([^>]+)>>/g);
+          if (xrefMatches) {
+            xrefMatches.forEach(match => {
+              const content = match.slice(2, -2); // Remove << >>
+              const parts = content.split(',');
+              if (parts.length === 2) {
+                const [path, displayText] = parts;
+                const pathParts = path.split(':::');
+                if (pathParts.length >= 3) {
+                  const [module, section, className] = pathParts;
+                  // Convert to proper xref format
+                  const newXref = `xref:ROOT:spec-metamodel/${section}.adoc#${className}[${displayText}]`;
+                  transformedLine = transformedLine.replace(match, newXref);
+                  wasTransformed = true;
+                }
+              }
+            });
+          }
+
+          // 4. Extract constraint definitions and convert to attributes
+          const constraintMatch = transformedLine.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
           if (constraintMatch) {
             const [, constraintId, label, content] = constraintMatch;
-            // Store constraint for later registration (no underline, just plain text)
+            // Store constraint for later registration (clean text only)
             constraints.set(constraintId, `${label}: ${content.trim()}`);
-            // Do NOT push the original line!
-            return;
+            // Skip adding this line to output - it will be added as an attribute
+            console.log(`::debug::[Constraint Formatter] Extracted constraint: ${constraintId}`);
+            continue;
           }
 
-          // Fix xref format by ensuring # before section reference
-          const transformed = l.replace(
+          // 5. Fix existing xref format issues
+          const xrefFixed = transformedLine.replace(
             /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]*)\[([^\]]+)\]/g,
             (match, mod, anchor, label) => {
               if (!mod || !label) return match;
@@ -68,69 +113,85 @@ module.exports = function registerConvertConstraints(registry) {
               let anc = anchor.trim();
               if (anc && !anc.startsWith('#')) anc = `#${anc}`;
               else if (!anc) anc = '';
-              transformedCount++;
+              wasTransformed = true;
               return `xref:ROOT:spec-metamodel/${mod}.adoc${anc}[${label}]`;
             }
           );
+          
+          if (xrefFixed !== transformedLine) {
+            transformedLine = xrefFixed;
+            wasTransformed = true;
+          }
 
-          transformedLines.push(transformed);
-        });
+          if (wasTransformed) {
+            transformedCount++;
+          }
 
-        // Inject attribute lines into the AsciiDoc source after the doctype
+          transformedLines.push(transformedLine);
+        }
+
+        // Inject constraint attributes into the document header
         if (constraints.size > 0) {
           const attributeLines = [];
           constraints.forEach((content, id) => {
             attributeLines.push(`:${id}: ${content}`);
           });
-          // Insert after doctype or at the top
+          
+          // Find insertion point (after doctype or at the beginning)
           let insertIndex = transformedLines.findIndex(l => l.trim().startsWith(':doctype:'));
-          if (insertIndex === -1) insertIndex = 0;
-          else insertIndex += 1;
+          if (insertIndex === -1) {
+            insertIndex = 0;
+          } else {
+            insertIndex += 1;
+          }
+          
           transformedLines.splice(insertIndex, 0, ...attributeLines);
-          console.log(`::notice::[Constraint Formatter] Injected ${constraints.size} attribute lines in ${srcPath}`);
+          console.log(`::notice::[Constraint Formatter] Injected ${constraints.size} constraint attributes`);
         }
 
         // Register missing attributes with empty values to prevent warnings
-        ['aasd080', 'aasd081', 'aasd090'].forEach(id => {
+        const missingAttrs = ['aasd080', 'aasd081', 'aasd090'];
+        missingAttrs.forEach(id => {
           if (!transformedLines.some(l => l.startsWith(`:${id}:`))) {
             transformedLines.unshift(`:${id}: `);
-            console.log(`::debug::[Constraint Formatter] Injected missing attribute: ${id}`);
+            console.log(`::debug::[Constraint Formatter] Added missing attribute: ${id}`);
           }
         });
 
         if (transformedCount > 0) {
-          console.log(`::notice::[Constraint Formatter] Transformed ${transformedCount} xref links in ${srcPath}`);
-          // Only show first transformed xref as example
-          const firstXref = transformedLines.find(l => l.includes('xref:'));
-          if (firstXref) {
-            console.log(`::debug::[Constraint Formatter] Example xref: ${firstXref.trim()}`);
-          }
+          console.log(`::notice::[Constraint Formatter] Applied ${transformedCount} transformations in ${srcPath}`);
         }
 
-        // Overwrite in-place so Asciidoctor and Antora see the clean source
+        // Create a new reader with the transformed content
+        const Opal = global.Opal || require('opal-runtime').Opal;
+        const transformedReader = Opal.Asciidoctor.Reader.$new(transformedLines);
+        
+        // Replace the original reader's content
         reader.lines = transformedLines;
+        reader.lineno = 1;
+        
         return reader;
       });
     });
 
-    // Register a block processor to handle constraint blocks
-    registry.block('constraint', function () {
-      const self = this;
-      self.named('constraint');
-      self.onContext('paragraph');
-      self.process(function (parent, reader) {
-        const lines = reader.getLines();
-        const constraintMatch = lines[0].match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
-        
-        if (constraintMatch) {
-          const [, constraintId, label, content] = constraintMatch;
-          // Register the constraint as a document attribute
-          parent.getDocument().setAttribute(constraintId, `${label}: ${content.trim()}`);
-          console.log(`::debug::[Constraint Formatter] Registered constraint in block processor: ${constraintId}`);
-        }
-        
-        return self.createBlock(parent, 'paragraph', lines);
+    // Also register a tree processor as a fallback for any remaining issues
+    registry.treeProcessor('constraint-tree-processor', function () {
+      this.process((doc) => {
+        // Walk through the document and fix any remaining formatting issues
+        const blocks = doc.findBy();
+        blocks.forEach(block => {
+          if (block.getContext() === 'paragraph') {
+            const source = block.getSource();
+            if (source && source.includes('<span class="underline">')) {
+              const fixed = source.replace(
+                /<span class="underline">(.*?)<\/span>/g,
+                '+++<u>$1</u>+++'
+              );
+              block.lines = [fixed];
+            }
+          }
+        });
+        return doc;
       });
     });
-  };
-  
+};
