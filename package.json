@@ -7,10 +7,10 @@
     "build": "npx antora antora-playbook.yml",
     "build:debug": "npx antora antora-playbook.yml --log-level=debug",
     "dev": "npx antora antora-playbook.yml --log-level=debug --watch",
-    "format:constraints": "find . -name 'constraints.adoc' -type f -exec node scripts/standalone-formatter.js {} {}.formatted \\; && find . -name '*.formatted' -type f -exec sh -c 'mv \"$1\" \"${1%.formatted}\"' _ {} \\;",
-    "format:all": "find . -name '*.adoc' -type f -exec node scripts/standalone-formatter.js {} {}.formatted \\; && find . -name '*.formatted' -type f -exec sh -c 'mv \"$1\" \"${1%.formatted}\"' _ {} \\;",
+    "format:constraints": "find . -name 'constraints.adoc' -type f -exec node scripts/standalone-formatter.js {} \\;",
+    "format:all": "find . -name '*.adoc' -type f -exec node scripts/standalone-formatter.js {} \\;",
     "test:format": "node -e \"const {formatAsciiDoc} = require('./scripts/standalone-formatter.js'); const fs = require('fs'); const content = fs.readFileSync('test.adoc', 'utf8'); console.log(formatAsciiDoc(content));\"",
-    "format:windows": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.adoc' | ForEach-Object { node scripts/standalone-formatter.js $_.FullName ($_.FullName + '.formatted'); Move-Item ($_.FullName + '.formatted') $_.FullName }\""
+    "format:windows": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.adoc' | ForEach-Object { node scripts/standalone-formatter.js $_.FullName }\""
   },
   "dependencies": {
     "antora": "^3.1.7",
