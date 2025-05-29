@@ -12,6 +12,11 @@ module.exports = function registerConvertConstraints(registry) {
              !srcPath.includes('includes/constraints.adoc'))) {
           return reader;
         }
+
+        // Set doctype to book if not already set
+        if (!doc.getAttribute('doctype')) {
+          doc.setAttribute('doctype', 'book');
+        }
   
         // Read original lines
         const lines = [];
@@ -22,28 +27,31 @@ module.exports = function registerConvertConstraints(registry) {
 
         // Transform constraint lines
         let transformedCount = 0;
-        lines.forEach((l) => {
+        lines.forEach((l, index) => {
           // Match constraint pattern - keep original format
           const match = l.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
           if (match) {
             const [, attr, label, content] = match;
             
-            // Fix xref format by adding # before section reference
-            const fixedContent = content.replace(
-              /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]+)\[([^\]]+)\]/g,
-              'xref:ROOT:spec-metamodel/$1.adoc#$2[$3]'
-            );
-            
-            // Keep original format with fixed xrefs
-            const newLine = `:${attr}: ${label}: ${fixedContent.trim()}`;
-            
-            // Define the attribute for this constraint
-            doc.setAttribute(attr, newLine);
-            
-            // Add constraint to content
-            lines[lines.indexOf(l)] = newLine;
-            
-            transformedCount++;
+            // Only transform if content exists
+            if (content) {
+              // Fix xref format by adding # before section reference
+              const fixedContent = content.replace(
+                /xref:ROOT:spec-metamodel\/([^.]+)\.adoc([^[]+)\[([^\]]+)\]/g,
+                'xref:ROOT:spec-metamodel/$1.adoc#$2[$3]'
+              );
+              
+              // Keep original format with fixed xrefs
+              const newLine = `:${attr}: ${label}: ${fixedContent.trim()}`;
+              
+              // Define the attribute for this constraint
+              doc.setAttribute(attr, newLine);
+              
+              // Add constraint to content
+              lines[index] = newLine;
+              
+              transformedCount++;
+            }
           }
         });
   
