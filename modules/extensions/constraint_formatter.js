@@ -1,25 +1,17 @@
 // modules/extensions/convert_constraints.js
 
 module.exports = function registerConvertConstraints(registry) {
-    console.log('::debug::Registering constraint formatter extension');
-    
     registry.preprocessor('convert-constraints', function () {
-      console.log('::debug::Preprocessor registered');
-      
       this.process((doc, reader) => {
         const srcPath = doc.getAttribute('docfile');
         const filename = srcPath && srcPath.split(/[\\/]/).pop();
         
-        console.log(`::debug::Processing file: ${srcPath}`);
-        console.log(`::debug::File attributes:`, doc.getAttributes());
-        
-        if (filename !== 'constraints.adoc') {
-          console.log(`::debug::Skipping non-constraints file: ${filename}`);
+        // Check for constraints.adoc in either location
+        if (filename !== 'constraints.adoc' || 
+            (!srcPath.includes('spec-metamodel/constraints.adoc') && 
+             !srcPath.includes('includes/constraints.adoc'))) {
           return reader;
         }
-
-        // Set doctype to book
-        doc.setAttribute('doctype', 'book');
   
         // Read original lines
         const lines = [];
@@ -27,16 +19,10 @@ module.exports = function registerConvertConstraints(registry) {
         while ((line = reader.readLine()) !== undefined) {
           lines.push(line);
         }
-  
-        console.log(`::debug::Found ${lines.length} lines in ${srcPath}`);
-        console.log(`::debug::First few lines before transformation:`);
-        lines.slice(0, 3).forEach((l, i) => {
-          console.log(`::debug::Line ${i + 1}: ${l.trim()}`);
-        });
-  
+
         // Transform constraint lines
         let transformedCount = 0;
-        const transformed = lines.map((l) => {
+        lines.forEach((l) => {
           // Match constraint pattern - keep original format
           const match = l.match(/^:(aasd\d+):\s*(?:pass:q\[\[underline\]#)?(Constraint AASd-\d+):#?\s*(.*?)(?:#)?$/);
           if (match) {
@@ -54,23 +40,15 @@ module.exports = function registerConvertConstraints(registry) {
             // Define the attribute for this constraint
             doc.setAttribute(attr, newLine);
             
+            // Add constraint to content
+            lines[lines.indexOf(l)] = newLine;
+            
             transformedCount++;
-            console.log(`::debug::Transformed constraint: ${attr}`);
-            console.log(`::debug::From: ${l.trim()}`);
-            console.log(`::debug::To: ${newLine.trim()}`);
-            return newLine;
           }
-          return l;
         });
   
-        console.log(`::notice::Transformed ${transformedCount} constraints in ${srcPath}`);
-        console.log(`::debug::First few lines after transformation:`);
-        transformed.slice(0, 3).forEach((l, i) => {
-          console.log(`::debug::Line ${i + 1}: ${l.trim()}`);
-        });
-  
-        // Overwrite lines buffer in-place
-        reader.lines = transformed;
+        // Overwrite lines buffer in-place with transformed content
+        reader.lines = lines;
         return reader;
       });
     });
