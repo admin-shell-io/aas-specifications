@@ -49,8 +49,9 @@ module.exports = function registerConvertConstraints(registry) {
               const [, attr, label, rest] = match;
               // Remove any leading/trailing whitespace from the label
               const cleanLabel = label.trim();
-              // Create the new line without the pass:q and underline formatting
-              const newLine = `:${attr}: ${cleanLabel}:${rest}`;
+              // Create the new line using pure AsciiDoc formatting
+              // Use * for emphasis instead of HTML spans
+              const newLine = `:${attr}: *${cleanLabel}*:${rest}`;
               transformedCount++;
               console.log(`::debug::Found match in ${srcPath}: ${l.trim()} -> ${newLine.trim()}`);
               return newLine;
