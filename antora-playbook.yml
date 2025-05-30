@@ -167,7 +167,7 @@ antora:
 asciidoc:
   sourcemap: true
   extensions:
-    - ./modules/extensions/constraint_include_processor.js
+    - ./modules/extensions/constraint_preprocessor.js
     - asciidoctor-kroki
   attributes:
     attribute-missing: skip      
