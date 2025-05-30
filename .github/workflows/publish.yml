@@ -73,37 +73,24 @@ jobs:
         run: sudo apt update && sudo apt install -y graphviz
 
       # Optional: Pre-process problematic files with standalone formatter
-      - name: Pre-process AsciiDoc files
+           - name: Pre-process AsciiDoc files
         run: |
           if [ -f scripts/standalone-formatter.js ]; then
             echo "Running standalone formatter on problematic files..."
-            # Process all constraint files
+            # Process all constraint files, writing back to the same file
             find . -name "constraints.adoc" -type f | while read file; do
               echo "Pre-processing: $file"
-              node scripts/standalone-formatter.js "$file"
-              # Verify the file was modified
-              if [ -f "$file" ]; then
-                echo "Successfully processed: $file"
-              else
-                echo "Error: Failed to process $file"
-                exit 1
-              fi
+              node scripts/standalone-formatter.js "$file" "$file"
             done
-            # Process all AsciiDoc files in spec-metamodel directory
+            # Process all AsciiDoc files in spec-metamodel directory, writing back in place
             find . -path "*/spec-metamodel/*.adoc" -type f | while read file; do
               echo "Pre-processing: $file"
-              node scripts/standalone-formatter.js "$file"
-              # Verify the file was modified
-              if [ -f "$file" ]; then
-                echo "Successfully processed: $file"
-              else
-                echo "Error: Failed to process $file"
-                exit 1
-              fi
+              node scripts/standalone-formatter.js "$file" "$file"
             done
           else
             echo "No standalone formatter found, relying on Antora extension"
           fi
+
 
       - name: Generate Site
         run: |
