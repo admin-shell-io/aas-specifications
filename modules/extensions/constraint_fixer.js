@@ -5,14 +5,21 @@ module.exports = function (registry) {
   registry.preprocessor(function () {
     this.process(function (doc, reader) {
       console.log('::group::constraint-fixer PRE');
-      const content = reader.read();
-      if (typeof content !== 'string') {
-        console.warn('Skipping processing: content is not a string');
+      
+      // Get content and ensure it's a string
+      let content = reader.read();
+      if (!content) {
+        console.warn('Skipping processing: content is empty or undefined');
         return reader;
       }
-
+      
+      // Ensure content is a string
+      content = String(content);
+      
       const lines = content.split('\n');
       const cleaned = lines.map((line, idx) => {
+        if (!line) return line; // Skip empty lines
+        
         const after = line
           .replace(/<span class="underline">(.*?)<\/span>/g, '+++<u>$1</u>+++')
           .replace(
@@ -53,7 +60,14 @@ module.exports = function (registry) {
     this.process(function (_doc, reader, target, _attrs) {
       console.log(`::group::constraint-fixer INC ${target}`);
       const lines = reader.getLines();
+      if (!lines || !Array.isArray(lines)) {
+        console.warn('Skipping processing: no lines to process');
+        return { content: '' };
+      }
+      
       const cleaned = lines.map((line, idx) => {
+        if (!line) return line; // Skip empty lines
+        
         const after = line
           .replace(/<span class="underline">(.*?)<\/span>/g, '+++<u>$1</u>+++')
           .replace(
