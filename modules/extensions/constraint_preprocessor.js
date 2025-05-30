@@ -3,40 +3,38 @@
 module.exports = function (registry) {
   registry.preprocessor(function () {
     this.process(function (doc, reader) {
-      // Read all pre-included lines
+      // 1) Read all pending lines
       const lines = [];
       while (reader.hasMoreLines()) {
         lines.push(reader.readLine());
       }
-      
-      // Apply regex transforms on each String line
-      // Filter out undefined/null lines and ensure we have strings
-      const cleaned = lines
-        .filter(line => line != null) // Remove null/undefined lines
-        .map((line) => {
-          // Ensure line is a string
-          const str = String(line);
-          return str
+      // 2) Clean up underline spans and pass:q macros
+      const cleanedText = lines
+        .filter(line => line != null)
+        .map(line =>
+          String(line)
             .replace(
               /<span class="underline">(.*?)<\/span>/g,
               '+++<u>$1</u>+++'
             )
             .replace(
               /pass:q\[\[underline\]#([^#]+)#\s*(.*?)\]/g,
-              (_, label, rest) => `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
-            );
-        });
-      
-      // Join into a single String so pushInclude(data) works
-      const cleanedText = cleaned.join('\n');
+              (_, label, rest) =>
+                `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
+            )
+        )
+        .join('\n');
+
+      // 3) Re-inject using the correct reader.file() and reader.path() methods
       reader.pushInclude(
-        cleanedText,   // String data (required) 
-        reader.file,   // current filename (String) 
-        reader.path,   // current include path (String) 
-        1,             // starting line number
-        {}             // attributes map (required)
+        cleanedText,      // the modified content
+        reader.file(),    // ← correct: returns filename string :contentReference[oaicite:2]{index=2}
+        reader.path(),    // ← correct: returns include path string :contentReference[oaicite:3]{index=3}
+        1,                // line offset
+        {}                // empty attributes map
       );
-      return null;     // continue with modified reader
+
+      return null; // continue parsing with the updated reader
     });
   });
 };
