@@ -3,12 +3,17 @@
 module.exports = function (registry) {
   registry.preprocessor(function () {
     this.process(function (doc, reader) {
-      // 1) Read all pending lines
-      const lines = [];
-      while (reader.hasMoreLines()) {
-        lines.push(reader.readLine());
-      }
-      // 2) Clean up underline spans and pass:q macros
+      // 1) Grab the reader’s cursor so we can preserve real file/path/lineno
+      const cursor = reader.getCursor();  
+      // Cursor methods:
+      //   cursor.getFile()      → current filename (String) :contentReference[oaicite:0]{index=0}
+      //   cursor.getPath()      → current include path (String) :contentReference[oaicite:1]{index=1}
+      //   cursor.getLineNumber()→ current line number (Number) :contentReference[oaicite:2]{index=2}
+
+      // 2) Read all remaining lines as an Array of String
+      const lines = reader.getLines();      // returns String[] :contentReference[oaicite:3]{index=3}
+
+      // 3) Apply your regex transforms
       const cleanedText = lines
         .filter(line => line != null)
         .map(line =>
@@ -19,22 +24,21 @@ module.exports = function (registry) {
             )
             .replace(
               /pass:q\[\[underline\]#([^#]+)#\s*(.*?)\]/g,
-              (_, label, rest) =>
-                `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
+              (_, label, rest) => `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
             )
         )
         .join('\n');
 
-      // 3) Re-inject using the correct reader.file() and reader.path() methods
+      // 4) Push the cleaned text back into the reader with the correct context
       reader.pushInclude(
-        cleanedText,      // the modified content
-        reader.file(),    // ← correct: returns filename string :contentReference[oaicite:2]{index=2}
-        reader.path(),    // ← correct: returns include path string :contentReference[oaicite:3]{index=3}
-        1,                // line offset
-        {}                // empty attributes map
+        cleanedText,           // must be a String so internal .replace() calls succeed :contentReference[oaicite:4]{index=4}
+        cursor.getFile(),      // real filename, never undefined :contentReference[oaicite:5]{index=5}
+        cursor.getPath(),      // real include path, never undefined :contentReference[oaicite:6]{index=6}
+        cursor.getLineNumber(),// real line offset, never undefined :contentReference[oaicite:7]{index=7}
+        {}                     // attributes map
       );
 
-      return null; // continue parsing with the updated reader
+      return null; // continue parsing with your transformed content in place
     });
   });
 };
