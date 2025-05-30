@@ -81,8 +81,7 @@ jobs:
           # Clean the build directory to ensure fresh processing
           rm -rf build/
           # Run Antora with debug logging
-          npx antora antora-playbook.yml --stacktrace -r ./modules/extensions/constraint-fixer.js
-        env:
+          npx antora antora-playbook.yml --stacktrace 
           # Enable additional debug output
           DEBUG: antora:*
 
