@@ -8,18 +8,25 @@ module.exports = function (registry) {
       while (reader.hasMoreLines()) {
         lines.push(reader.readLine());
       }
+      
       // Apply regex transforms on each String line
-      const cleaned = lines.map((line) =>
-        line
-          .replace(
-            /<span class="underline">(.*?)<\/span>/g,
-            '+++<u>$1</u>+++'
-          )
-          .replace(
-            /pass:q\[\[underline\]#([^#]+)#\s*(.*?)\]/g,
-            (_, label, rest) => `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
-          )
-      );
+      // Filter out undefined/null lines and ensure we have strings
+      const cleaned = lines
+        .filter(line => line != null) // Remove null/undefined lines
+        .map((line) => {
+          // Ensure line is a string
+          const str = String(line);
+          return str
+            .replace(
+              /<span class="underline">(.*?)<\/span>/g,
+              '+++<u>$1</u>+++'
+            )
+            .replace(
+              /pass:q\[\[underline\]#([^#]+)#\s*(.*?)\]/g,
+              (_, label, rest) => `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
+            );
+        });
+      
       // Join into a single String so pushInclude(data) works
       const cleanedText = cleaned.join('\n');
       reader.pushInclude(
