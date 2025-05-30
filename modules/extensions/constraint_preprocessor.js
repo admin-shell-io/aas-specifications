@@ -3,38 +3,33 @@
 module.exports = function (registry) {
   registry.preprocessor(function () {
     this.process(function (doc, reader) {
-      // 1) Read all (already-include-processed) lines
+      // Read all pre-included lines
       const lines = [];
       while (reader.hasMoreLines()) {
         lines.push(reader.readLine());
       }
-
-      // 2) Clean up spans and pass:q macros
+      // Apply regex transforms on each String line
       const cleaned = lines.map((line) =>
         line
-          // convert <span class="underline">…</span>
           .replace(
             /<span class="underline">(.*?)<\/span>/g,
             '+++<u>$1</u>+++'
           )
-          // convert pass:q[[underline]#Label:# content]
           .replace(
             /pass:q\[\[underline\]#([^#]+)#\s*(.*?)\]/g,
             (_, label, rest) => `+++<u>${label.trim()}</u>+++ ${rest.trim()}`
           )
       );
-
-      // 3) Re-inject the cleaned lines (now with a valid empty-attributes object)
+      // Join into a single String so pushInclude(data) works
+      const cleanedText = cleaned.join('\n');
       reader.pushInclude(
-        cleaned,
-        reader.file,  // current filename (string)
-        reader.path,  // current include path (string)
-        1,            // starting line number
-        {}            // attributes map (must be provided)
+        cleanedText,   // String data (required) 
+        reader.file,   // current filename (String) 
+        reader.path,   // current include path (String) 
+        1,             // starting line number
+        {}             // attributes map (required)
       );
-
-      // Returning null tells Asciidoctor.js to continue with the modified reader
-      return null;
+      return null;     // continue with modified reader
     });
   });
 };
