@@ -167,10 +167,10 @@ antora:
 asciidoc:
   sourcemap: true
   extensions:
-    - ./modules/extensions/constraint_formatter.js
+    - ./modules/extensions/constraint_preprocessor.js
     - asciidoctor-kroki
   attributes:
-    xrefstyle: short
+    attribute-missing: skip      
     kroki-server-url: http://localhost:8000
     kroki-fetch-diagram: true
     kroki-plantuml-include: https://raw.githubusercontent.com/admin-shell-io/aas-specifications/refs/heads/main/plantuml/puml-theme-idta.puml
