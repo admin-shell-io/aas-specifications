@@ -81,7 +81,7 @@ jobs:
           # Clean the build directory to ensure fresh processing
           rm -rf build/
           # Run Antora with debug logging
-          npx antora antora-playbook.yml --log-level=debug
+          npx antora antora-playbook.yml --stacktrace
         env:
           # Enable additional debug output
           DEBUG: antora:*
