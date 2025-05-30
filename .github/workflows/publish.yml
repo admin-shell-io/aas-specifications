@@ -73,7 +73,7 @@ jobs:
         run: sudo apt update && sudo apt install -y graphviz
 
       # Optional: Pre-process problematic files with standalone formatter
-           - name: Pre-process AsciiDoc files
+      - name: Pre-process AsciiDoc files
         run: |
           if [ -f scripts/standalone-formatter.js ]; then
             echo "Running standalone formatter on problematic files..."
@@ -90,7 +90,6 @@ jobs:
           else
             echo "No standalone formatter found, relying on Antora extension"
           fi
-
 
       - name: Generate Site
         run: |
