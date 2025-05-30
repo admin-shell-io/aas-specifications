@@ -29,6 +29,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true 
     services:
       kroki:
         image: yuzutech/kroki
@@ -72,16 +74,14 @@ jobs:
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
 
-      # Optional: Pre-process problematic files with standalone formatter
       
-
       - name: Generate Site
         run: |
           echo "Starting Antora build with debug logging..."
           # Clean the build directory to ensure fresh processing
           rm -rf build/
           # Run Antora with debug logging
-          npx antora antora-playbook.yml --stacktrace
+          npx antora antora-playbook.yml --stacktrace -r ./modules/extensions/constraint-fixer.js
         env:
           # Enable additional debug output
           DEBUG: antora:*

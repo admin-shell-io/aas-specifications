@@ -6,5 +6,5 @@ asciidoc:
     pdf-theme: pdf-theme.yml
 build:
   build:
-  command: bundle exec asciidoctor-pdf -r asciidoctor-diagram
+  command: bundle exec asciidoctor-pdf -r asciidoctor-diagram -r ./modules/extensions/constraint-fixer.js
   keep_aggregate_source: true
