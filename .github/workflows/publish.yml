@@ -80,8 +80,11 @@ jobs:
           find . -type f -name '*.adoc' -print0 \
             | xargs -0 sed -i -E 's|<span class="underline">([^<]*)</span>|[underline]#\1#|g'
 
+      - name: Clean Antora Build
+        run: npx antora --clean antora-playbook.yml
+
       - name: Generate Site
-        run: npx antora antora-playbook.yml
+        run: npx antora antora-playbook.yml --stacktrace
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

@@ -1,6 +1,8 @@
 root_level: 0
 component_versions: '**'
 asciidoc:
+  extensions:
+    - modules/extensions/rewrite-constraints-ext.js
   attributes:
     source-highlighter: rouge
     pdf-theme: pdf-theme.yml
