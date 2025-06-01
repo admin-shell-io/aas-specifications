@@ -3,22 +3,30 @@
 module.exports.register = function (registry) {
   registry.preprocessor(function () {
     this.process(function (_doc, reader) {
-      const originalLines = reader.lines;                  // get all lines of the current document :contentReference[oaicite:0]{index=0}
+      const originalLines = reader.lines;
       const rewrittenLines = [];
 
       for (let i = 0; i < originalLines.length; i++) {
         let line = originalLines[i];
 
-        // As long as the current line ends with a backslash, remove it and append the next line (trimmed)
-        while (line.endsWith('\\')) {                      // String.prototype.endsWith :contentReference[oaicite:1]{index=1}
-          // Strip the trailing backslash, then append the next physical line trimmed of leading/trailing whitespace
+        // 1. Collapse backslash‐terminated lines
+        while (line.endsWith('\\')) {
           line = line.slice(0, -1) + originalLines[++i].trim();
         }
+
+        // 2. Convert <span class="underline">…</span> → [.underline]#…#
+        line = line.replace(
+          /<span\s+class="underline">([\s\S]*?)<\/span>/gi,
+          '[.underline]#$1#'
+        );
+
+        // 3. Convert <em>…</em> → *…*
+        line = line.replace(/<em>([\s\S]*?)<\/em>/gi, '*$1*');
 
         rewrittenLines.push(line);
       }
 
-      reader.lines = rewrittenLines;                       // replace the reader buffer with our collapsed lines
+      reader.lines = rewrittenLines;
       return reader;
     });
   });
