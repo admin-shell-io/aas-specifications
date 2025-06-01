@@ -11,57 +11,84 @@ module.exports.register = function (registry) {
       for (let i = 0; i < originalLines.length; i++) {
         let line = originalLines[i];
 
-        // Toggle inTable when encountering a table delimiter (|===)
+        // Toggle inTable when encountering a table delimiter
         if (line.trim() === '|===') {
           inTable = !inTable;
           rewrittenLines.push(line);
           continue;
         }
 
-        // Only process “:aasdXXX:” constraint lines when not inside a table
+        // 1) First, catch any literal <span class="underline">Constraint AASd-XYZ:</span> in the body
+        //    and replace it with [underline]#Constraint AASd-XYZ:# 
+        //    (so that no <span> remains for AsciiDoctor to choke on).
+        //    We use a global regex here; it will fire anywhere, even if the line was already rewritten.
+        line = line.replace(
+          /<span\s+class=["']underline["']\s*>\s*(Constraint\s+AASd-(\d+):)\s*<\/span>/g,
+          (_all, text, num) => `[underline]#${text}#`
+        );
+
+        // 2) Next, if we're _not_ inside a table block, look for attribute lines that start with ":aasdNNN:"
         if (!inTable) {
-          const match = line.match(/^:aasd(\d+):\s*Constraint AASd-(\d+):\s*(.*)$/);
-          if (match) {
-            const [, attrNum, constraintNum, rawText] = match;
+          // match something like:
+          //   :aasd007: Constraint AASd-007: If both the <<spec-metamodel::submodel-elements:::Property,Property/value>> …
+          const attrMatch = line.match(
+            /^:aasd(\d+):\s*Constraint AASd-(\d+):\s*(.*)$/
+          );
+          if (attrMatch) {
+            const [, attrNum, constraintNum, rawText] = attrMatch;
             if (typeof rawText !== 'string') {
               rewrittenLines.push(line);
               continue;
             }
 
-            // 1) Convert <<spec-metamodel::…>> to xref:ROOT:…[…]
-            let processed = rawText.replace(
-              /<<spec-metamodel::([^,>]+),([^>]+)>>/g,
-              (_all, modulePath, anchor) => {
-                // modulePath might be something like "core::AssetInformation"
-                // anchor might be "AssetInformation/globalAssetId"
-                // Split at “::” into [pkg, …rest]
-                const [pkg, ...rest] = modulePath.split('::');
-                // Reassemble the AAS-asciidoc reference: e.g. “xref:ROOT:spec-metamodel/core.adoc#AssetInformation/globalAssetId[]”
-                return `xref:ROOT:spec-metamodel/${pkg}.adoc#${anchor}[]`;
+            console.log(
+              `Processing attribute :aasd${attrNum}: Constraint AASd-${constraintNum}`
+            );
+            let processed = rawText;
+
+            // 2a) Replace all <<spec-metamodel::Module:::Anchor>> → xref:ROOT:spec-metamodel/Module.adoc#Anchor[]
+            processed = processed.replace(
+              /<<spec-metamodel::([^:>]+)(?:::)?([^,>]+)?(?:,([^>]+))?>>/g,
+              (_all, modulePath, maybeAnchor, maybeSuffix) => {
+                // Some variants of your constraints use "core::AssetInformation,globalAssetId"
+                // and some use "submodel-elements:::Property,value". We want to extract both parts.
+                //
+                // modulePath might be like "core" or "submodel-elements"
+                // maybeAnchor might be "AssetInformation" or "Property"
+                // maybeSuffix might be "globalAssetId" or "value"
+                //
+                // We will rebuild as: xref:ROOT:spec-metamodel/{modulePath}.adoc#{maybeAnchor}/{maybeSuffix}[]
+                if (maybeAnchor && maybeSuffix) {
+                  return `xref:ROOT:spec-metamodel/${modulePath}.adoc#${maybeAnchor}/${maybeSuffix}[]`;
+                } else if (maybeAnchor) {
+                  // if there's no comma, just treat maybeAnchor as the full Anchor
+                  return `xref:ROOT:spec-metamodel/${modulePath}.adoc#${maybeAnchor}[]`;
+                }
+                // fallback—should not really happen
+                return `xref:ROOT:spec-metamodel/${modulePath}.adoc#[]`;
               }
             );
 
-            // 2) Replace <em>…</em> with _…_
+            // 2b) Replace any <em>…</em> with _…_
             processed = processed.replace(/<em>([\s\S]*?)<\/em>/gi, '_$1_');
 
-            // 3) Wrap “Constraint AASd-XYZ:” in [underline]#…#
-            const replacement =
+            // 2c) Finally wrap "Constraint AASd-XYZ:" itself in underline
+            const replacedAttrLine =
               `:aasd${attrNum}: [underline]#Constraint AASd-${constraintNum}:# ${processed}`;
-            console.log(`Transformed :aasd${attrNum}: → ${replacement}`);
-            rewrittenLines.push(replacement);
+            console.log(` → rewritten to: ${replacedAttrLine}`);
+            rewrittenLines.push(replacedAttrLine);
             continue;
           }
         }
 
-        // If not a constraint line, or inside a table, leave it unchanged
+        // 3) If no special case matched, just leave the line as-is
         rewrittenLines.push(line);
       }
 
-      // Overwrite reader.lines directly so Antora never sees undefined entries
+      // Overwrite reader.lines so that Antora/AsciiDoctor never sees any <span>
       reader.lines = rewrittenLines;
       console.log(
-        'Transformation complete. Total lines processed:',
-        originalLines.length
+        `Transformation complete. Total lines processed: ${originalLines.length}`
       );
       return reader;
     });
