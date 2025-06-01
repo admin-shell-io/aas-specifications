@@ -12,7 +12,7 @@ Specifications define the software structure, interface and semantics of the Ass
 :part-4-mainpage: IDTA-01004:ROOT:index.adoc
 :part-5-mainpage: IDTA-01005:ROOT:index.adoc
 
-[.text-center]
+
 Refer to the https://industrialdigitaltwin.org[IDTA,window=_blank] for more information on the Asset Administration Shell.
 
 // First row - 3 columns

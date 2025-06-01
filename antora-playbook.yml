@@ -165,6 +165,7 @@ asciidoc:
   sourcemap: true
   extensions:
     - asciidoctor-kroki
+    - modules/extensions/rewrite-constraints-ext.js
   attributes:
     xrefstyle: short
     kroki-server-url: http://localhost:8000

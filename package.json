@@ -5,7 +5,27 @@
   "dependencies": {
     "@antora/lunr-extension": "^1.0.0-alpha.8",
     "@antora/pdf-extension": "^1.0.0-alpha.7",
+    "@asciidoctor/reducer": "^1.1.2",
     "antora": "^3.1.7",
+    "asciidoctor": "^3.0.4",
     "asciidoctor-kroki": "^0.18.1"
-  }
+  },
+  "name": "aas-specs-antora-2",
+  "version": "1.0.0",
+  "description": "This repository manages and contains the configurations for building the documentation website for the AAS by the [Industrial Digital Twin Association](https://industrialdigitaltwin.org).\r It includes tools to generate the documentation on demand by compiling and assembling content from various remote repositories and sources written in AsciiDoc using [Antora](https://antora.org/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/admin-shell-io/aas-specs-antora.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/admin-shell-io/aas-specs-antora/issues"
+  },
+  "homepage": "https://github.com/admin-shell-io/aas-specs-antora#readme"
 }
