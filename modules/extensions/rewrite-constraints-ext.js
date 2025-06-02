@@ -3,29 +3,73 @@ console.log('Loading rewrite-constraints-ext.js extension...');
 
 function transformConstraints(source, docfile) {
   let transformedSource = source;
-  // Match the actual format: :aasdXXX: pass:q[[underline]#Constraint AASd-XXX:# content...]
-  const originalMatches = (source.match(/^:aasd(\d+):\s*pass:q\[\[underline\]#Constraint AASd-(\d+):#\s*(.*)$/gm) || []);
+  let totalTransformations = 0;
   
-  if (originalMatches.length > 0) {
-    console.log(`\n=== TRANSFORMING ${originalMatches.length} constraint(s) in ${docfile} ===`);
-    
+  // Pattern 1: :aasdXXX: pass:q[[underline]#Constraint AASd-XXX:# content...]
+  const aasdMatches = (source.match(/^:aasd(\d+):\s*pass:q\[\[underline\]#Constraint AASd-(\d+):#\s*(.*?)\]$/gm) || []);
+  if (aasdMatches.length > 0) {
     transformedSource = transformedSource.replace(
-      /^:aasd(\d+):\s*pass:q\[\[underline\]#Constraint AASd-(\d+):#\s*(.*)$/gm,
+      /^:aasd(\d+):\s*pass:q\[\[underline\]#Constraint AASd-(\d+):#\s*(.*?)\]$/gm,
       (match, attrNum, constraintNum, rawText) => {
-        const replacement = `:aasd${attrNum}: Constraint AASd-${constraintNum}: ${rawText}`;
-        console.log(`BEFORE: ${match.substring(0, 80)}...`);
-        console.log(`AFTER:  ${replacement.substring(0, 80)}...`);
+        const cleanedText = rawText
+          .replace(/__/g, '_')
+          .replace(/\]\s*$/, '')
+          .trim();
+        const replacement = `:aasd${attrNum}: Constraint AASd-${constraintNum}: ${cleanedText}`;
+        console.log(`AASd BEFORE: ${match.substring(0, 80)}...`);
+        console.log(`AASd AFTER:  ${replacement.substring(0, 80)}...`);
+        totalTransformations++;
         return replacement;
       }
     );
+  }
+  
+  // Pattern 2: <span class="underline">Constraint AASa-XXX:</span> content
+  const aasaMatches = (source.match(/<span class="underline">Constraint AASa-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm) || []);
+  if (aasaMatches.length > 0) {
+    transformedSource = transformedSource.replace(
+      /<span class="underline">Constraint AASa-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm,
+      (match, constraintNum, content) => {
+        const cleanedContent = content.trim();
+        const replacement = `Constraint AASa-${constraintNum}: ${cleanedContent}`;
+        console.log(`AASa BEFORE: ${match.substring(0, 80)}...`);
+        console.log(`AASa AFTER:  ${replacement.substring(0, 80)}...`);
+        totalTransformations++;
+        return replacement;
+      }
+    );
+  }
+  
+  // Pattern 3: <span class="underline">Constraint AASc-XXX:</span> content
+  const aascMatches = (source.match(/<span class="underline">Constraint AASc-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm) || []);
+  if (aascMatches.length > 0) {
+    transformedSource = transformedSource.replace(
+      /<span class="underline">Constraint AASc-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm,
+      (match, constraintNum, content) => {
+        const cleanedContent = content.trim();
+        const replacement = `Constraint AASc-${constraintNum}: ${cleanedContent}`;
+        console.log(`AASc BEFORE: ${match.substring(0, 80)}...`);
+        console.log(`AASc AFTER:  ${replacement.substring(0, 80)}...`);
+        totalTransformations++;
+        return replacement;
+      }
+    );
+  }
+  
+  if (totalTransformations > 0) {
+    console.log(`\n=== TRANSFORMED ${totalTransformations} total constraint(s) in ${docfile} ===`);
+    console.log(`  - AASd: ${aasdMatches.length} constraints`);
+    console.log(`  - AASa: ${aasaMatches.length} constraints`);
+    console.log(`  - AASc: ${aascMatches.length} constraints`);
     console.log(`=== TRANSFORMATION COMPLETE for ${docfile} ===\n`);
   } else {
-    // Check if file has any aasd references at all
-    const anyAasd = source.match(/aasd/gi);
-    if (anyAasd && anyAasd.length > 0) {
-      console.log(`Note: ${docfile} contains ${anyAasd.length} 'aasd' references but no constraint lines matching pattern`);
+    // Check if file has any constraint references at all
+    const anyConstraint = source.match(/aas[dac]/gi);
+    if (anyConstraint && anyConstraint.length > 0) {
+      console.log(`Note: ${docfile} contains ${anyConstraint.length} constraint references but no constraint lines matching patterns`);
     }
   }
+  
   return transformedSource;
 }
 
