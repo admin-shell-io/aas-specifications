@@ -1,0 +1,47 @@
+@startuml
+!theme plain
+
+!$BLACK  = "#000121"
+!$BLUE   = "#0028CD"
+!$LIGHTBLUE   = "#E5F0F7"
+!$ORANGE = "#FF500F"
+!$RED    = "#DB252B"
+!$WHITE  = "#FFFFFF"
+!$GREY  = "#d1d1d1"
+!$DARK_GREY = "#535353"
+
+!$BGCOLOR = $GREY
+!$FGCOLOR = $BLUE
+!$FONTCOLOR = $BLACK
+
+!ifndef $FONT_NAME
+  !$FONT_NAME = "Arial"
+!endif
+
+skinparam BackgroundColor $WHITE
+skinparam DefaultFontName $FONT_NAME
+skinparam Shadowing false
+
+skinparam Activity {
+  BackgroundColor $BGCOLOR
+  BorderColor $FGCOLOR
+  FontColor $FONTCOLOR
+}
+
+skinparam Class {
+  BackgroundColor $BGCOLOR
+  BorderColor $FGCOLOR
+  FontColor $FONTCOLOR
+}
+
+skinparam Note {
+  FontColor $FONTCOLOR
+  BackgroundColor $LIGHTBLUE
+}
+
+skinparam Arrow {
+  Color $ORANGE
+}
+
+hide empty members
+@enduml 

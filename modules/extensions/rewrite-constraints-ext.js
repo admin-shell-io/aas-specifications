@@ -5,9 +5,15 @@ function transformConstraints(source, docfile) {
   let transformedSource = source;
   let totalTransformations = 0;
   
+  // Add debug logging to see what files are being processed
+  if (source.includes('aasa') || source.includes('aasc') || source.includes('aasd')) {
+    console.log(`\n🔍 CHECKING FILE: ${docfile} for constraints...`);
+  }
+  
   // Pattern 1: :aasdXXX: pass:q[[underline]#Constraint AASd-XXX:# content...]
   const aasdMatches = (source.match(/^:aasd(\d+):\s*pass:q\[\[underline\]#Constraint AASd-(\d+):#\s*(.*?)\]$/gm) || []);
   if (aasdMatches.length > 0) {
+    console.log(`🎯 FOUND ${aasdMatches.length} AASd constraints in ${docfile}`);
     transformedSource = transformedSource.replace(
       /^:aasd(\d+):\s*pass:q\[\[underline\]#Constraint AASd-(\d+):#\s*(.*?)\]$/gm,
       (match, attrNum, constraintNum, rawText) => {
@@ -16,40 +22,45 @@ function transformConstraints(source, docfile) {
           .replace(/\]\s*$/, '')
           .trim();
         const replacement = `:aasd${attrNum}: Constraint AASd-${constraintNum}: ${cleanedText}`;
-        console.log(`AASd BEFORE: ${match.substring(0, 80)}...`);
-        console.log(`AASd AFTER:  ${replacement.substring(0, 80)}...`);
+        console.log(`✅ AASd-${constraintNum} TRANSFORMED`);
         totalTransformations++;
         return replacement;
       }
     );
   }
   
-  // Pattern 2: <span class="underline">Constraint AASa-XXX:</span> content
-  const aasaMatches = (source.match(/<span class="underline">Constraint AASa-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm) || []);
+  // Pattern 2: :aasaXXX: pass:q[[underline]#Constraint AASa-XXX:# content...]
+  const aasaMatches = (source.match(/^:aasa(\d+):\s*pass:q\[\[underline\]#Constraint AASa-(\d+):#\s*(.*?)\]$/gm) || []);
   if (aasaMatches.length > 0) {
+    console.log(`🎯 FOUND ${aasaMatches.length} AASa constraints in ${docfile}`);
     transformedSource = transformedSource.replace(
-      /<span class="underline">Constraint AASa-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm,
-      (match, constraintNum, content) => {
-        const cleanedContent = content.trim();
-        const replacement = `Constraint AASa-${constraintNum}: ${cleanedContent}`;
-        console.log(`AASa BEFORE: ${match.substring(0, 80)}...`);
-        console.log(`AASa AFTER:  ${replacement.substring(0, 80)}...`);
+      /^:aasa(\d+):\s*pass:q\[\[underline\]#Constraint AASa-(\d+):#\s*(.*?)\]$/gm,
+      (match, attrNum, constraintNum, rawText) => {
+        const cleanedText = rawText
+          .replace(/__/g, '_')
+          .replace(/\]\s*$/, '')
+          .trim();
+        const replacement = `:aasa${attrNum}: Constraint AASa-${constraintNum}: ${cleanedText}`;
+        console.log(`✅ AASa-${constraintNum} TRANSFORMED`);
         totalTransformations++;
         return replacement;
       }
     );
   }
   
-  // Pattern 3: <span class="underline">Constraint AASc-XXX:</span> content
-  const aascMatches = (source.match(/<span class="underline">Constraint AASc-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm) || []);
+  // Pattern 3: :aasc3aXXX: pass:q[[underline]#Constraint AASc-3a-XXX:# content...]
+  const aascMatches = (source.match(/^:aasc3a(\d+):\s*pass:q\[\[underline\]#Constraint AASc-3a-(\d+):#\s*(.*?)\]$/gm) || []);
   if (aascMatches.length > 0) {
+    console.log(`🎯 FOUND ${aascMatches.length} AASc constraints in ${docfile}`);
     transformedSource = transformedSource.replace(
-      /<span class="underline">Constraint AASc-([^<]+):<\/span>\s*(.*?)(?=\n|$)/gm,
-      (match, constraintNum, content) => {
-        const cleanedContent = content.trim();
-        const replacement = `Constraint AASc-${constraintNum}: ${cleanedContent}`;
-        console.log(`AASc BEFORE: ${match.substring(0, 80)}...`);
-        console.log(`AASc AFTER:  ${replacement.substring(0, 80)}...`);
+      /^:aasc3a(\d+):\s*pass:q\[\[underline\]#Constraint AASc-3a-(\d+):#\s*(.*?)\]$/gm,
+      (match, attrNum, constraintNum, rawText) => {
+        const cleanedText = rawText
+          .replace(/__/g, '_')
+          .replace(/\]\s*$/, '')
+          .trim();
+        const replacement = `:aasc3a${attrNum}: Constraint AASc-3a-${constraintNum}: ${cleanedText}`;
+        console.log(`✅ AASc-3a-${constraintNum} TRANSFORMED`);
         totalTransformations++;
         return replacement;
       }
@@ -57,7 +68,7 @@ function transformConstraints(source, docfile) {
   }
   
   if (totalTransformations > 0) {
-    console.log(`\n=== TRANSFORMED ${totalTransformations} total constraint(s) in ${docfile} ===`);
+    console.log(`\n🎉 === TRANSFORMED ${totalTransformations} total constraint(s) in ${docfile} ===`);
     console.log(`  - AASd: ${aasdMatches.length} constraints`);
     console.log(`  - AASa: ${aasaMatches.length} constraints`);
     console.log(`  - AASc: ${aascMatches.length} constraints`);
@@ -87,13 +98,16 @@ module.exports = function (registry) {
       var transformedSource = transformConstraints(source, docfile);
       
       if (source !== transformedSource) {
-        console.log(`*** APPLYING TRANSFORMATIONS to ${docfile} ***`);
+        console.log(`\n🔄 *** APPLYING TRANSFORMATIONS to ${docfile} ***`);
+        console.log(`📝 Original source length: ${source.length} characters`);
+        console.log(`📝 Transformed source length: ${transformedSource.length} characters`);
         
         // Create a completely new reader with the transformed content
         var Asciidoctor = require('@asciidoctor/core')();
         var newReader = Asciidoctor.Reader.$new(transformedSource.split('\n'));
         
-        console.log(`Created new reader with transformed content`);
+        console.log(`✅ Created new reader with transformed content for ${docfile}`);
+        console.log(`🔄 READER UPDATED - Asciidoctor will use transformed content\n`);
         return newReader;
       }
       
