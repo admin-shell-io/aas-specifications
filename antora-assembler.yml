@@ -6,6 +6,9 @@ asciidoc:
   attributes:
     source-highlighter: rouge
     pdf-theme: pdf-theme.yml
+    # PlantUML configuration for asciidoctor-diagram
+    plantumlconfig: plantuml/puml-theme-idta.puml
+    plantuml-includedir: plantuml
 build:
   build:
   command: bundle exec asciidoctor-pdf -r asciidoctor-diagram
