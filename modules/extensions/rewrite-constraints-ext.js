@@ -38,16 +38,19 @@ module.exports = function (registry) {
       var docfile = doc.getAttribute('docfile') || '[unknown file]';
       console.log('Processing file:', docfile);
       
-      var lines = reader.lines;
-      var source = lines.join('\n');
+      // Get the entire source content
+      var source = reader.getString();
       var transformedSource = transformConstraints(source, docfile);
       
       if (source !== transformedSource) {
         console.log(`*** APPLYING TRANSFORMATIONS to ${docfile} ***`);
-        var newLines = transformedSource.split('\n');
-        // Clear and replace the lines array
-        lines.length = 0;
-        lines.push.apply(lines, newLines);
+        
+        // Create a completely new reader with the transformed content
+        var Asciidoctor = require('@asciidoctor/core')();
+        var newReader = Asciidoctor.Reader.$new(transformedSource.split('\n'));
+        
+        console.log(`Created new reader with transformed content`);
+        return newReader;
       }
       
       return reader;
