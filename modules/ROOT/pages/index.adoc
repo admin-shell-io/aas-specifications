@@ -28,10 +28,10 @@ image::IDTA-01001.png[IDTA 01001, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01001 +
-*Version:* v3.1
+*Version:* v3.1.1
 
 [.text-center]
-link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.1/index.html[View, role="button", window=_blank]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.1.1/index.html[View, role="button", window=_blank]
 
 a| 
 [.text-center]
@@ -42,10 +42,10 @@ image::IDTA-01002.png[IDTA 01002, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01002 +
-*Version:* v3.1
+*Version:* v3.1.1
 
 [.text-center]
-link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01002/v3.1/index.html[View, role="button", window=_blank]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01002/v3.1.1/index.html[View, role="button", window=_blank]
 
 a| 
 [.text-center]
@@ -56,10 +56,10 @@ image::IDTA-01003-a.png[IDTA 01003-a, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01003-a +
-*Version:* v3.1
+*Version:* v3.1.1
 
 [.text-center]
-link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.1/index.html[View, role="button", window=_blank]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.1.1/index.html[View, role="button", window=_blank]
 
 |===
 
@@ -76,10 +76,10 @@ image::IDTA-01004.png[IDTA 01004, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01004 +
-*Version:* v3.0
+*Version:* v3.0.1
 
 [.text-center]
-link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01004/v3.0/index.html[View, role="button", window=_blank]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01004/v3.0.1/index.html[View, role="button", window=_blank]
 
 a| 
 [.text-center]
