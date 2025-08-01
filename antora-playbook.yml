@@ -15,7 +15,7 @@ content:
       - IDTA-01001-3-0-2_antora_ref
       - IDTA-01001-3-2_Working
       - IDTA-01001-3-1_final 
-      - IDTA-01001-3-1-1_Working
+      - master
       start-paths: documentation/IDTA-01001
     - url: https://github.com/admin-shell-io/aas-specs-api
       branches:
@@ -25,7 +25,7 @@ content:
       - IDTA-01002-3-0-4_antora_ref
       - IDTA-01002-3-2_Working
       - IDTA-01002-3-1_final
-      - IDTA-01002-3-1-1_working
+      - main
       start-paths: documentation/IDTA-01002-3
     - url: https://github.com/admin-shell-io/aas-specs-iec61360
       branches:
@@ -33,13 +33,13 @@ content:
       - IDTA-01003-a-3-0-2_antora_ref
       - IDTA-01003-a-3-2_Working
       - IDTA-01003-a-3-1_final
-      - IDTA-01003-a-3-1-1_Working
+      - main
       start-paths: documentation/IDTA-01003-a
     - url: https://github.com/admin-shell-io/aas-specs-security
       branches:
       - IDTA-01004-3-1_Working
       - IDTA-01004-3-0_Final
-      - IDTA-01004-3-0-1_working
+      - main
       start-paths: documentation/IDTA-01004
     - url: https://github.com/admin-shell-io/aas-specs-aasx
       branches:
