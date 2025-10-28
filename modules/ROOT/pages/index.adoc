@@ -28,7 +28,7 @@ image::IDTA-01001.png[IDTA 01001, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01001 +
-*Version:* v3.1.1
+*Version:* v3.1.2
 
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.1.1/index.html[View, role="button", window=_blank]
