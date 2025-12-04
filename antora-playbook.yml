@@ -36,6 +36,11 @@ content:
       - IDTA-01003-a-3-1_final
       - main
       start-paths: documentation/IDTA-01003-a
+    - url: https://github.com/admin-shell-io/aas-specs-measurement-units
+      branches:
+      - JN/working_first_version
+      - main
+      start-paths: documentation/IDTA-01003-b
     - url: https://github.com/admin-shell-io/aas-specs-security
       branches:
       - IDTA-01004-3-1_Working

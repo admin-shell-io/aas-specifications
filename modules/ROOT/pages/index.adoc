@@ -63,6 +63,22 @@ link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.1.1/ind
 
 |===
 
+a| 
+[.text-center]
+image::IDTA-01003-a.png[IDTA 01003-a, width=250, align=center]
+
+[.text-center]
+**Specification of the Asset Administration Shell Part 3b: Data Specification – Measurement Units**
+
+[.text-center]
+*IDTA Number:* 01003-b +
+*Version:* v3.0
+
+[.text-center]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.0/index.html[View, role="button", window=_blank]
+
+|===
+
 // Second row - 2 columns centered
 [cols="1,1", frame=none, grid=none, width=60%, align=center]
 |===
