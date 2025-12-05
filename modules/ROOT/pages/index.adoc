@@ -9,6 +9,7 @@ Specifications define the software structure, interface and semantics of the Ass
 :part-1-mainpage: IDTA-01001:ROOT:index.adoc
 :part-2-mainpage: IDTA-01002:ROOT:index.adoc
 :part-3a-mainpage: IDTA-01003-a:ROOT:index.adoc
+:part-3b-mainpage: IDTA-01003-b:ROOT:index.adoc
 :part-4-mainpage: IDTA-01004:ROOT:index.adoc
 :part-5-mainpage: IDTA-01005:ROOT:index.adoc
 
