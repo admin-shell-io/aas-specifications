@@ -69,7 +69,7 @@ link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.1.1/ind
 |===
 a|
 [.text-center]
-image::IDTA-01003-a.png[IDTA 01003-a, width=250, align=center]
+image::IDTA-01003-b.png[IDTA 01003-b, width=250, align=center]
 
 [.text-center]
 **Specification of the Asset Administration Shell Part 3b: Data Specification – Measurement Units**
