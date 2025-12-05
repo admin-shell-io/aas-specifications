@@ -64,9 +64,10 @@ link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-a/v3.1.1/ind
 
 |===
 
-// Second row - 2 columns centered
+// Second row - 3 columns
 [cols="1,1,1", frame=none, grid=none]
-a| 
+|===
+a|
 [.text-center]
 image::IDTA-01003-a.png[IDTA 01003-a, width=250, align=center]
 
@@ -80,7 +81,7 @@ image::IDTA-01003-a.png[IDTA 01003-a, width=250, align=center]
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01003-b/v3.0/index.html[View, role="button", window=_blank]
 
-a| 
+a|
 [.text-center]
 image::IDTA-01004.png[IDTA 01004, width=250, align=center]
 
@@ -94,7 +95,7 @@ image::IDTA-01004.png[IDTA 01004, width=250, align=center]
 [.text-center]
 link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01004/v3.0.1/index.html[View, role="button", window=_blank]
 
-a| 
+a|
 [.text-center]
 image::IDTA-01005.png[IDTA 01005, width=250, align=center]
 
