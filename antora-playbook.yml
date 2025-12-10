@@ -38,7 +38,7 @@ content:
       start-paths: documentation/IDTA-01003-a
     - url: https://github.com/admin-shell-io/aas-specs-measurement-units
       branches:
-      - JN/working_first_version
+      - IDTA-01003-b-3-0_Working
       start-paths: documentation/IDTA-01003-b
     - url: https://github.com/admin-shell-io/aas-specs-security
       branches:
