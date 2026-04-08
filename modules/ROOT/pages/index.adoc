@@ -90,10 +90,10 @@ image::IDTA-01004.png[IDTA 01004, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01004 +
-*Version:* v3.0.1
+*Version:* v3.0.2
 
 [.text-center]
-link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01004/v3.0.1/index.html[View, role="button", window=_blank]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01004/v3.0.2/index.html[View, role="button", window=_blank]
 
 a|
 [.text-center]
