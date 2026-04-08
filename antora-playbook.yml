@@ -43,7 +43,7 @@ content:
     - url: https://github.com/admin-shell-io/aas-specs-security
       branches:
       - IDTA-01004-3-1_Working
-      - IDTA-01004-3-0-2_Working
+      - IDTA-01004-3-0-2_Final
       - IDTA-01004-3-0_Final
       - main
       start-paths: documentation/IDTA-01004
