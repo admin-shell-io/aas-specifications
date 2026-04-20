@@ -26,6 +26,7 @@ content:
       - IDTA-01002-3-0-4_antora_ref
       - IDTA-01002-3-2_working
       - IDTA-01002-3-1_final
+      - IDTA-01002-3-1-1_final
       - main
       start-paths: documentation/IDTA-01002-3
     - url: https://github.com/admin-shell-io/aas-specs-iec61360

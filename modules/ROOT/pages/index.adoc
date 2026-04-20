@@ -43,10 +43,10 @@ image::IDTA-01002.png[IDTA 01002, width=250, align=center]
 
 [.text-center]
 *IDTA Number:* 01002 +
-*Version:* v3.1.1
+*Version:* v3.1.2
 
 [.text-center]
-link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01002/v3.1.1/index.html[View, role="button", window=_blank]
+link:https://industrialdigitaltwin.io/aas-specifications/IDTA-01002/v3.1.2/index.html[View, role="button", window=_blank]
 
 a| 
 [.text-center]
