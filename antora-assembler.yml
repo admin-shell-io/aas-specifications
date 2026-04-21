@@ -11,5 +11,5 @@ asciidoc:
     plantuml-includedir: plantuml
 build:
   build:
-  command: bundle exec asciidoctor-pdf -r asciidoctor-diagram
+  command: bundle exec asciidoctor-pdf -r ./extended.rb -r asciidoctor-diagram 
   keep_aggregate_source: true
