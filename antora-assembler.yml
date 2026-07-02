@@ -11,5 +11,7 @@ asciidoc:
     plantuml-includedir: plantuml
 build:
   build:
-  command: bundle exec asciidoctor-pdf -r ./extended.rb -r asciidoctor-diagram 
+  # Command to enable line numbers during Review
+  # command: bundle exec asciidoctor-pdf -r ./extended.rb -r asciidoctor-diagram 
+  command: bundle exec asciidoctor-pdf -r asciidoctor-diagram 
   keep_aggregate_source: true
