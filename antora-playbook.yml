@@ -28,8 +28,9 @@ content:
       - IDTA-01002-3-1_final
       - IDTA-01002-3-1-1_final
       - IDTA-01002-3-1-2_final
-      - IDTA-01002-3-3_working
       - IDTA-01002-3-1-3_final
+      - IDTA-01002-3-2-1_working
+      - IDTA-01002-3-3_working
       - main
       start-paths: documentation/IDTA-01002-3
     - url: https://github.com/admin-shell-io/aas-specs-iec61360
